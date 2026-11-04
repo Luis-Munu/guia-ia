@@ -334,6 +334,7 @@ footer{padding:80px 0;text-align:center;color:var(--ink3);font-size:.9rem}
 .gpane>section:first-child{padding-top:90px}
 .gpane>section.dark:first-child{margin-top:70px!important}
 .gnext{display:flex;justify-content:center;padding:70px 0 10px}
+.capo-det>summary{cursor:pointer;margin:28px auto 0;padding:16px 26px;border-radius:999px;background:#fff;box-shadow:var(--sh);font-weight:600;width:fit-content;list-style:none}.capo-det>summary::-webkit-details-marker{display:none}.capo-det>summary::before{content:"▸ "}.capo-det[open]>summary::before{content:"▾ "}.checkbox{max-width:760px;margin:60px auto 0;padding:26px 30px;border-radius:24px;background:#fff;box-shadow:var(--sh)}.checkbox h3{margin:0 0 10px}.checkbox ol{margin:0;padding-left:22px;line-height:1.7}
 .gnext button{border:none;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:14px;padding:18px 30px;border-radius:999px;background:#fff;box-shadow:var(--sh);color:var(--ink);font-weight:600;transition:transform .3s,box-shadow .3s}
 .gnext button:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(60,64,67,.08),0 18px 48px rgba(60,64,67,.14)}
 .gnext button small{display:block;font-size:.75rem;color:var(--ink3);font-weight:500;text-transform:uppercase;letter-spacing:.1em}
@@ -397,6 +398,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
     <h1>La IA, explicada<br><span class="grad">de verdad.</span></h1>
     <p class="lead">Desde qué es un token hasta cómo orquestar agentes que programan por ti. Una guía visual, clara y práctica que termina explicando exactamente qué hacer para empezar con lo que quieras.</p>
     <a class="btn" href="#tokens">Empezar el viaje ↓</a><a class="btn ghost" href="#empieza">Ir directo a la práctica</a>
+    <p class="note" style="margin-top:18px">¿Primera vez? Lee <a href="#tokens">01</a>, <a href="#contexto">05</a>, <a href="#agentes">07</a> y <a href="#empieza">12</a> (20 min). Lo demás, cuando lo necesites.</p>
     <p style="margin-top:34px;font-weight:600;color:var(--ink2)">Hecho por Luis Munuera Martínez</p>
     <p class="note" style="margin-top:10px">Actualizado a noviembre de 2026 · Las cifras de modelos y benchmarks cambian cada semana: compruébalas siempre en las fuentes enlazadas.</p>
   </div>
@@ -407,7 +409,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
   <div class="wrap rv">
     <div class="gtabs" role="tablist">
       <i class="gind"></i>
-      <button class="gtab on" role="tab" data-g="g1" style="--c:var(--blue)"><b class="gn">1</b><span><strong>Conceptos básicos</strong><small>Tokens · modelos · pesos · tamaño · contexto · benchmarks · bajo el capó · glosario</small></span></button>
+      <button class="gtab on" role="tab" data-g="g1" style="--c:var(--blue)"><b class="gn">1</b><span><strong>Conceptos básicos</strong><small>Tokens · modelos · pesos · tamaño · contexto · benchmarks · glosario · (extra) bajo el capó</small></span></button>
       <button class="gtab" role="tab" data-g="g2" style="--c:var(--red)"><b class="gn">2</b><span><strong>IDEs, harnesses y agentes</strong><small>Agentes · harnesses · IDEs · skills, plugins, MCP y RAG · memoria</small></span></button>
       <button class="gtab" role="tab" data-g="g3" style="--c:var(--green)"><b class="gn">3</b><span><strong>Cómo trabajar con ello</strong><small>Automatizar · programar con agentes · patrones · empieza aquí</small></span></button>
     </div>
@@ -473,11 +475,6 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
       <button class="tab" data-t="emb">Embeddings</button>
     </div>
     <div id="panels"></div>
-    <div class="callout cy rv mt">
-      
-      <div><h4>¿Y con qué los ejecuto? Los <i>engines</i></h4>
-      <p>Un engine (motor de inferencia) carga los pesos y genera los tokens. Los recomendados, todos open source: <b>llama.cpp</b> (GGUF, CPU+GPU, todo terreno), <b>vLLM</b> y <b>SGLang</b> (servidores rápidos en GPU NVIDIA/AMD), <b>MLX</b> (Mac), <b>ExLlamaV3</b> (GPU de consumo), <b>ik_llama.cpp</b> / <b>KTransformers</b> (MoE gigantes con offloading), <b>ComfyUI</b> (imagen/vídeo/audio) y <b>Transformers</b> de Hugging Face (todo, para aprender). Ollama y LM Studio también existen y son cómodos, pero no dejan de ser capas por encima de llama.cpp, cerradas o con muchas decisiones ya tomadas por ti: aquí preferimos ir directamente a la fuente.</p></div>
-    </div>
   </div>
 </section>
 
@@ -509,7 +506,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
     </div>
     <div class="grid g3 mt">
       <div class="card rv" style="border-top:6px solid var(--red)">
-        <div class="ph"><img src="assets/p_closed.jpg" alt="Pasillo de un centro de datos" loading="lazy"></div><h3>Closed source</h3><p>Solo se pueden usar a través de su API o su app; los pesos no los ves ni los tocas. Suelen ser los más potentes, pero dependes de sus precios y términos, y vienen con <b>muchas limitaciones de censura y medidas de seguridad</b>: un "buenismo" de serie que les lleva a negarse a tareas legítimas o a suavizar sus respuestas.</p>
+        <div class="ph"><img src="assets/p_closed.jpg" alt="Pasillo de un centro de datos" loading="lazy"></div><h3>Closed source</h3><p>Solo se pueden usar a través de su API o su app; los pesos no los ves ni los tocas. Suelen ser los más potentes, pero dependes de sus precios y términos, y vienen con <b>muchas limitaciones de censura y medidas de seguridad</b>: filtros que a veces les hacen negarse a tareas legítimas o a suavizar sus respuestas.</p>
         <div class="mt2">
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64">Anthropic · Claude</span>
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64">OpenAI · GPT</span>
@@ -518,7 +515,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
         </div>
       </div>
       <div class="card rv" style="border-top:6px solid var(--yellow)">
-        <div class="ph"><img src="assets/p_openw.jpg" alt="Disco duro abierto" loading="lazy"></div><h3>Open weights</h3><p>Te dan los pesos para descargar y ejecutar, pero no los datos ni el código de entrenamiento. <b>Seamos sinceros: la vanguardia aquí es casi toda china.</b></p>
+        <div class="ph"><img src="assets/p_openw.jpg" alt="Disco duro abierto" loading="lazy"></div><h3>Open weights</h3><p>Te dan los pesos para descargar y ejecutar, pero no los datos ni el código de entrenamiento. <b>Hoy los modelos abiertos más potentes vienen sobre todo de laboratorios chinos.</b></p>
         <div class="mt2">
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=deepseek.com&sz=64">DeepSeek</span>
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=qwen.ai&sz=64">Alibaba · Qwen</span>
@@ -541,7 +538,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
     </div>
     <div class="grid g4 mt">
       <div class="card rv"><div class="ph"><img src="assets/p_local.jpg" alt="Tarjeta gráfica NVIDIA RTX" loading="lazy"></div><h4 class="mt2">Ejecutarlo en local</h4><p>Privacidad total, sin cuotas, sin internet.</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/p_unlock.jpg" alt="Candado abierto" loading="lazy"></div><h4 class="mt2">Quitar restricciones</h4><p>Con <b>Heretic</b> puedes quitarle al modelo sus mecanismos de seguridad para que deje de negarse a responder (abliteración automática), sin necesidad de reentrenarlo.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_unlock.jpg" alt="Candado abierto" loading="lazy"></div><h4 class="mt2">Quitar restricciones</h4><p>Con <b>Heretic</b> puedes quitarle al modelo sus mecanismos de seguridad para que deje de negarse a responder (abliteración automática), sin necesidad de reentrenarlo. <b>Solo para uso personal y legítimo; no en equipos del centro.</b></p></div>
       <div class="card rv"><div class="ph"><img src="assets/p_persona.jpg" alt="Repositorio Unsloth" loading="lazy"></div><h4 class="mt2">Cambiar personalidad</h4><p>Fine-tuning con <b>LoRA</b> (Unsloth, Axolotl): entrenas con tus propios ejemplos solo unas pequeñas capas añadidas, para darle tu tono o especializarlo en una tarea.</p></div>
       <div class="card rv"><div class="ph"><img src="assets/p_quant.jpg" alt="Tarjeta gráfica" loading="lazy"></div><h4 class="mt2">Cuantizarlo</h4><p>Se reduce la precisión de sus números para que quepa en tu GPU (lo vemos en la siguiente sección).</p></div>
     </div>
@@ -573,12 +570,17 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
           <div style="background:var(--yellow-l)">RAM (CPU) · <i>offloading</i><span>~60–120 GB/s · 5–20 tok/s</span></div>
           <div style="background:var(--red-l)">Disco NVMe (mmap)<span>~5–14 GB/s · &lt;2 tok/s</span></div>
         </div>
-        <p class="mt2"><b>Offloading</b>: lo que no cabe en la VRAM se pasa a la RAM o al disco. Funciona, pero va más lento. Herramientas como <b><a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a></b> (GPU + RAM + SSD a la vez), KTransformers o el <code>--n-cpu-moe</code> de llama.cpp colocan de forma inteligente las partes "calientes" en la GPU y los expertos MoE poco usados en RAM. Así puedes ejecutar a una velocidad decente modelos que, en teoría, no te caben.</p>
+        <p class="mt2"><b>Offloading</b>: lo que no cabe en la VRAM se pasa a la RAM o al disco. Funciona, pero va más lento. Herramientas como KTransformers o el <code>--n-cpu-moe</code> de llama.cpp colocan de forma inteligente las partes "calientes" en la GPU y los expertos MoE poco usados en RAM. Así puedes ejecutar a una velocidad decente modelos que, en teoría, no te caben.</p>
       </div>
     </div>
     <div class="callout cb rv mt">
       
       <div><h4>La alternativa: alquilar la inferencia</h4><p><b>OpenRouter</b> te da una sola API y una sola factura para cientos de modelos de decenas de proveedores. También puedes ir directo a la API de cada empresa (DeepSeek, Moonshot, Anthropic, OpenAI, Google…) o a proveedores de open weights rápidos (Groq, Cerebras, Together, Fireworks). Es la opción ideal para modelos gigantes que nunca cabrían en tu ordenador.</p></div>
+    <div class="callout cy rv mt">
+      
+      <div><h4>¿Y con qué los ejecuto? Los <i>engines</i></h4>
+      <p>Un engine (motor de inferencia) carga los pesos y genera los tokens. Los recomendados, todos open source: <b>llama.cpp</b> (GGUF, CPU+GPU, todo terreno), <b>vLLM</b> y <b>SGLang</b> (servidores rápidos en GPU NVIDIA/AMD), <b>MLX</b> (Mac), <b>ExLlamaV3</b> (GPU de consumo), <b>ik_llama.cpp</b> / <b>KTransformers</b> (MoE gigantes con offloading), <b>ComfyUI</b> (imagen/vídeo/audio) y <b>Transformers</b> de Hugging Face (todo, para aprender). Ollama y LM Studio también existen y son cómodos, pero no dejan de ser capas por encima de llama.cpp, cerradas o con muchas decisiones ya tomadas por ti: aquí preferimos ir directamente a la fuente.</p></div>
+    </div>
     </div>
   </div>
 </section>
@@ -630,14 +632,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
     </div>
     <div class="card rv mt">
       <h3>¿Qué ocupa tu ventana antes de que escribas nada?</h3>
-      <p>Systima midió con un proxy la primera petición de Claude Code (julio 2026): de una ventana de 200K, <b>32.800 tokens</b> se van solo en instrucciones y herramientas. OpenCode, en la misma prueba, usó 6.900.</p>
-      <div class="ctxbar">
-        <div data-w="3.3%" style="background:#EA4335" title="Prompt de sistema, 6.500"></div>
-        <div data-w="12%" style="background:#FBBC05" title="27 herramientas, 24.000"></div>
-        <div data-w="1.1%" style="background:#4285F4" title="Resto, 2.300"></div>
-        <div data-w="83.6%" style="background:#f1f3f4;color:#747775">Libre para tu tarea: 167.200</div>
-      </div>
-      <div class="legend" style="display:flex;gap:22px;flex-wrap:wrap;margin-top:10px"><div><i style="background:#EA4335"></i>Prompt de sistema 6.500</div><div><i style="background:#FBBC05"></i>27 herramientas 24.000</div><div><i style="background:#4285F4"></i>Resto 2.300</div></div>
+      <p>Antes de que escribas nada, el harness ya ocupa parte de la ventana con sus instrucciones y herramientas (lo vemos con cifras en la sección 08).</p>
       <p class="note">Después, lo que más llena el contexto son las salidas de herramientas (logs, archivos leídos); por eso los buenos harnesses las recortan. Para no recalcular todo en cada token, el modelo guarda lo ya procesado en la <b>caché KV</b>, que también ocupa VRAM: a más contexto, más memoria.</p>
     </div>
     <div class="grid g3 mt">
@@ -693,6 +688,35 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
   </div>
 </section>
 
+<!-- GLOSARIO -->
+<section id="glosario">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow"><i style="background:var(--yellow)"></i>Chuleta</div>
+      <h2>Glosario <span style="color:#d39b00">de bolsillo</span></h2>
+      <p class="lead" style="margin:0 auto">Pasa el ratón (o toca) cada tarjeta para darle la vuelta.</p>
+    </div>
+    <div class="grid g4 mt">
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Inferencia</b><small>Usar el modelo</small></div><div class="fb" style="background:#4285F4">Ejecutar un modelo ya entrenado para obtener respuestas. Es lo que ocurre cada vez que le preguntas algo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Fine-tuning y LoRA</b><small>Especializar un modelo</small></div><div class="fb" style="background:#EA4335">Ajustar los pesos de un modelo ya entrenado con miles de ejemplos tuyos (entrada y respuesta ideal) para cambiar su comportamiento: tono, formato, una tarea concreta. LoRA congela el modelo y entrena solo unas matrices pequeñas añadidas, una fracción mínima de los parámetros, así que cabe en una GPU normal (QLoRA hace lo mismo sobre el modelo cuantizado). Sirve para cambiar su comportamiento, no para enseñarle conocimientos nuevos: para eso está RAG.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Abliteración</b><small>Quitar la censura</small></div><div class="fb" style="background:#FBBC05">Consiste en localizar dentro del modelo la "dirección" responsable de que se niegue a responder y anularla en los pesos. Heretic lo hace de forma automática.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>GGUF y Q4_K_M</b><small>Formato de archivo</small></div><div class="fb" style="background:#34A853">Un único archivo con los pesos ya cuantizados, listo para llama.cpp. Q4_K_M significa 4 bits con calidad media-alta: el equilibrio más habitual.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Router (MoE)</b><small>El repartidor</small></div><div class="fb" style="background:#4285F4">Una pequeña red que, para cada token, decide qué expertos del modelo trabajan. Los demás no se activan.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Caché KV</b><small>La memoria de lectura</small></div><div class="fb" style="background:#EA4335">Resultados intermedios de los tokens ya leídos, guardados para no recalcularlos. Crece con el contexto y ocupa VRAM.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>RAG</b><small>Respuestas con tus documentos</small></div><div class="fb" style="background:#FBBC05">Buscar en tus documentos lo relevante para cada pregunta y dárselo al modelo para que responda citando la fuente. Es lo que hay detrás de casi todos los chatbots de empresa.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Prompt de sistema</b><small>Las reglas ocultas</small></div><div class="fb" style="background:#34A853">Instrucciones que van antes de tu mensaje y definen el rol, el tono y los límites del modelo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Alucinación</b><small>Inventar con aplomo</small></div><div class="fb" style="background:#4285F4">Cuando el modelo afirma algo falso con total seguridad. Se reduce dándole fuentes y herramientas para comprobar lo que dice.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Razonamiento</b><small>Pensar antes de hablar</small></div><div class="fb" style="background:#EA4335">Modelos que generan una cadena de pensamiento interna antes de responder. Más precisos, pero gastan más tokens y tiempo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>MCP</b><small>Conectar herramientas</small></div><div class="fb" style="background:#FBBC05">Protocolo abierto para que un agente use servicios externos (GitHub, navegador, bases de datos) a través de servidores MCP.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>TTFT</b><small>Tiempo de espera</small></div><div class="fb" style="background:#34A853">Time To First Token: lo que tarda en aparecer la primera palabra. Clave en voz y chat en tiempo real.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Prefill y decode</b><small>Leer y escribir</small></div><div class="fb" style="background:#4285F4">Prefill: el modelo lee tu prompt entero de golpe (de ahí sale el TTFT). Decode: genera la respuesta token a token (de ahí salen los tok/s).</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Modelo de recompensa</b><small>El que pone la nota</small></div><div class="fb" style="background:#EA4335">Un modelo que puntúa respuestas, entrenado con preferencias humanas o sustituido por reglas comprobables (tests, cuentas). En el RL, el LLM aprende a sacar mejor nota con él.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Sicofancia</b><small>Darte la razón</small></div><div class="fb" style="background:#FBBC05">La tendencia del modelo a decirte lo que quieres oír y a cambiar de opinión en cuanto le llevas la contraria. Viene del entrenamiento con preferencias humanas.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Grounding</b><small>Aterrizar en datos reales</small></div><div class="fb" style="background:#34A853">Anclar cada respuesta en fuentes reales (documentación, código, la web, tus datos) en lugar de en lo que el modelo "cree recordar".</div></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- BAJO EL CAPÓ -->
 <section id="capo">
   <div class="wrap">
@@ -701,6 +725,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       <h2>Bajo el <span style="color:var(--green)">capó</span></h2>
       <p class="lead">Para quien quiera saber qué pasa de verdad cuando el modelo "piensa": cómo se sirve cada respuesta, cómo decide en qué fijarse y cómo se fabrica un LLM desde cero. No hace falta para usar la IA, pero ayuda a entender por qué cuesta lo que cuesta y por qué va como va.</p>
     </div>
+    <details class="capo-det"><summary>Extra avanzado: ábrelo si quieres saber cómo funciona por dentro (no hace falta para seguir)</summary>
     <div class="callout cy rv mt"><div><h4>Aviso honesto</h4><p>Esto es de lo más complejo del campo: detrás de cada párrafo hay papers de 50 páginas llenos de matemáticas. Aquí solo va la intuición. Si algo te pica la curiosidad, pásale el paper a tu IA y pídele que te lo explique paso a paso.</p></div></div>
 
     <!-- inferencia -->
@@ -843,38 +868,13 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       </div>
       <p class="note" style="color:#9aa0a6">Cifras recogidas por <a href="https://forkast.news/xiaomi-mimo-v2-6-breaks-cover-a-1t-class-chinese-lab-trains-in-public/" target="_blank">Forkast</a>. Con matices: en Hacker News señalaron que los datos podrían repetirse al recargar la página, y una línea del panel ("Claude Distill Requests: hidden") hizo sospechar de destilación de modelos cerrados. Xiaomi ha prometido publicar los detalles técnicos poco a poco.</p>
     </div>
+  </details>
   </div>
 </section>
 
-<!-- GLOSARIO -->
-<section id="glosario">
-  <div class="wrap">
-    <div class="rv" style="text-align:center">
-      <div class="eyebrow"><i style="background:var(--yellow)"></i>Chuleta</div>
-      <h2>Glosario <span style="color:#d39b00">de bolsillo</span></h2>
-      <p class="lead" style="margin:0 auto">Pasa el ratón (o toca) cada tarjeta para darle la vuelta.</p>
-    </div>
-    <div class="grid g4 mt">
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Inferencia</b><small>Usar el modelo</small></div><div class="fb" style="background:#4285F4">Ejecutar un modelo ya entrenado para obtener respuestas. Es lo que ocurre cada vez que le preguntas algo.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Fine-tuning y LoRA</b><small>Especializar un modelo</small></div><div class="fb" style="background:#EA4335">Ajustar los pesos de un modelo ya entrenado con miles de ejemplos tuyos (entrada y respuesta ideal) para cambiar su comportamiento: tono, formato, una tarea concreta. LoRA congela el modelo y entrena solo unas matrices pequeñas añadidas, una fracción mínima de los parámetros, así que cabe en una GPU normal (QLoRA hace lo mismo sobre el modelo cuantizado). Sirve para cambiar su comportamiento, no para enseñarle conocimientos nuevos: para eso está RAG.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Abliteración</b><small>Quitar la censura</small></div><div class="fb" style="background:#FBBC05">Consiste en localizar dentro del modelo la "dirección" responsable de que se niegue a responder y anularla en los pesos. Heretic lo hace de forma automática.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>GGUF y Q4_K_M</b><small>Formato de archivo</small></div><div class="fb" style="background:#34A853">Un único archivo con los pesos ya cuantizados, listo para llama.cpp. Q4_K_M significa 4 bits con calidad media-alta: el equilibrio más habitual.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Router (MoE)</b><small>El repartidor</small></div><div class="fb" style="background:#4285F4">Una pequeña red que, para cada token, decide qué expertos del modelo trabajan. Los demás no se activan.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Caché KV</b><small>La memoria de lectura</small></div><div class="fb" style="background:#EA4335">Resultados intermedios de los tokens ya leídos, guardados para no recalcularlos. Crece con el contexto y ocupa VRAM.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>RAG</b><small>Respuestas con tus documentos</small></div><div class="fb" style="background:#FBBC05">Buscar en tus documentos lo relevante para cada pregunta y dárselo al modelo para que responda citando la fuente. Es lo que hay detrás de casi todos los chatbots de empresa.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Prompt de sistema</b><small>Las reglas ocultas</small></div><div class="fb" style="background:#34A853">Instrucciones que van antes de tu mensaje y definen el rol, el tono y los límites del modelo.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Alucinación</b><small>Inventar con aplomo</small></div><div class="fb" style="background:#4285F4">Cuando el modelo afirma algo falso con total seguridad. Se reduce dándole fuentes y herramientas para comprobar lo que dice.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Razonamiento</b><small>Pensar antes de hablar</small></div><div class="fb" style="background:#EA4335">Modelos que generan una cadena de pensamiento interna antes de responder. Más precisos, pero gastan más tokens y tiempo.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>MCP</b><small>Conectar herramientas</small></div><div class="fb" style="background:#FBBC05">Protocolo abierto para que un agente use servicios externos (GitHub, navegador, bases de datos) a través de servidores MCP.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>TTFT</b><small>Tiempo de espera</small></div><div class="fb" style="background:#34A853">Time To First Token: lo que tarda en aparecer la primera palabra. Clave en voz y chat en tiempo real.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Prefill y decode</b><small>Leer y escribir</small></div><div class="fb" style="background:#4285F4">Prefill: el modelo lee tu prompt entero de golpe (de ahí sale el TTFT). Decode: genera la respuesta token a token (de ahí salen los tok/s).</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Modelo de recompensa</b><small>El que pone la nota</small></div><div class="fb" style="background:#EA4335">Un modelo que puntúa respuestas, entrenado con preferencias humanas o sustituido por reglas comprobables (tests, cuentas). En el RL, el LLM aprende a sacar mejor nota con él.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Sicofancia</b><small>Darte la razón</small></div><div class="fb" style="background:#FBBC05">La tendencia del modelo a decirte lo que quieres oír y a cambiar de opinión en cuanto le llevas la contraria. Viene del entrenamiento con preferencias humanas.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Grounding</b><small>Aterrizar en datos reales</small></div><div class="fb" style="background:#34A853">Anclar cada respuesta en fuentes reales (documentación, código, la web, tus datos) en lugar de en lo que el modelo "cree recordar".</div></div></div>
-    </div>
-  </div>
-</section>
 
+
+<div class="wrap"><div class="checkbox rv"><h3>✅ Comprueba que lo has entendido</h3><ol><li>¿Por qué la salida cuesta más que la entrada?</li><li>¿Cuánta VRAM necesita un 27B en 4 bits?</li><li>¿Por qué una conversación larga sale cara?</li></ol></div></div>
 <div class="wrap" style="text-align:center;color:var(--ink3);font-size:.85rem;margin-top:60px">Hecho por Luis Munuera Martínez</div>
 <div class="wrap gnext"><button data-go="g2"><span><small>Siguiente</small>IDEs, harnesses y agentes</span><span class="ar">→</span></button></div>
 </div>
@@ -959,7 +959,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
 
     <div id="ides" class="grid g2 mt" style="align-items:center;margin-top:100px">
       <div class="rv">
-        <div class="eyebrow"><i style="background:var(--blue)"></i>Terminal o editor</div>
+        <div class="eyebrow"><i style="background:var(--blue)"></i>08b · Terminal o editor</div>
         <h3 style="font-size:2.2rem">Los IDEs con agentes</h3>
         <p style="color:var(--ink2);margin-top:12px">Un harness de terminal (Claude Code, Codex, OpenCode…) vive en la consola. Un <b>IDE agéntico</b> es un editor de código completo con el agente integrado: ves los archivos, los cambios propuestos y el chat a la vez. Por debajo hacen lo mismo: modelo + herramientas + bucle.</p>
         <div class="mt2">
@@ -982,7 +982,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       </div>
     </div>
     <div id="skills" class="rv" style="margin-top:100px">
-      <div class="eyebrow"><i style="background:var(--blue)"></i>Ampliar tu harness</div>
+      <div class="eyebrow"><i style="background:var(--blue)"></i>08c · Ampliar tu harness</div>
       <h3 style="font-size:2.2rem">Skills, plugins, MCP y memoria</h3>
       <p class="lead">Todo esto se instala <b>dentro del harness</b>: le enseña a hacer cosas nuevas, lo conecta con otros servicios y le da memoria entre sesiones.</p>
     </div>
@@ -1004,7 +1004,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       </div>
     </div>
     <div class="rv" style="margin-top:90px">
-      <div class="eyebrow"><i style="background:var(--red)"></i>Lo que piden las empresas</div>
+      <div class="eyebrow"><i style="background:var(--red)"></i>08d · Lo que piden las empresas</div>
       <h3 style="font-size:2.2rem">MCP y RAG, a fondo</h3>
       <p class="lead">Son las dos piezas que más se usan al llevar IA a una empresa: <b>MCP</b> conecta al agente con los sistemas de la empresa, y <b>RAG</b> le da acceso a sus documentos sin reentrenar nada.</p>
     </div>
@@ -1054,7 +1054,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
           <span class="pill pn"><a href="https://github.com/langgenius/dify" target="_blank">Dify</a>: apps RAG sin código</span>
         </div>
         <p class="mt2">Bases de datos con búsqueda híbrida integrada: <b>Qdrant</b>, <b>Weaviate</b>, <b>Milvus</b>, o <b>Postgres</b> con pgvector.</p>
-        <p class="note">Un ejemplo para vosotros: meted todos los apuntes y exámenes de la FP en RAGFlow y preguntad "¿qué entra del tema de redes y en qué página se explica?". La respuesta llega con la cita exacta.</p>
+        <p class="note">Un ejemplo: mete todos los apuntes y exámenes de la FP en RAGFlow y pregunta "¿qué entra del tema de redes y en qué página se explica?". La respuesta llega con la cita exacta.</p>
       </div>
     </div>
     <h3 id="memoria" class="mt rv" style="margin-top:90px">De los archivos de instrucciones a la memoria automática</h3>
@@ -1067,6 +1067,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
   </div>
 </section>
 
+<div class="wrap"><div class="checkbox rv"><h3>✅ Comprueba que lo has entendido</h3><ol><li>¿Qué diferencia hay entre el modelo y el harness?</li><li>¿Por qué un harness con mucho overhead te cuesta más en cada turno?</li><li>¿Cuándo usarías RAG y cuándo un servidor MCP?</li></ol></div></div>
 <div class="wrap" style="text-align:center;color:var(--ink3);font-size:.85rem;margin-top:60px">Hecho por Luis Munuera Martínez</div>
 <div class="wrap gnext"><button data-go="g3"><span><small>Siguiente</small>Cómo trabajar con ello</span><span class="ar">→</span></button></div>
 </div>
@@ -1249,6 +1250,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
           <li>Abre una terminal en una carpeta de prueba y escribe <code>opencode</code>.</li>
           <li>Escribe <code>/models</code> y elige uno marcado como <i>free</i>.</li>
           <li>Opcional, más potencia gratis: crea una cuenta en <a href="https://build.nvidia.com" target="_blank">build.nvidia.com</a>, genera una API key (empieza por <code>nvapi-</code>) y añádela como proveedor (abajo).</li>
+          <li>Guarda la key como variable de entorno: Windows <code>setx NVIDIA_API_KEY "nvapi-..."</code> (y vuelve a abrir la terminal) · macOS/Linux <code>export NVIDIA_API_KEY="nvapi-..."</code>.</li>
           <li>Pídele algo real: <i>"créame una web de mi Pokédex"</i>. Después prueba a instalar una skill y compara.</li>
         </ol>
         <pre><span class="c"># Windows (PowerShell), macOS o Linux</span>
@@ -1311,13 +1313,13 @@ export DEEPSEEK_API_KEY="sk-..."</pre>
     </div>
     <div class="hype rv mt">
       <h3>Esto es el futuro. Y casi nadie lo está usando de verdad.</h3>
-      <p>Aprender Spring Boot de memoria es el pasado. <b>Todo lo digital puede automatizarse o hacerse con ayuda de agentes de IA.</b> Hay gente que automatiza todo lo que tiene alrededor y entrega a empresas, en horas, soluciones que antes llevaban meses. Y hay gente que todavía copia su código en ChatGPT y lo vuelve a pegar en el archivo.</p>
-      <p>En esta revolución, <b>los que vayan antes tienen toda la ventaja y un mundo por comerse.</b> Tenéis en las manos un poder que casi nadie está usando a fondo. Usadlo para destacar: un portfolio de aplicaciones y soluciones únicas vale más que cualquier título.</p>
+      <p>Memorizar frameworks importa cada vez menos; saber dirigir agentes, cada vez más. <b>Todo lo digital puede automatizarse o hacerse con ayuda de agentes de IA.</b> Hay gente que automatiza todo lo que tiene alrededor y entrega a empresas, en horas, soluciones que antes llevaban meses. Y hay gente que todavía copia su código en ChatGPT y lo vuelve a pegar en el archivo.</p>
+      <p>En esta revolución, <b>los que vayan antes tienen toda la ventaja y un mundo por comerse.</b> Tienes en las manos un poder que casi nadie está usando a fondo. Úsalo para destacar: un portfolio de aplicaciones y soluciones únicas vale más que cualquier título.</p>
     </div>
     <div class="grid g3 mt">
       <div class="card rv"><h3>Automatiza lo que te roba tiempo</h3><p>Ejemplo: un agente que cada mañana entra al campus, mira qué tareas y exámenes hay esa semana, te lo manda por Telegram ordenado por fecha y te crea los eventos en Google Calendar. Con n8n o con un script que te escriba tu harness, se monta en una tarde.</p></div>
       <div class="card rv"><h3>Mete IA en tus juegos</h3><p>Con <a href="https://www.nexusmods.com/skyrimspecialedition/mods/126330" target="_blank">CHIM, de Dwemer Dynamics</a>, los NPCs hablan, recuerdan y reaccionan con un LLM. O crea tu propio mod: pídele al agente que estudie cómo funcionan los mods del juego y construye uno con su ayuda.</p></div>
-      <div class="card rv"><h3>Recrea esa app tan cara</h3><p>¿Usas una app de pago que te encanta? Analiza qué hace, haz ingeniería inversa de su funcionamiento y recréala a tu medida con un agente. Aprendes más que en cualquier curso y te queda en el portfolio.</p></div>
+      <div class="card rv"><h3>Recrea esa app tan cara</h3><p>¿Usas una app de pago que te encanta? Analiza qué hace, haz ingeniería inversa de su funcionamiento y recréala a tu medida con un agente. Aprendes más que en cualquier curso y te queda en el portfolio. <b>Recrea las funciones, no copies su código, marca ni contenido protegido.</b></p></div>
       <div class="card rv"><h3>Resuelve un problema real tuyo</h3><p>Ejemplo: en tu grupo de clase nadie sabe quién debe qué de la cena o del viaje. Haz una app web que lo calcule y lo reparta, compártela, y si la usan tus amigos, ya tienes tus primeros usuarios reales.</p></div>
       <div class="card rv"><h3>Acelera cursos y certificaciones</h3><p>Usa agentes para preparar las certificaciones y cursos de tecnologías tradicionales que te piden: resúmenes, preguntas tipo examen, proyectos de práctica. Lo que antes llevaba un trimestre, ahora se hace en semanas.</p></div>
       <div class="card rv"><h3>Construye un portfolio que nadie más tiene</h3><p>Tres proyectos únicos, publicados y usados por alguien valen más que diez ejercicios de clase. Enséñalos en GitHub y LinkedIn: que se vea que sabes dirigir agentes, no solo escribir código.</p></div>
@@ -1328,7 +1330,7 @@ export DEEPSEEK_API_KEY="sk-..."</pre>
     <h3 class="mt rv" style="text-align:center;margin-top:90px">Y para cada objetivo concreto</h3>
     <div class="grid g2 mt">
       <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_llm.jpg" alt="llama.cpp" loading="lazy"></div><h3>Correr un LLM en mi PC</h3>
-        <ol><li>Mira tu VRAM (<code>nvidia-smi</code>). 8 GB → modelos de 4–9B; 16–24 GB → 14–32B en 4 bits; con mucha RAM, MoE grandes con offloading.</li><li>Descarga <b>llama.cpp</b> (releases de GitHub).</li><li>Baja un GGUF Q4_K_M de Hugging Face (busca el modelo + "GGUF").</li><li>Lanza el servidor y abre <code>localhost:8080</code>.</li><li>¿Quieres un modelo más grande que tu VRAM? Prueba <a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a>: reparte el modelo entre GPU, RAM y SSD y trae instaladores para Windows, Linux y macOS.</li></ol>
+        <ol><li>Mira tu VRAM (<code>nvidia-smi</code>). 8 GB → modelos de 4–9B; 16–24 GB → 14–32B en 4 bits; con mucha RAM, MoE grandes con offloading.</li><li>Descarga <b>llama.cpp</b> (releases de GitHub). En Windows con NVIDIA, baja el zip <code>win-cuda</code>; sin NVIDIA, el <code>win-vulkan</code>; sin GPU, el <code>win-cpu</code>.</li><li>Baja un GGUF Q4_K_M de Hugging Face (busca el modelo + "GGUF").</li><li>Lanza el servidor y abre <code>localhost:8080</code>.</li><li>¿Quieres un modelo más grande que tu VRAM? Prueba <a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a>: reparte el modelo entre GPU, RAM y SSD y trae instaladores para Windows, Linux y macOS.</li></ol>
         <pre><span class="c"># servidor con interfaz web y API compatible OpenAI</span>
 llama-server -hf unsloth/Qwen3.8-27B-GGUF:Q4_K_M -c 32768 -ngl 99</pre></div>
       <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_voice.jpg" alt="Micrófonos de estudio" loading="lazy"></div><h3>Clonar mi voz</h3>
@@ -1472,7 +1474,7 @@ h+=`<text x="320" y="234" text-anchor="middle" font-size="11.5" fill="#b3261e">a
 
 obs();
 /* ---------- TABS DE LA GUÍA ---------- */
-const G={g1:{n:'Conceptos',s:[['tokens','Tokens'],['modelos','Modelos'],['pesos','Pesos'],['tamano','Tamaño'],['contexto','Contexto'],['benchmarks','Benchmarks'],['capo','Bajo el capó'],['glosario','Glosario']]},
+const G={g1:{n:'Conceptos',s:[['tokens','Tokens'],['modelos','Modelos'],['pesos','Pesos'],['tamano','Tamaño'],['contexto','Contexto'],['benchmarks','Benchmarks'],['glosario','Glosario'],['capo','Bajo el capó (extra)']]},
 g2:{n:'IDEs y agentes',s:[['agentes','Agentes'],['harness','Harnesses'],['ides','IDEs'],['skills','Skills y MCP'],['memoria','Memoria']]},
 g3:{n:'Cómo trabajar',s:[['automatizar','Automatizar'],['codigo','Código'],['patrones','Patrones'],['empieza','Empieza aquí']]}};
 const navEl=document.getElementById('nav'),gind=document.querySelector('.gind');let curG='g1';
