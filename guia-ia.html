@@ -12,9 +12,9 @@
 <meta name="copyright" content="© 2026 Luis Munuera Martínez. Todos los derechos reservados.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La IA, explicada de verdad · Guía visual 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300..800&family=Google+Sans+Code&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block" media="print" onload="this.media='all'" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300..800&family=Google+Sans+Code&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <style>
 :root{
   --blue:#4285F4;--red:#EA4335;--yellow:#FBBC05;--green:#34A853;
@@ -384,6 +384,37 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
 .opt h4{display:flex;align-items:center;gap:10px}
 .opt p{color:var(--ink2);font-size:.96rem;margin-top:6px}
 .opt pre{margin-top:12px}
+/* === Móvil === */
+img{max-width:100%;height:auto}
+svg{max-width:100%}
+@media(max-width:700px){
+body{font-size:16px}
+.wrap{padding:0 18px}
+.panel,.hype,.warn,.live{padding:26px 20px!important;border-radius:26px}
+.hype h3{font-size:1.7rem}
+.kv{grid-template-columns:1fr;gap:4px}
+.carousel{flex-direction:column;overflow:visible;scroll-snap-type:none;padding:12px 0 24px;margin:0}
+.carousel>.card{flex:1 1 auto;width:100%}
+.flowline{flex-direction:column;overflow:visible;gap:18px}
+.fstep{min-width:0}
+.fstep::after,.fstep::before{display:none!important}
+.sessions{flex-direction:column;overflow:visible!important;flex-wrap:wrap}
+.sess{min-width:0;max-width:none;width:100%}
+.road[style]{grid-template-columns:repeat(2,1fr)!important}
+.stat{min-width:120px}
+.toc{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.bars .row{grid-template-columns:80px 1fr 48px;gap:8px;font-size:.85rem}
+.hr{grid-template-columns:70px 1fr 50px}
+.spectrum span{white-space:normal;font-size:.72rem}
+.pfd-ax span{white-space:normal}
+.path pre,pre{white-space:pre-wrap;word-break:break-word}
+.ctxbar div{font-size:.7rem}
+.askrow{flex-wrap:wrap}
+a.card[style]{max-width:none!important}
+table{display:block;overflow-x:auto}
+h1{font-size:clamp(2rem,9vw,3rem)!important;word-break:break-word}
+h2{font-size:clamp(1.6rem,7vw,2.4rem)!important}
+}
 </style>
 </head>
 <body>
@@ -450,9 +481,9 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
       <p class="note">La <b>temperatura</b> controla esa elección: con temperatura baja, elige casi siempre el token más probable (más preciso); con temperatura alta, arriesga más (más creativo).</p>
     </div>
     <div class="bento mt">
-      <div class="card rv wide"><div class="ph side"><img src="assets/tok_calc.jpg" alt="Fichas de letras" loading="lazy"></div><div><h3>Cómo se calcula</h3><p>Un algoritmo (BPE) aprende los fragmentos más frecuentes de millones de textos. Regla rápida: <b>1 token ≈ 4 caracteres en inglés ≈ 0,75 palabras</b>. En español sale algo más caro: ~1,3 tokens por palabra. El código, los emojis y los idiomas con otros alfabetos gastan todavía más.</p></div></div>
-      <div class="card rv"><div class="ph"><img src="assets/tok_cost.jpg" alt="Taxímetro" loading="lazy"></div><h3 class="mt2">Cómo se cobra</h3><p>Se paga por cada <b>millón de tokens</b>, con tres precios distintos: <span class="pill pb">entrada</span> (lo que envías), <span class="pill pr">salida</span> (lo que genera el modelo, entre 3 y 8 veces más cara) y <span class="pill pg">caché</span> (entrada repetida, hasta 90% más barata; cómo aprovecharla, en la <a href="#harness">sección 08</a>).</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/tok_speed.jpg" alt="Velocímetro" loading="lazy"></div><h3 class="mt2">Cómo se mide la velocidad</h3><p><b>Tokens por segundo (tok/s)</b>. Para leer con comodidad bastan unos 10 tok/s; un agente que programa necesita 50–200 tok/s. También importa el <b>TTFT</b>: tiempo hasta el primer token.</p></div>
+      <div class="card rv wide"><div class="ph side"><img src="assets/tok_calc.webp" alt="Fichas de letras" loading="lazy" decoding="async"></div><div><h3>Cómo se calcula</h3><p>Un algoritmo (BPE) aprende los fragmentos más frecuentes de millones de textos. Regla rápida: <b>1 token ≈ 4 caracteres en inglés ≈ 0,75 palabras</b>. En español sale algo más caro: ~1,3 tokens por palabra. El código, los emojis y los idiomas con otros alfabetos gastan todavía más.</p></div></div>
+      <div class="card rv"><div class="ph"><img src="assets/tok_cost.webp" alt="Taxímetro" loading="lazy" decoding="async"></div><h3 class="mt2">Cómo se cobra</h3><p>Se paga por cada <b>millón de tokens</b>, con tres precios distintos: <span class="pill pb">entrada</span> (lo que envías), <span class="pill pr">salida</span> (lo que genera el modelo, entre 3 y 8 veces más cara) y <span class="pill pg">caché</span> (entrada repetida, hasta 90% más barata; cómo aprovecharla, en la <a href="#harness">sección 08</a>).</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/tok_speed.webp" alt="Velocímetro" loading="lazy" decoding="async"></div><h3 class="mt2">Cómo se mide la velocidad</h3><p><b>Tokens por segundo (tok/s)</b>. Para leer con comodidad bastan unos 10 tok/s; un agente que programa necesita 50–200 tok/s. También importa el <b>TTFT</b>: tiempo hasta el primer token.</p></div>
     </div>
   </div>
 </section>
@@ -485,7 +516,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
     </div>
     <div class="grid g3 mt">
       <div class="card rv" style="border-top:6px solid var(--red)">
-        <div class="ph"><img src="assets/p_closed.jpg" alt="Pasillo de un centro de datos" loading="lazy"></div><h3>Closed source</h3><p>Solo se pueden usar a través de su API o su app; los pesos no los ves ni los tocas. Suelen ser los más potentes, pero dependes de sus precios y términos, y vienen con <b>muchas limitaciones de censura y medidas de seguridad</b>: filtros que a veces les hacen negarse a tareas legítimas o a suavizar sus respuestas.</p>
+        <div class="ph"><img src="assets/p_closed.webp" alt="Pasillo de un centro de datos" loading="lazy" decoding="async"></div><h3>Closed source</h3><p>Solo se pueden usar a través de su API o su app; los pesos no los ves ni los tocas. Suelen ser los más potentes, pero dependes de sus precios y términos, y vienen con <b>muchas limitaciones de censura y medidas de seguridad</b>: filtros que a veces les hacen negarse a tareas legítimas o a suavizar sus respuestas.</p>
         <div class="mt2">
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64">Anthropic · Claude</span>
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64">OpenAI · GPT</span>
@@ -494,7 +525,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
         </div>
       </div>
       <div class="card rv" style="border-top:6px solid var(--yellow)">
-        <div class="ph"><img src="assets/p_openw.jpg" alt="Disco duro abierto" loading="lazy"></div><h3>Open weights</h3><p>Te dan los pesos para descargar y ejecutar, pero no los datos ni el código de entrenamiento. <b>Hoy los modelos abiertos más potentes vienen sobre todo de laboratorios chinos.</b></p>
+        <div class="ph"><img src="assets/p_openw.webp" alt="Disco duro abierto" loading="lazy" decoding="async"></div><h3>Open weights</h3><p>Te dan los pesos para descargar y ejecutar, pero no los datos ni el código de entrenamiento. <b>Hoy los modelos abiertos más potentes vienen sobre todo de laboratorios chinos.</b></p>
         <div class="mt2">
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=deepseek.com&sz=64">DeepSeek</span>
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=qwen.ai&sz=64">Alibaba · Qwen</span>
@@ -507,7 +538,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
         </div>
       </div>
       <div class="card rv" style="border-top:6px solid var(--green)">
-        <div class="ph"><img src="assets/p_opens.jpg" alt="Historial de commits de un repositorio" loading="lazy"></div><h3>Open source total</h3><p>Pesos + datos + código + recetas. Reproducible y auditable. Son menos potentes, pero son la base de la ciencia abierta.</p>
+        <div class="ph"><img src="assets/p_opens.webp" alt="Historial de commits de un repositorio" loading="lazy" decoding="async"></div><h3>Open source total</h3><p>Pesos + datos + código + recetas. Reproducible y auditable. Son menos potentes, pero son la base de la ciencia abierta.</p>
         <div class="mt2">
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=allenai.org&sz=64">Ai2 · OLMo</span>
           <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=64">Hugging Face · SmolLM</span>
@@ -577,10 +608,10 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
     </div>
     <h3 class="mt rv" style="margin-top:80px">¿Qué puedes hacer con unos pesos abiertos?</h3>
     <div class="grid g4 mt">
-      <div class="card rv"><div class="ph"><img src="assets/p_local.jpg" alt="Tarjeta gráfica NVIDIA RTX" loading="lazy"></div><h4 class="mt2">Ejecutarlo en local</h4><p>Privacidad total, sin cuotas, sin internet.</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/p_unlock.jpg" alt="Candado abierto" loading="lazy"></div><h4 class="mt2">Quitar restricciones</h4><p>Con <b>Heretic</b> puedes quitarle al modelo sus mecanismos de seguridad para que deje de negarse a responder (abliteración automática), sin necesidad de reentrenarlo. <b>Solo para uso personal y legítimo; no en equipos del centro.</b></p></div>
-      <div class="card rv"><div class="ph"><img src="assets/p_persona.jpg" alt="Repositorio Unsloth" loading="lazy"></div><h4 class="mt2">Cambiar personalidad</h4><p>Fine-tuning con <b>LoRA</b> (Unsloth, Axolotl): entrenas con tus propios ejemplos solo unas pequeñas capas añadidas, para darle tu tono o especializarlo en una tarea.</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/p_quant.jpg" alt="Tarjeta gráfica" loading="lazy"></div><h4 class="mt2">Cuantizarlo</h4><p>Se reduce la precisión de sus números para que quepa en tu GPU (lo has visto arriba).</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_local.webp" alt="Tarjeta gráfica NVIDIA RTX" loading="lazy" decoding="async"></div><h4 class="mt2">Ejecutarlo en local</h4><p>Privacidad total, sin cuotas, sin internet.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_unlock.webp" alt="Candado abierto" loading="lazy" decoding="async"></div><h4 class="mt2">Quitar restricciones</h4><p>Con <b>Heretic</b> puedes quitarle al modelo sus mecanismos de seguridad para que deje de negarse a responder (abliteración automática), sin necesidad de reentrenarlo. <b>Solo para uso personal y legítimo; no en equipos del centro.</b></p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_persona.webp" alt="Repositorio Unsloth" loading="lazy" decoding="async"></div><h4 class="mt2">Cambiar personalidad</h4><p>Fine-tuning con <b>LoRA</b> (Unsloth, Axolotl): entrenas con tus propios ejemplos solo unas pequeñas capas añadidas, para darle tu tono o especializarlo en una tarea.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_quant.webp" alt="Tarjeta gráfica" loading="lazy" decoding="async"></div><h4 class="mt2">Cuantizarlo</h4><p>Se reduce la precisión de sus números para que quepa en tu GPU (lo has visto arriba).</p></div>
     </div>
     <p class="note rv">Quitarle los filtros no te exime de responsabilidad: tú respondes de lo que hagas con el modelo.</p>
   </div>
@@ -637,9 +668,9 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       <p class="note">Después, lo que más llena el contexto son las salidas de herramientas (logs, archivos leídos); por eso los buenos harnesses las recortan.</p>
     </div>
     <div class="grid g3 mt">
-      <div class="card rv"><div class="ph"><img src="assets/ctx_compact.jpg" alt="Cajón de archivo con fichas comprimidas" loading="lazy"></div><h3 class="mt2">Autocompactación</h3><p>Cuando la ventana se llena, el harness resume la conversación y empieza de nuevo con ese resumen. Ahorra muchísimo, pero <b>cada resumen pierde matices</b>: tras varias compactaciones el agente "descarrila", olvida decisiones o repite errores.</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/ctx_cope.jpg" alt="Lista de tareas en una libreta" loading="lazy"></div><h3 class="mt2">Cómo sobrellevarla</h3><p>Sesiones cortas con un objetivo y las decisiones guardadas en archivos. Lo tienes paso a paso en <a href="#codigo">la sección 10 · Higiene de sesiones</a>.</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/ctx_rope.jpg" alt="Relojes con las agujas en distintas posiciones" loading="lazy"></div><h3 class="mt2">De RoPE a hoy</h3><p><b>RoPE</b> codificaba la posición rotando vectores; la ventana se ampliaba con trucos (NTK, <b>YaRN</b>). Hoy dominan la <b>atención híbrida</b> (capas locales + globales), atención dispersa (DeepSeek Sparse Attention), capas lineales tipo Mamba/Gated DeltaNet y cachés KV comprimidas (MLA).</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/ctx_compact.webp" alt="Cajón de archivo con fichas comprimidas" loading="lazy" decoding="async"></div><h3 class="mt2">Autocompactación</h3><p>Cuando la ventana se llena, el harness resume la conversación y empieza de nuevo con ese resumen. Ahorra muchísimo, pero <b>cada resumen pierde matices</b>: tras varias compactaciones el agente "descarrila", olvida decisiones o repite errores.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/ctx_cope.webp" alt="Lista de tareas en una libreta" loading="lazy" decoding="async"></div><h3 class="mt2">Cómo sobrellevarla</h3><p>Sesiones cortas con un objetivo y las decisiones guardadas en archivos. Lo tienes paso a paso en <a href="#codigo">la sección 10 · Higiene de sesiones</a>.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/ctx_rope.webp" alt="Relojes con las agujas en distintas posiciones" loading="lazy" decoding="async"></div><h3 class="mt2">De RoPE a hoy</h3><p><b>RoPE</b> codificaba la posición rotando vectores; la ventana se ampliaba con trucos (NTK, <b>YaRN</b>). Hoy dominan la <b>atención híbrida</b> (capas locales + globales), atención dispersa (DeepSeek Sparse Attention), capas lineales tipo Mamba/Gated DeltaNet y cachés KV comprimidas (MLA).</p></div>
     </div>
   </div>
 </section>
@@ -961,13 +992,14 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
     </div>
     <div class="grid g2 mt" style="margin-top:40px">
       <div class="card rv">
-        <div class="ph"><img src="assets/skills.jpg" alt="Repositorio anthropics/skills" loading="lazy"></div><h3 class="mt2">Skills</h3>
+        <div class="ph"><img src="assets/skills.webp" alt="Repositorio anthropics/skills" loading="lazy" decoding="async"></div><h3 class="mt2">Skills</h3>
         <p>Una skill es una <b>carpeta con un archivo Markdown</b> (<code>SKILL.md</code>) de instrucciones, y opcionalmente scripts y plantillas. El agente solo ve su nombre y descripción; cuando la tarea encaja, carga el resto. Así sabe qué puede hacer y cómo hacerlo, sin llenar el contexto.</p>
-        <div class="mt2"><span class="pill pb">Skills de Matt Pocock (TS, ingeniería)</span><span class="pill pg">Graphify (grafo de tu código)</span><span class="pill py">Ponytail</span><span class="pill pr">Diseño de interfaces / frontend</span><span class="pill pn">Documentos, PDF, hojas</span><span class="pill pn">Automatización de tareas</span></div>
+        <p class="mt2" style="color:var(--ink2)"><b>Las más usadas este mes</b> (instalaciones en skills.sh y estrellas en GitHub, noviembre 2026):</p>
+        <div class="mt2"><span class="pill pb">Matt Pocock: grill-me, grill-with-docs, tdd, handoff (te interroga antes de programar)</span><span class="pill pg">Graphify (grafo de tu código, sin releer archivos)</span><span class="pill py">find-skills de Vercel (busca e instala skills)</span><span class="pill pr">agent-browser de Vercel (el agente usa un navegador)</span><span class="pill pb">frontend-design de Anthropic (interfaces con criterio)</span><span class="pill pg">HyperFrames de HeyGen (vídeos con HTML)</span><span class="pill py">Ponytail (escribe solo el código necesario)</span><span class="pill pr">Caveman (respuestas mínimas, menos tokens)</span><span class="pill pn">Karpathy skills (reglas contra fallos típicos)</span><span class="pill pn">Documentos de Anthropic: Word, PDF, Excel, PowerPoint</span><span class="pill pn">skill-creator (crea tus propias skills)</span></div>
         <p class="note">Directorios como skills.sh recopilan miles. Lee siempre una skill antes de instalarla: puede ejecutar scripts.</p>
       </div>
       <div class="card rv">
-        <div class="ph"><img src="assets/plugins.jpg" alt="Panel de conexiones con cables de red" loading="lazy"></div><h3 class="mt2">Plugins y MCP</h3>
+        <div class="ph"><img src="assets/plugins.webp" alt="Panel de conexiones con cables de red" loading="lazy" decoding="async"></div><h3 class="mt2">Plugins y MCP</h3>
         <p>Un <b>plugin</b> empaqueta skills, comandos, subagentes, hooks y servidores <b>MCP</b> en una sola instalación. Los servidores MCP conectan el agente con servicios externos; los vemos a fondo justo debajo, en el bloque 08d.</p>
         <div class="tier mt2">
           <div style="background:var(--blue-l)">Skill<span>Instrucciones + scripts</span></div>
@@ -1055,10 +1087,10 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       <p class="lead">No hay una forma "correcta": depende de lo que busques. Estos son los perfiles más comunes y lo que encaja con cada uno:</p>
     </div>
     <div class="grid g4 mt">
-      <div class="card rv" style="border-top:6px solid var(--blue)"><div class="ph"><img src="assets/u_soft.jpg" alt="Oficina de desarrolladores" loading="lazy"></div><h4 class="mt2">Construir y vender software</h4><p>Harness + metodología (SDD/TDD) + subagentes revisores.</p></div>
-      <div class="card rv" style="border-top:6px solid var(--red)"><div class="ph"><img src="assets/u_research.jpg" alt="Sala de lectura de la Biblioteca Pública de Nueva York" loading="lazy"></div><h4 class="mt2">Investigar mejor</h4><p>Agentes de deep research con búsqueda web y citas.</p></div>
-      <div class="card rv" style="border-top:6px solid var(--yellow)"><div class="ph"><img src="assets/u_work.jpg" alt="Edificio de oficinas" loading="lazy"></div><h4 class="mt2">Automatizar el trabajo</h4><p>n8n + agentes: correos, informes, CRMs, hojas de cálculo.</p></div>
-      <div class="card rv" style="border-top:6px solid var(--green)"><div class="ph"><img src="assets/u_class.jpg" alt="Estudiantes con portátiles" loading="lazy"></div><h4 class="mt2">Organizar la clase</h4><p>Un agente que descarga los materiales del campus, los resume y te hace preguntas para repasar.</p></div>
+      <div class="card rv" style="border-top:6px solid var(--blue)"><div class="ph"><img src="assets/u_soft.webp" alt="Oficina de desarrolladores" loading="lazy" decoding="async"></div><h4 class="mt2">Construir y vender software</h4><p>Harness + metodología (SDD/TDD) + subagentes revisores.</p></div>
+      <div class="card rv" style="border-top:6px solid var(--red)"><div class="ph"><img src="assets/u_research.webp" alt="Sala de lectura de la Biblioteca Pública de Nueva York" loading="lazy" decoding="async"></div><h4 class="mt2">Investigar mejor</h4><p>Agentes de deep research con búsqueda web y citas.</p></div>
+      <div class="card rv" style="border-top:6px solid var(--yellow)"><div class="ph"><img src="assets/u_work.webp" alt="Edificio de oficinas" loading="lazy" decoding="async"></div><h4 class="mt2">Automatizar el trabajo</h4><p>n8n + agentes: correos, informes, CRMs, hojas de cálculo.</p></div>
+      <div class="card rv" style="border-top:6px solid var(--green)"><div class="ph"><img src="assets/u_class.webp" alt="Estudiantes con portátiles" loading="lazy" decoding="async"></div><h4 class="mt2">Organizar la clase</h4><p>Un agente que descarga los materiales del campus, los resume y te hace preguntas para repasar.</p></div>
     </div>
 
     <div class="grid g2 mt" style="align-items:center;margin-top:90px">
@@ -1093,9 +1125,9 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       <p class="lead">Un agente sin método produce código que "parece funcionar". Con método, produce proyectos enteros. Del más libre al más riguroso:</p>
     </div>
     <div class="grid g3 mt">
-      <div class="card rv"><div class="ph"><img src="assets/vibe.jpg" alt="Dos personas programando relajadas en una terraza" loading="lazy"></div><span class="pill py">Libre</span><h3 class="mt2">Vibe coding</h3><p>Hablas con el agente y sale lo que salga. Perfecto para prototipos y scripts de un día. Se desmorona cuando el proyecto crece.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--yellow)"><i class="f"></i><i></i><i></i><i></i><i></i></div></div></div>
-      <div class="card rv"><div class="ph"><img src="assets/sdd.jpg" alt="Planos de arquitecto" loading="lazy"></div><span class="pill pb">Estructurado</span><h3 class="mt2">Spec-Driven Development</h3><p>Primero una especificación (qué y por qué), luego un plan técnico, luego tareas pequeñas, y solo entonces código. La spec es la fuente de verdad que sobrevive a las compactaciones.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--blue)"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div></div></div>
-      <div class="card rv"><div class="ph"><img src="assets/tdd.jpg" alt="Terminal con los tests de buscarCarta() en verde" loading="lazy"></div><span class="pill pg">Verificable</span><h3 class="mt2">Test-Driven Development</h3><p>El agente escribe primero los tests que fallan, luego el código que los hace pasar. Los tests son un juez objetivo: el agente puede repetir el ciclo por su cuenta hasta que todos pasen.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--green)"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></div></div></div>
+      <div class="card rv"><div class="ph"><img src="assets/vibe.webp" alt="Dos personas programando relajadas en una terraza" loading="lazy" decoding="async"></div><span class="pill py">Libre</span><h3 class="mt2">Vibe coding</h3><p>Hablas con el agente y sale lo que salga. Perfecto para prototipos y scripts de un día. Se desmorona cuando el proyecto crece.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--yellow)"><i class="f"></i><i></i><i></i><i></i><i></i></div></div></div>
+      <div class="card rv"><div class="ph"><img src="assets/sdd.webp" alt="Planos de arquitecto" loading="lazy" decoding="async"></div><span class="pill pb">Estructurado</span><h3 class="mt2">Spec-Driven Development</h3><p>Primero una especificación (qué y por qué), luego un plan técnico, luego tareas pequeñas, y solo entonces código. La spec es la fuente de verdad que sobrevive a las compactaciones.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--blue)"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div></div></div>
+      <div class="card rv"><div class="ph"><img src="assets/tdd.webp" alt="Terminal con los tests de buscarCarta() en verde" loading="lazy" decoding="async"></div><span class="pill pg">Verificable</span><h3 class="mt2">Test-Driven Development</h3><p>El agente escribe primero los tests que fallan, luego el código que los hace pasar. Los tests son un juez objetivo: el agente puede repetir el ciclo por su cuenta hasta que todos pasen.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--green)"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></div></div></div>
     </div>
     <div class="grid g3 mt">
       <div class="ex rv"><span class="pill py">Ejemplo · Vibe coding</span><div class="bubble">Hazme una web para mi colección de cartas Pokémon, con buscador y que se vea bonita.</div><p>Rápido y divertido. El agente decide todo: stack, estructura y estilo. Sirve para probar una idea en una tarde.</p></div>
@@ -1109,7 +1141,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       <p class="lead" style="margin:10px auto 0">Las decisiones son tuyas, pero no tienes que pensarlas solo. Si las contestas antes, cualquier método funciona mejor.</p>
     </div>
     <div class="thinker">
-      <img class="man rv" src="assets/mannequin.jpg" alt="Figuras confundidas">
+      <img class="man rv" src="assets/mannequin.webp" alt="Figuras confundidas">
       <div class="qb rv" style="left:4%;top:8%;transition-delay:0.0s">¿Qué problema concreto resuelve?</div><div class="qb rv" style="left:64%;top:4%;transition-delay:0.1s">¿Quién lo va a usar y cómo cambia eso el diseño?</div><div class="qb rv" style="left:-2%;top:40%;transition-delay:0.2s">¿Qué funciones son imprescindibles y cuáles pueden esperar?</div><div class="qb rv" style="left:70%;top:34%;transition-delay:0.4s">¿Qué arquitectura le encaja: web, app, script, API?</div><div class="qb rv" style="left:2%;top:72%;transition-delay:0.5s">¿Hay algo parecido ya hecho que pueda usar de base?</div><div class="qb rv" style="left:68%;top:64%;transition-delay:0.6s">¿Cómo lo hago más fácil de usar?</div><div class="qb rv" style="left:18%;top:92%;transition-delay:0.7s">¿Y más eficiente o más barato de mantener?</div><div class="qb rv" style="left:56%;top:92%;transition-delay:0.8s">¿Cómo sabré que funciona? ¿Qué lo demuestra?</div>
     </div>
     <div class="grid g2 mt" style="align-items:center">
@@ -1214,7 +1246,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
     </div>
     <div class="grid g2 mt">
       <div class="path rv" style="--c:var(--green)">
-        <div class="ph"><img src="assets/pa_free.jpg" alt="Cartera vacía" loading="lazy"></div><span class="pill pg">0 € · Para empezar ya</span>
+        <div class="ph"><img src="assets/pa_free.webp" alt="Cartera vacía" loading="lazy" decoding="async"></div><span class="pill pg">0 € · Para empezar ya</span>
         <h3 class="mt2">No quiero gastar dinero</h3>
         <p style="color:var(--ink2)">Usa <b>OpenCode</b> con sus modelos gratuitos (inteligencia limitada, pero suficiente para aprender) o con la <b>API gratuita de NVIDIA</b> (especialmente rápida con los modelos <b>Nemotron</b>). Y lo más importante: <b>empieza a enredar</b>. Habla con el agente, pídele cosas, instala skills y plugins y mira qué pasa. Es la forma más fácil de aprender.</p>
         <ol>
@@ -1244,7 +1276,7 @@ curl -fsSL https://opencode.ai/install | bash</pre>
         </div>
       </div>
       <div class="path rv" style="--c:var(--blue)">
-        <div class="ph"><img src="assets/pa_paid.jpg" alt="Pago de una suscripción con tarjeta" loading="lazy"></div><span class="pill pb">10–20 €/mes · El salto de calidad</span>
+        <div class="ph"><img src="assets/pa_paid.webp" alt="Pago de una suscripción con tarjeta" loading="lazy" decoding="async"></div><span class="pill pb">10–20 €/mes · El salto de calidad</span>
         <h3 class="mt2">Puedo gastar un poco</h3>
         <p style="color:var(--ink2)"><b>La opción más fácil:</b> una suscripción de <b>~20 €/mes</b> de Anthropic u OpenAI te da acceso a modelos punteros con límites de uso generosos, y sale mucho más barato que pagar por tokens. Úsala con su harness oficial.</p>
         <p style="color:var(--ink2);margin-top:10px"><b>¿Cuál?</b> ChatGPT Plus incluye <b>generación de imágenes</b> en la propia app; Claude <b>escribe mejor código</b>. Si vas a programar sobre todo, Claude; si quieres un todoterreno con imágenes, ChatGPT.</p>
@@ -1295,26 +1327,26 @@ export DEEPSEEK_API_KEY="sk-..."</pre>
     </div>
     <h3 class="mt rv" style="text-align:center;margin-top:90px">Y para cada objetivo concreto</h3>
     <div class="grid g2 mt">
-      <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_llm.jpg" alt="llama.cpp" loading="lazy"></div><h3>Correr un LLM en mi PC</h3>
+      <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_llm.webp" alt="llama.cpp" loading="lazy" decoding="async"></div><h3>Correr un LLM en mi PC</h3>
         <ol><li>Mira tu VRAM (<code>nvidia-smi</code>). 8 GB → modelos de 4–9B; 16–24 GB → 14–32B en 4 bits; con mucha RAM, MoE grandes con offloading.</li><li>Descarga <b>llama.cpp</b> (releases de GitHub). En Windows con NVIDIA, baja el zip <code>win-cuda</code>; sin NVIDIA, el <code>win-vulkan</code>; sin GPU, el <code>win-cpu</code>.</li><li>Baja un GGUF Q4_K_M de Hugging Face (busca el modelo + "GGUF").</li><li>Lanza el servidor y abre <code>localhost:8080</code>.</li><li>¿Quieres un modelo más grande que tu VRAM? Prueba <a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a> (open source, MIT): reparte el modelo entre GPU, RAM y SSD y trae instaladores para Windows, Linux y macOS. Según sus pruebas, mueve DeepSeek V4.1 Flash (284B) a 9–11 tok/s en una RTX 3060 de 12 GB con 46 GB de RAM (necesitas unos 200–280 GB de disco). Ofrece una API compatible con OpenAI y Anthropic, así que puedes conectarle OpenCode y tener un agente 100% local y gratis.</li></ol>
         <pre><span class="c"># servidor con interfaz web y API compatible OpenAI</span>
 llama-server -hf unsloth/Qwen3.8-27B-GGUF:Q4_K_M -c 32768 -ngl 99</pre></div>
-      <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_voice.jpg" alt="Micrófonos de estudio" loading="lazy"></div><h3>Clonar mi voz</h3>
+      <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_voice.webp" alt="Micrófonos de estudio" loading="lazy" decoding="async"></div><h3>Clonar mi voz</h3>
         <ol><li>Descarga <b>Voicebox</b> desde su GitHub oficial: <a href="https://github.com/jamiepine/voicebox" target="_blank">github.com/jamiepine/voicebox</a> (pestaña <i>Releases</i>, instalador para Windows o macOS). Es gratis, open source y funciona 100% en local, como alternativa a ElevenLabs.</li><li>Ábrelo y crea un perfil de voz nuevo.</li><li>Sube una o varias grabaciones limpias de tu voz (10–30 s cada una, sin música ni ruido). Más muestras = clon más fiel.</li><li>Escribe el texto y genera. Exporta el audio o úsalo desde su API REST.</li></ol>
         <p class="note">Solo con tu voz o con consentimiento explícito. Clonar voces ajenas puede ser delito.</p></div>
-      <div class="path rv" style="--c:var(--yellow)"><div class="ph"><img src="assets/pa_cls.jpg" alt="Pokémon" loading="lazy"></div><h3>Clasificar un Pokémon con un modelo de decisión</h3>
+      <div class="path rv" style="--c:var(--yellow)"><div class="ph"><img src="assets/pa_cls.webp" alt="Pokémon" loading="lazy" decoding="async"></div><h3>Clasificar un Pokémon con un modelo de decisión</h3>
         <p style="color:var(--ink2)">Los <b>modelos de decisión</b> como <b>Laya</b> (open weights) o <b>Jev</b> (API cerrada) no escriben texto: les das una entrada y una <b>lista cerrada de opciones</b>, y devuelven la probabilidad de cada una. Laya contesta en unos 33 ms en una GPU modesta.</p>
         <ol><li>Descarga <b>Laya</b> de Hugging Face: <a href="https://huggingface.co/convaiinnovations/laya" target="_blank">convaiinnovations/laya</a> (~0,4B parámetros, Apache 2.0, cabe en cualquier PC). Hay versiones MLX, ONNX y CoreML para Mac y móvil.</li><li>Define las opciones: <code>["Pikachu", "Charmander", "Bulbasaur", …]</code>.</li><li>Pásale la entrada. Si es texto (una descripción o una entrada de la Pokédex), usa Laya directamente. Si es una foto, usa la variante <b>Laya-Vision</b>, que añade un codificador de imagen SigLIP. Las copias que hay en HF las ha subido la comunidad, así que comprueba cuál es la fiable y qué licencia tiene.</li><li>Lee la probabilidad de cada opción y quédate con la más alta. Si ninguna supera tu umbral (p. ej. 0,7), responde "no lo sé".</li><li>¿Sin GPU? Usa <b>Jev</b> por API: más preciso en los benchmarks publicados, pero de pago y más lento (~250 ms).</li></ol>
         <pre><span class="c"># pip install -U huggingface_hub</span>
 hf download convaiinnovations/laya --local-dir ./laya
 <span class="c"># instrucciones de uso exactas: en la ficha del modelo</span></pre>
         <p class="note">Las comparativas publicadas entre Laya y Jev se contradicen. Pruébalos con tus propios ejemplos antes de fiarte.</p></div>
-      <div class="path rv" style="--c:var(--green)"><div class="ph"><img src="assets/pa_video.jpg" alt="ComfyUI" loading="lazy"></div><h3>Generar un vídeo para YouTube</h3>
+      <div class="path rv" style="--c:var(--green)"><div class="ph"><img src="assets/pa_video.webp" alt="ComfyUI" loading="lazy" decoding="async"></div><h3>Generar un vídeo para YouTube</h3>
         <ol><li>Guion con un LLM → voz con TTS → imágenes clave con un modelo de imagen.</li><li>Instala <b>ComfyUI</b> y carga un workflow de vídeo con un modelo abierto (familia Wan, LTX…), cuantizado si tu GPU es pequeña.</li><li>O usa APIs de vídeo cerradas (Veo, Sora, Kling) si no tienes GPU.</li><li>Edita el vídeo en DaVinci Resolve (gratis) y genera los subtítulos con whisper.cpp.</li></ol>
         <p class="note">YouTube exige etiquetar el contenido sintético realista.</p></div>
-      <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_code.jpg" alt="Persona programando" loading="lazy"></div><h3>Programar con agentes</h3>
+      <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_code.webp" alt="Persona programando" loading="lazy" decoding="async"></div><h3>Programar con agentes</h3>
         <ol><li>Elige harness (<a href="#harness">sección 08</a>): Codex u OpenCode para empezar; Pi o Hermes si te gusta configurar.</li><li>Conéctalo a un modelo (suscripción o OpenRouter).</li><li>Empieza (<a href="#codigo">sección 10</a>) por una spec en un <code>spec.md</code>, no por el código, y pide al agente que la siga tarea a tarea.</li><li>Pide primero los tests y deja que itere hasta que pasen todos.</li></ol></div>
-      <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_auto.jpg" alt="n8n" loading="lazy"></div><h3>Automatizar mi trabajo o mis clases</h3>
+      <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_auto.webp" alt="n8n" loading="lazy" decoding="async"></div><h3>Automatizar mi trabajo o mis clases</h3>
         <ol><li>Lanza n8n con Docker.</li><li>Describe el flujo en lenguaje natural y deja que el agente lo construya.</li><li>Conecta tu modelo (local vía llama-server o OpenRouter).</li><li>Prueba con datos reales y activa el disparador.</li></ol>
         <pre>docker run -it --rm -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n</pre></div>
     </div>
@@ -1364,7 +1396,7 @@ hf download convaiinnovations/laya --local-dir ./laya
     </div>
     <div class="grid g2 mt" style="align-items:center">
       <figure class="rv" style="margin:0">
-        <img src="assets/harness_opencode.jpg" alt="Captura real de OpenCode en la terminal: el usuario pide un cambio y el agente busca y lee los archivos del proyecto" loading="lazy" style="width:100%;display:block;border-radius:20px">
+        <img src="assets/harness_opencode.webp" alt="Captura real de OpenCode en la terminal: el usuario pide un cambio y el agente busca y lee los archivos del proyecto" loading="lazy" style="width:100%;display:block;border-radius:20px">
         <figcaption style="text-align:center;color:var(--ink3);font-size:.85rem;margin-top:8px">OpenCode, uno de los harnesses de la <a href="#harness">sección 08</a>, trabajando en un proyecto real. Captura: repositorio oficial de OpenCode (MIT).</figcaption>
       </figure>
       <div class="rv">
