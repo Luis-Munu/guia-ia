@@ -411,7 +411,7 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
       <i class="gind"></i>
       <button class="gtab on" role="tab" data-g="g1" style="--c:var(--blue)"><b class="gn">1</b><span><strong>Conceptos básicos</strong><small>Tokens · pesos · modelos · tamaño · contexto · benchmarks · (extra) bajo el capó</small></span></button>
       <button class="gtab" role="tab" data-g="g2" style="--c:var(--red)"><b class="gn">2</b><span><strong>IDEs, harnesses y agentes</strong><small>Agentes · harnesses · IDEs · skills, plugins, MCP y RAG · memoria</small></span></button>
-      <button class="gtab" role="tab" data-g="g3" style="--c:var(--green)"><b class="gn">3</b><span><strong>Cómo trabajar con ello</strong><small>Automatizar · programar con agentes · patrones · empieza aquí · glosario</small></span></button>
+      <button class="gtab" role="tab" data-g="g3" style="--c:var(--green)"><b class="gn">3</b><span><strong>Cómo trabajar con ello</strong><small>Automatizar · programar con agentes · patrones · empieza aquí · glosario · manos a la obra</small></span></button>
     </div>
   </div>
 </section>
@@ -1354,6 +1354,46 @@ hf download convaiinnovations/laya --local-dir ./laya
     </div>
   </div>
 </section>
+
+<!-- DIA A DIA -->
+<section id="diaadia">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow"><i style="background:var(--green)"></i>Para terminar · Tu día a día</div>
+      <h2>Tú, un harness y <span style="color:var(--green)">tus agentes</span></h2>
+    </div>
+    <div class="grid g2 mt" style="align-items:center">
+      <div class="card rv" style="padding:18px">
+        <svg viewBox="0 0 560 360" role="img" aria-label="Ilustración de un harness en la terminal dando órdenes a varios agentes">
+          <rect x="0" y="0" width="560" height="360" rx="22" fill="#1f2328"/>
+          <rect x="0" y="0" width="560" height="38" rx="22" fill="#2d333b"/><rect x="0" y="20" width="560" height="18" fill="#2d333b"/>
+          <circle cx="24" cy="19" r="6" fill="#EA4335"/><circle cx="44" cy="19" r="6" fill="#FBBC05"/><circle cx="64" cy="19" r="6" fill="#34A853"/>
+          <text x="280" y="24" text-anchor="middle" font-size="13" fill="#9aa4ae" font-family="monospace">harness · ~/mi-proyecto</text>
+          <g font-family="monospace" font-size="14">
+            <text x="22" y="72" fill="#34A853">&gt;</text><text x="40" y="72" fill="#e6edf3">Prepara la web de mi app con la skill /landing,</text>
+            <text x="40" y="92" fill="#e6edf3">escribe los tests y publícala.</text>
+            <text x="22" y="126" fill="#FBBC05">● Skill cargada: landing · metodología: spec.md + TDD</text>
+            <text x="22" y="154" fill="#9aa4ae">Lanzando 3 agentes en paralelo…</text>
+            <rect x="22" y="168" width="516" height="32" rx="8" fill="#4285F4" opacity=".18"/>
+            <text x="36" y="189" fill="#8ab4f8">⚙ agente 1 · diseño y código</text><text x="524" y="189" text-anchor="end" fill="#34A853">✓ hecho</text>
+            <rect x="22" y="208" width="516" height="32" rx="8" fill="#EA4335" opacity=".18"/>
+            <text x="36" y="229" fill="#f28b82">⚙ agente 2 · tests</text><text x="524" y="229" text-anchor="end" fill="#34A853">✓ 24/24</text>
+            <rect x="22" y="248" width="516" height="32" rx="8" fill="#FBBC05" opacity=".18"/>
+            <text x="36" y="269" fill="#fdd663">⚙ agente 3 · revisión y despliegue</text><text x="524" y="269" text-anchor="end" fill="#FBBC05" class="neuron">en curso</text>
+            <text x="22" y="318" fill="#34A853">&gt;</text><rect x="40" y="305" width="9" height="17" fill="#e6edf3" class="neuron"/>
+          </g>
+        </svg>
+      </div>
+      <div class="rv">
+        <p style="color:var(--ink2);font-size:1.12rem">En el día a día, lo más habitual es que te sientes delante de un <b>harness</b>, ya sea en la terminal (CLI) o con una interfaz gráfica (GUI). Desde ahí, con las <b>skills</b> que hayas preparado o encontrado y con <b>tu propia metodología</b>, das órdenes a los agentes para que hagan las tareas que tú les indiques.</p>
+        <p style="color:var(--ink2);font-size:1.12rem;margin-top:14px">Tú decides qué hay que hacer y cómo se comprueba que está bien hecho; los agentes se encargan del trabajo. <b>Cuanta más imaginación y conocimiento pongas, más casos de uso se vuelven posibles y más autónomo es el proceso.</b></p>
+      </div>
+    </div>
+    <div class="hype rv mt" style="text-align:center">
+      <h3 style="font-size:2.6rem">¡A PONERSE MANOS A LA OBRA!</h3>
+    </div>
+  </div>
+</section>
 <div class="wrap" style="text-align:center;color:var(--ink3);font-size:.85rem;margin-top:30px">Hecho por Luis Munuera Martínez</div>
 </div>
 
@@ -1475,7 +1515,7 @@ obs();
 /* ---------- TABS DE LA GUÍA ---------- */
 const G={g1:{n:'Conceptos',s:[['tokens','Tokens'],['pesos','Pesos'],['modelos','Modelos'],['tamano','Tamaño'],['contexto','Contexto'],['benchmarks','Benchmarks'],['capo','Bajo el capó (extra)']]},
 g2:{n:'IDEs y agentes',s:[['agentes','Agentes'],['harness','Harnesses'],['ides','IDEs'],['skills','Skills'],['memoria','Memoria']]},
-g3:{n:'Cómo trabajar',s:[['automatizar','Automatizar'],['codigo','Código'],['patrones','Patrones'],['empieza','Empieza aquí'],['glosario','Glosario']]}};
+g3:{n:'Cómo trabajar',s:[['automatizar','Automatizar'],['codigo','Código'],['patrones','Patrones'],['empieza','Empieza aquí'],['glosario','Glosario'],['diaadia','Manos a la obra']]}};
 const navEl=document.getElementById('nav'),gind=document.querySelector('.gind');let curG='g1';
 function placeInd(){const b=document.querySelector('.gtab.on');if(!b)return;gind.style.left=b.offsetLeft+'px';gind.style.top=b.offsetTop+'px';gind.style.width=b.offsetWidth+'px';gind.style.height=b.offsetHeight+'px'}
 function drawNav(){navEl.innerHTML=`<span class="gsw">${Object.entries(G).map(([k,v])=>`<a href="#${k}" data-g="${k}" class="${k==curG?'cur':''}">${v.n}</a>`).join('')}</span>`+G[curG].s.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('');navActive()}
