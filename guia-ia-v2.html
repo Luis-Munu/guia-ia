@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<!--
+  La IA, explicada de verdad · Guía visual 2026
+  Autor: Luis Munuera Martínez · © 2026 Luis Munuera Martínez. Todos los derechos reservados.
+  Prohibida su copia, reutilización, obra derivada o uso comercial. Ver LICENSE.
+  Única excepción: uso docente en colegios, institutos y universidades públicas.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Luis Munuera Martínez">
+<meta name="copyright" content="© 2026 Luis Munuera Martínez. Todos los derechos reservados.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La IA, explicada de verdad · Guía visual 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300..800&family=Google+Sans+Code&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4285F4;--red:#EA4335;--yellow:#FBBC05;--green:#34A853;
+  --blue-l:#E8F0FE;--red-l:#FCE8E6;--yellow-l:#FEF7E0;--green-l:#E6F4EA;
+  --ink:#1f1f1f;--ink2:#444746;--ink3:#747775;--line:#e3e3e3;--bg:#fbfcfe;--card:#ffffff;
+  --r:28px;--sh:0 1px 2px rgba(60,64,67,.08),0 8px 32px rgba(60,64,67,.08);
+  --font:"Google Sans Flex","Google Sans","Plus Jakarta Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.65;font-size:18px;overflow-x:hidden}
+a{color:var(--blue);text-decoration:none}
+code,.mono{font-family:"Google Sans Code",ui-monospace,Consolas,monospace;font-size:.88em}
+code{background:#f1f3f4;padding:.15em .45em;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+section{padding:140px 0 60px;position:relative}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.15}
+h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:18px}
+h3{font-size:1.5rem;margin-bottom:10px}
+h4{font-size:1.12rem;margin-bottom:6px}
+.lead{font-size:1.25rem;color:var(--ink2);max-width:780px;font-weight:400}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
+.eyebrow i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.grid{display:grid;gap:28px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.card{background:var(--card);border-radius:var(--r);padding:36px;box-shadow:var(--sh);border:1px solid rgba(0,0,0,.03);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(60,64,67,.08),0 18px 48px rgba(60,64,67,.12)}
+.card p{color:var(--ink2)}
+.pill{display:inline-block;padding:6px 14px;border-radius:999px;font-size:.8rem;font-weight:600;margin:3px 4px 3px 0}
+.pb{background:var(--blue-l);color:#1a5fd0}.pr{background:var(--red-l);color:#b3261e}.py{background:var(--yellow-l);color:#8a5a00}.pg{background:var(--green-l);color:#137333}.pn{background:#f1f3f4;color:var(--ink2)}
+.mt{margin-top:48px}.mt2{margin-top:24px}
+.note{font-size:.9rem;color:var(--ink3);margin-top:14px}
+.callout{border-radius:var(--r);padding:30px 36px;display:flex;gap:22px;align-items:flex-start}
+.callout .ico{font-size:2rem;line-height:1}
+.cb{background:var(--blue-l)}.cr{background:var(--red-l)}.cy{background:var(--yellow-l)}.cg{background:var(--green-l)}
+.logo{width:28px;height:28px;border-radius:8px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);padding:3px;vertical-align:middle}
+.co{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 16px 6px 6px;margin:5px 6px 5px 0;font-weight:500;font-size:.92rem}
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.8,.2,1),transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+/* nav */
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;background:rgba(255,255,255,.75);backdrop-filter:blur(18px) saturate(1.6);border:1px solid rgba(0,0,0,.06);border-radius:999px;padding:8px 10px;display:flex;gap:2px;box-shadow:var(--sh);max-width:calc(100% - 24px);overflow-x:auto;scrollbar-width:none}
+nav a{padding:8px 15px;border-radius:999px;color:var(--ink2);font-size:.85rem;font-weight:500;white-space:nowrap;transition:background .3s}
+nav a:hover,nav a.on{background:var(--blue-l);color:#1a5fd0}
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden}
+#wind{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-in{position:relative;z-index:2;text-align:center;margin:0 auto}
+.hero-in h1{font-size:clamp(3rem,8vw,6.6rem);font-weight:600;letter-spacing:-.045em;line-height:1.02}
+.grad{background:linear-gradient(90deg,var(--blue),var(--red) 35%,var(--yellow) 65%,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:sh 9s ease-in-out infinite alternate}
+@keyframes sh{to{background-position:100% center}}
+.hero-in .lead{margin:28px auto 40px;font-size:1.35rem}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:999px;background:var(--blue);color:#fff;font-weight:600;box-shadow:0 6px 20px rgba(66,133,244,.35);transition:transform .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:var(--sh);margin-left:10px}
+.dots{display:flex;gap:10px;justify-content:center;margin-bottom:34px}
+.dots span{width:14px;height:14px;border-radius:50%;animation:bob 2.4s ease-in-out infinite}
+.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}.dots span:nth-child(4){animation-delay:.6s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+/* index */
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.toc a{background:#fff;border-radius:22px;padding:22px;box-shadow:var(--sh);color:var(--ink);font-weight:500;transition:.4s}
+.toc a b{display:block;font-size:2rem;font-weight:600;margin-bottom:4px}
+.toc a:hover{transform:translateY(-3px)}
+/* token demo */
+.tokbox{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:36px}
+textarea{width:100%;border:2px solid var(--line);border-radius:20px;padding:18px 20px;font:inherit;font-size:1.05rem;resize:vertical;min-height:90px;outline:none;transition:border .3s}
+textarea:focus{border-color:var(--blue)}
+.toks{margin-top:20px;line-height:2.3;min-height:60px}
+.toks span{padding:4px 2px;border-radius:6px;margin-right:1px;white-space:pre-wrap;animation:pop .4s both}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px}
+.stat{flex:1;min-width:150px;border-radius:20px;padding:18px 22px}
+.stat b{display:block;font-size:2rem;font-weight:600;line-height:1.1}
+.stat small{color:var(--ink2)}
+/* tabs */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:40px 0 30px}
+.tab{border:none;font:inherit;font-weight:500;font-size:.98rem;padding:13px 24px;border-radius:999px;background:#fff;box-shadow:var(--sh);cursor:pointer;color:var(--ink2);transition:all .35s}
+.tab.on{background:var(--ink);color:#fff;transform:translateY(-2px)}
+.panel{display:none;animation:fade .7s cubic-bezier(.2,.8,.2,1)}
+.panel.on{display:grid}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}}
+.panel{grid-template-columns:1fr 1.15fr;gap:40px;align-items:center;background:#fff;border-radius:36px;padding:48px;box-shadow:var(--sh)}
+@media(max-width:900px){.panel{grid-template-columns:1fr;padding:28px}}
+.viz{background:linear-gradient(160deg,#f8faff,#fff);border-radius:28px;aspect-ratio:1.15;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.viz svg{width:100%;height:100%}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:10px 18px;margin-top:20px;font-size:.95rem}
+.kv dt{color:var(--ink3);font-weight:600}
+.kv dd{color:var(--ink2)}
+/* charts */
+.bars .row{display:grid;grid-template-columns:190px 1fr 80px;align-items:center;gap:16px;margin:14px 0}
+.bars .lab{font-size:.95rem;font-weight:500;display:flex;align-items:center;gap:8px}
+.bars .track{height:18px;background:#f1f3f4;border-radius:999px;overflow:hidden}
+.bars .fill{height:100%;border-radius:999px;width:0;transition:width 1.8s cubic-bezier(.2,.8,.2,1)}
+.bars .val{font-weight:600;font-size:.95rem;text-align:right}
+@media(max-width:640px){.bars .row{grid-template-columns:110px 1fr 56px}}
+.donut{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.donut svg{width:200px;height:200px;transform:rotate(-90deg)}
+.donut circle{fill:none;stroke-width:22;transition:stroke-dasharray 2s cubic-bezier(.2,.8,.2,1)}
+.legend div{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.95rem;color:var(--ink2)}
+.legend i{width:14px;height:14px;border-radius:5px;display:inline-block}
+.spectrum{height:22px;border-radius:999px;background:linear-gradient(90deg,var(--red),var(--yellow),var(--green));position:relative;margin:50px 0 20px}
+.spectrum span{position:absolute;top:-40px;transform:translateX(-50%);font-size:.85rem;font-weight:600;white-space:nowrap}
+.spectrum span::after{content:"";position:absolute;left:50%;top:30px;width:3px;height:34px;background:var(--ink);border-radius:3px;transform:translateX(-50%)}
+.mem{display:flex;gap:14px;align-items:flex-end;height:290px;padding-top:50px}
+.mem .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.mem .b{width:100%;border-radius:18px 18px 8px 8px;height:0;transition:height 1.8s cubic-bezier(.2,.8,.2,1);position:relative}
+.mem .b em{position:absolute;top:-30px;left:0;right:0;text-align:center;font-style:normal;font-weight:600;font-size:.95rem}
+.mem small{margin-top:10px;font-weight:600;color:var(--ink2);font-size:.85rem;text-align:center}
+.tier{display:flex;flex-direction:column;gap:12px}
+.tier div{border-radius:20px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:500}
+.tier div span{font-size:.85rem;color:var(--ink2);font-weight:400;text-align:right}
+/* harness */
+.h-card{position:relative;overflow:hidden}
+.h-card .top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.h-card .top img{width:42px;height:42px;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.12);padding:5px;background:#fff}
+.h-card ul{list-style:none;margin-top:14px}
+.h-card li{padding:7px 0 7px 28px;position:relative;color:var(--ink2);font-size:.96rem}
+.h-card li::before{content:"";position:absolute;left:4px;top:15px;width:10px;height:10px;border-radius:50%;background:var(--c,var(--blue))}
+.meter{display:flex;gap:4px;margin-top:4px}
+.meter i{height:8px;flex:1;border-radius:4px;background:#eceff1}
+.meter i.f{background:var(--c,var(--blue))}
+.mrow{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:10px;font-size:.82rem;color:var(--ink3);margin-top:8px}
+/* agent loop */
+.loop{display:flex;align-items:center;justify-content:center}
+.loop svg{width:100%;max-width:520px}
+.spin{transform-origin:260px 260px;animation:rot 18s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+/* timeline */
+.tl{position:relative;padding-left:40px}
+.tl::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:3px;border-radius:3px;background:linear-gradient(var(--blue),var(--red),var(--yellow),var(--green))}
+.tl .it{position:relative;margin-bottom:34px}
+.tl .it::before{content:"";position:absolute;left:-36px;top:6px;width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--c)}
+.tl .it>b{font-size:.82rem;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase}
+/* paths */
+.path{border-radius:32px;padding:36px;background:#fff;box-shadow:var(--sh);border-top:6px solid var(--c)}
+.path h3{display:flex;align-items:center;gap:12px}
+.path ol{margin:16px 0 0 20px;color:var(--ink2)}
+.path ol li{margin:8px 0;padding-left:6px}
+.path pre{background:#1f2430;color:#e8eaed;border-radius:18px;padding:16px 20px;margin-top:16px;overflow-x:auto;font-family:"Google Sans Code",Consolas,monospace;font-size:.82rem;line-height:1.6}
+.path pre .c{color:#81c995}
+.ms{font-family:"Material Symbols Rounded";font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;-webkit-font-feature-settings:"liga";font-feature-settings:"liga";-webkit-font-smoothing:antialiased;font-variation-settings:"FILL" 0,"wght" 400;vertical-align:middle;display:inline-block}
+.msv{font-family:"Material Symbols Rounded";font-feature-settings:"liga";fill:#5f6368;dominant-baseline:auto}
+.emo{font-size:1.8rem;width:58px;height:58px;border-radius:18px;display:inline-flex;align-items:center;justify-content:center;background:var(--blue-l);color:var(--blue)}
+.emo .ms{font-size:30px}
+.card:nth-child(4n+2) .emo{background:var(--red-l);color:var(--red)}
+.card:nth-child(4n+3) .emo{background:var(--yellow-l);color:#c58a00}
+.card:nth-child(4n+4) .emo{background:var(--green-l);color:var(--green)}
+.path .emo{background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c)}
+.callout .ico .ms{font-size:34px}
+.cb .ico{color:var(--blue)}.cr .ico{color:var(--red)}.cy .ico{color:#c58a00}.cg .ico{color:var(--green)}
+.tab .ms{font-size:20px;margin-right:4px;margin-top:-3px}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:.95rem}
+th,td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);font-weight:600}
+tr:last-child td{border:none}
+.chart-svg text{font-family:var(--font)}
+.draw{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 3s cubic-bezier(.2,.8,.2,1)}
+.in .draw{stroke-dashoffset:0}
+.chart-svg .area{opacity:0;transition:opacity 1.2s 1.4s}.in .chart-svg .area{opacity:1}
+.logo{object-fit:contain}
+
+/* v2 extras */
+.flowline{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding:10px 0 20px}
+.fstep{flex:1;min-width:150px;text-align:center;position:relative;padding:0 10px}
+.fstep .bub{width:86px;height:86px;border-radius:28px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.95rem;animation:fl 5s ease-in-out infinite}
+.fstep .bub .ms{font-size:38px}
+.fstep:nth-child(2) .bub{animation-delay:.4s}.fstep:nth-child(3) .bub{animation-delay:.8s}.fstep:nth-child(4) .bub{animation-delay:1.2s}.fstep:nth-child(5) .bub{animation-delay:1.6s}
+.fstep:not(:last-child)::after{content:"";position:absolute;top:43px;right:-14px;width:28px;height:3px;background:repeating-linear-gradient(90deg,var(--ink3) 0 6px,transparent 6px 10px)}
+.fstep b{display:block;font-size:1rem}.fstep small{color:var(--ink2);font-size:.86rem;line-height:1.4;display:block;margin-top:4px}
+.fstep code{font-size:.75rem}
+.ctxbar{display:flex;height:64px;border-radius:20px;overflow:hidden;margin:26px 0 14px;box-shadow:inset 0 0 0 1px var(--line)}
+.ctxbar div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.85rem;width:0;transition:width 1.6s cubic-bezier(.2,.8,.2,1);white-space:nowrap;overflow:hidden}
+.dark{background:#16181d;color:#e8eaed}
+.dark .lead,.dark p{color:#bdc1c6!important}.dark .eyebrow{color:#9aa0a6}
+.dark .pill.pb{background:#1e2b45;color:#8ab4f8}.dark .pill.pr{background:#3c1f1d;color:#f28b82}.dark .pill.py{background:#3d3214;color:#fdd663}.dark .pill.pg{background:#173322;color:#81c995}
+.dark .loop circle[fill="#fff"]{fill:#20232a}.dark .msv{fill:#e8eaed}
+.dark .loop circle[fill="#E8F0FE"]{fill:#1e2b45}
+.carousel{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 32px 40px;margin:0 -32px;scrollbar-width:thin}
+.carousel>.card{flex:0 0 min(380px,85%);scroll-snap-align:start}
+.carhint{display:flex;align-items:center;gap:8px;color:var(--ink3);font-size:.9rem;margin-top:40px}
+.ide{border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(60,64,67,.18);background:#fff;border:1px solid var(--line)}
+.ide .bar{height:42px;background:#f1f3f4;display:flex;align-items:center;gap:8px;padding:0 16px}
+.ide .bar i{width:12px;height:12px;border-radius:50%}
+.ide .body{display:grid;grid-template-columns:130px 1fr 200px;min-height:300px;font-size:.8rem}
+.ide .side{background:#f8f9fa;padding:14px;color:var(--ink3);line-height:2}
+.ide .ed{padding:16px;font-family:"Google Sans Code",monospace;color:#444;line-height:1.9}
+.ide .ed .k{color:#a142f4}.ide .ed .f{color:#1a73e8}.ide .ed .st{color:#188038}
+.ide .ag{background:#f8faff;border-left:1px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:10px}
+.ide .msg{background:#fff;border-radius:14px;padding:10px 12px;box-shadow:0 1px 3px rgba(0,0,0,.08);color:var(--ink2);line-height:1.45}
+.ide .msg.u{background:var(--blue);color:#fff;align-self:flex-end}
+.typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink3);margin-right:3px;animation:bob 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@media(max-width:800px){.ide .body{grid-template-columns:1fr}.ide .side{display:none}}
+.flip{perspective:1000px;height:210px;cursor:pointer}
+.flip .in2{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.flip:hover .in2,.flip.on .in2{transform:rotateY(180deg)}
+.flip .fa,.flip .fb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:24px;padding:26px;display:flex;flex-direction:column;justify-content:center}
+.flip .fa{background:#fff;box-shadow:var(--sh)}
+.flip .fa b{font-size:1.4rem;font-weight:600}.flip .fa small{color:var(--ink3);margin-top:6px}
+.flip .fb{transform:rotateY(180deg);color:#fff;font-size:.95rem;line-height:1.55}
+.scatter text{font-family:var(--font)}
+.scatter .pt{transition:transform 1.4s cubic-bezier(.2,.8,.2,1),opacity 1s;opacity:0;transform:translateY(30px)}
+.in .scatter .pt,.scatter.in .pt{opacity:1;transform:none}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+.bento>*{grid-column:span 3}
+.bento .wide{grid-column:span 6;display:flex;gap:28px;align-items:center}
+@media(max-width:900px){.bento>*{grid-column:span 6}.bento .wide{display:block}}
+
+.ic{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 10px 14px rgba(60,64,67,.18));transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.card:hover .ic,.path:hover .ic{transform:translateY(-4px) rotate(-6deg) scale(1.06)}
+.path h3 .ic{width:56px;height:56px}
+.ic-s{width:1.5em;height:1.5em;object-fit:contain;vertical-align:middle;margin-top:-.2em}
+.tab .ic-s{width:24px;height:24px;margin-right:6px}
+.callout .ico .ic-s{width:52px;height:52px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.12))}
+.fstep .bub{background:none!important}
+.fstep .bub .ic-s{width:78px;height:78px;filter:drop-shadow(0 10px 14px rgba(60,64,67,.2))}
+.ide .side .ic-s{width:16px;height:16px}
+.art{position:relative;width:100%;height:100%;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,color-mix(in srgb,var(--a) 14%,#fff),#fff 60%)}
+.art .blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.45;animation:drift 14s ease-in-out infinite alternate}
+.art .b1{width:55%;height:55%;left:8%;top:10%;background:var(--a)}
+.art .b2{width:45%;height:45%;right:4%;bottom:6%;background:var(--b);animation-delay:-6s}
+@keyframes drift{to{transform:translate(12%,-10%) scale(1.15)}}
+.art .main{position:absolute;width:46%;left:27%;top:16%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.18));animation:fl 6s ease-in-out infinite}
+.art .sat{position:absolute;width:17%;filter:drop-shadow(0 12px 18px rgba(0,0,0,.15));animation:fl 5s ease-in-out infinite}
+.art .s1{left:8%;top:10%;animation-delay:-1s}.art .s2{right:9%;top:22%;animation-delay:-2.5s}.art .s3{right:16%;bottom:24%;animation-delay:-4s;width:14%}
+.art .chip{position:absolute;left:7%;bottom:7%;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);border-radius:22px;padding:14px 20px;box-shadow:0 10px 30px rgba(60,64,67,.12);max-width:62%}
+.art .chip b{display:block;font-size:1.6rem;font-weight:600;color:var(--a);line-height:1.1}
+.art .chip small{color:var(--ink2);font-size:.85rem}
+
+/* v3 photos */
+.ph{margin:-36px -36px 24px;height:190px;overflow:hidden;border-radius:var(--r) var(--r) 0 0;position:relative}
+.path .ph{margin:-36px -36px 22px;height:200px;border-radius:26px 26px 0 0}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
+.card:hover .ph img,.path:hover .ph img{transform:scale(1.06)}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.12))}
+.path{border-top:none;overflow:hidden}
+.path .ph{border-bottom:5px solid var(--c)}
+.bento .wide{padding:0;align-items:stretch}
+.bento .wide>div:last-child{padding:36px}
+.ph.side{margin:0;height:auto;min-height:220px;flex:0 0 38%;border-radius:var(--r) 0 0 var(--r)}
+.num{font-size:2rem;font-weight:600}
+.fstep .bub{border-radius:50%!important;width:78px;height:78px}
+.art{position:relative;width:100%;height:100%;overflow:hidden;border-radius:28px}
+.art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 18s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translate(-2%,-2%)}}
+.art .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.45))}
+.art .chip{position:absolute;left:6%;right:6%;bottom:6%;background:rgba(255,255,255,.78);backdrop-filter:blur(16px);border-radius:22px;padding:16px 22px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.art .chip b{display:block;font-size:1.7rem;font-weight:600;line-height:1.1;color:var(--ink)}
+.art .chip small{color:var(--ink2);font-size:.9rem}
+.lnum{fill:#e8eaed}
+.callout{border-left:6px solid rgba(0,0,0,.08)}
+.cb{border-left-color:var(--blue)}.cr{border-left-color:var(--red)}.cy{border-left-color:var(--yellow)}.cg{border-left-color:var(--green)}
+.ex{background:#fff;border-radius:var(--r);padding:30px;box-shadow:var(--sh)}
+.ex .bubble{margin:16px 0;background:#1f2430;color:#e8eaed;border-radius:22px 22px 22px 6px;padding:18px 20px;font-size:.95rem;line-height:1.6;position:relative}
+.ex .bubble code{background:#2d3343;color:#fdd663}
+.ex p{color:var(--ink2);font-size:.95rem}
+.thinker{position:relative;height:720px;margin-top:30px}
+.thinker .man{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:88%;mix-blend-mode:multiply;filter:contrast(1.05)}
+.thinker .man.rv{transform:translate(-50%,-46%)}.thinker .man.rv.in{transform:translate(-50%,-50%)}
+.qb{position:absolute;max-width:290px;background:#fff;border-radius:22px;padding:16px 20px;box-shadow:var(--sh);font-weight:500;font-size:1rem;line-height:1.4;animation:fl 7s ease-in-out infinite}
+.qb:nth-of-type(odd){animation-delay:-3s}
+.qb::before{content:"";position:absolute;width:10px;height:10px;border-radius:50%;top:-4px;left:22px;background:var(--blue)}
+.qb:nth-of-type(4n+2)::before{background:var(--red)}.qb:nth-of-type(4n+3)::before{background:var(--yellow)}.qb:nth-of-type(4n)::before{background:var(--green)}
+@media(max-width:900px){.thinker{height:auto;display:flex;flex-direction:column;gap:12px}.thinker .man{position:static;transform:none!important;height:320px;align-self:center}.qb{position:static;max-width:none;animation:none}}
+.road{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;position:relative;padding-top:10px}
+.road::before{content:"";position:absolute;left:4%;right:4%;top:38px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--red),var(--yellow),var(--green),var(--blue),var(--red),var(--yellow),var(--green))}
+.ms-step{text-align:center;position:relative}
+.ms-step .dot{width:58px;height:58px;border-radius:50%;margin:0 auto 14px;background:#fff;border:4px solid var(--c);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;color:var(--c);position:relative;z-index:1;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.ms-step b{display:block;font-size:.98rem}.ms-step small{display:block;color:var(--ink2);font-size:.82rem;line-height:1.4;margin-top:4px}
+@media(max-width:900px){.road{grid-template-columns:repeat(2,1fr)}.road::before{display:none}}
+.loopback{margin-top:26px;text-align:center;color:var(--ink2);font-weight:500}.loopback span{font-size:1.4rem;color:var(--blue);margin-right:6px}
+.tool{background:#fff;border-radius:var(--r);padding:30px 32px;box-shadow:var(--sh);border-left:6px solid var(--c)}
+.tool h4{font-size:1.35rem;margin:10px 0 8px}.tool p{color:var(--ink2)}
+.askrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:linear-gradient(90deg,var(--blue-l),var(--green-l));border-radius:var(--r);padding:24px 28px}
+.askrow b{margin-right:8px}.askrow span{background:#fff;border-radius:999px;padding:8px 16px;font-size:.92rem;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.sessions{display:flex;align-items:center;gap:0;flex-wrap:wrap;justify-content:center}
+.sess{background:#fff;border-radius:24px;padding:22px 26px;box-shadow:var(--sh);min-width:220px;max-width:260px}
+.sess b{display:block;font-size:1.1rem}.sess small{color:var(--ink2)}
+.hand{flex:0 0 120px;text-align:center;position:relative;height:40px}
+.hand::before{content:"";position:absolute;left:8px;right:8px;top:50%;height:3px;background:repeating-linear-gradient(90deg,var(--blue) 0 8px,transparent 8px 14px);animation:dash 1.5s linear infinite}
+.hand span{position:relative;background:var(--yellow-l);color:#8a5a00;font-size:.78rem;font-weight:600;padding:5px 10px;border-radius:999px;font-family:"Google Sans Code",monospace}
+.bad{color:#b3261e!important;font-weight:500;margin-top:10px}.good{color:#137333!important;font-weight:500;margin:6px 0 10px}
+.fstep .bub.cb{background:var(--blue-l)!important}.fstep .bub.cr{background:var(--red-l)!important}.fstep .bub.cy{background:var(--yellow-l)!important}.fstep .bub.cg{background:var(--green-l)!important}
+.thinker{height:800px}
+.hype{background:linear-gradient(120deg,#1a73e8,#a142f4 45%,#ea4335);color:#fff;border-radius:36px;padding:56px 60px}.hype h3{font-size:2.4rem;margin-bottom:18px}.hype p{color:rgba(255,255,255,.92);font-size:1.15rem;margin-top:12px;max-width:900px}
+.credits{font-size:.78rem;color:var(--ink3);line-height:1.8}.credits a{color:var(--ink3);text-decoration:underline}
+.hm{margin-top:14px;padding-top:12px;border-top:1px solid #eceff1}.hm small{color:var(--ink3);font-size:.72rem}
+.hr{display:grid;grid-template-columns:86px 1fr 62px;align-items:center;gap:10px;font-size:.82rem;color:var(--ink2);margin-top:7px}
+.hr .tk{height:8px;background:#eceff1;border-radius:4px;overflow:hidden}.hr .tk i{display:block;height:100%;background:var(--c);border-radius:4px;animation:grow 1.6s cubic-bezier(.2,.8,.2,1)}
+.hr b{text-align:right;font-weight:600;color:var(--ink)}@keyframes grow{from{width:0}}
+footer{padding:80px 0;text-align:center;color:var(--ink3);font-size:.9rem}
+.floaty{animation:fl 6s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.neuron{animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.flow{stroke-dasharray:6 10;animation:dash 2.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-64}}
+/* ---------- tabs de la guía ---------- */
+#tabsel{padding:56px 0 0}
+.gtabs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px;background:rgba(255,255,255,.8);backdrop-filter:blur(18px) saturate(1.6);border:1px solid rgba(0,0,0,.05);border-radius:36px;box-shadow:var(--sh)}
+.gind{position:absolute;left:0;top:0;width:0;height:0;border-radius:28px;background:var(--ink);box-shadow:0 10px 30px rgba(31,31,31,.25);transition:all .6s cubic-bezier(.2,.8,.2,1);z-index:0;pointer-events:none}
+.gind::after{content:"";position:absolute;left:28px;right:28px;bottom:10px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--red),var(--yellow),var(--green))}
+.gtab{position:relative;z-index:1;border:none;background:none;font:inherit;text-align:left;cursor:pointer;display:flex;align-items:center;gap:16px;padding:22px 24px 26px;border-radius:28px;color:var(--ink);transition:color .5s,background .3s}
+.gtab:not(.on):hover{background:rgba(0,0,0,.035)}
+.gtab .gn{flex:0 0 46px;height:46px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.25rem;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c);transition:all .5s}
+.gtab strong{display:block;font-weight:600;font-size:1.12rem;line-height:1.25;letter-spacing:-.01em}
+.gtab small{display:block;font-size:.8rem;color:var(--ink3);line-height:1.45;margin-top:4px;transition:color .5s}
+.gtab.on{color:#fff}.gtab.on small{color:#bdc1c6}
+.gtab.on .gn{background:var(--c);color:#fff}
+@media(max-width:860px){.gtabs{grid-template-columns:1fr}.gtab{padding:16px 18px 20px}}
+.gpane{display:none}
+.gpane.on{display:block;animation:gfade .8s cubic-bezier(.2,.8,.2,1)}
+@keyframes gfade{from{opacity:0;transform:translateY(24px)}}
+.gpane>section:first-child{padding-top:90px}
+.gpane>section.dark:first-child{margin-top:70px!important}
+.gnext{display:flex;justify-content:center;padding:70px 0 10px}
+.gnext button{border:none;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:14px;padding:18px 30px;border-radius:999px;background:#fff;box-shadow:var(--sh);color:var(--ink);font-weight:600;transition:transform .3s,box-shadow .3s}
+.gnext button:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(60,64,67,.08),0 18px 48px rgba(60,64,67,.14)}
+.gnext button small{display:block;font-size:.75rem;color:var(--ink3);font-weight:500;text-transform:uppercase;letter-spacing:.1em}
+.gnext button .ar{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+nav .gsw{display:flex;gap:2px;padding-right:8px;margin-right:6px;border-right:1px solid rgba(0,0,0,.08)}
+nav .gsw a{font-weight:600;color:var(--ink)}
+nav .gsw a.cur{background:var(--ink);color:#fff}
+/* ---------- bajo el capó ---------- */
+.pfd{display:flex;height:78px;border-radius:20px;overflow:hidden;margin:28px 0 8px;box-shadow:inset 0 0 0 1px var(--line)}
+.pfd>div{display:flex;flex-direction:column;justify-content:center;padding:0 16px;font-weight:600;font-size:.9rem;line-height:1.25;color:#fff;min-width:0}
+.pfd small{font-weight:400;font-size:.74rem;opacity:.92}
+.pfd .q{flex:0 0 13%;background:#9aa0a6}
+.pfd .pre{flex:0 0 29%;background:var(--blue);position:relative;overflow:hidden}
+.pfd .pre::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);animation:shim 2.6s linear infinite}
+@keyframes shim{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.pfd .dec{flex:1;background:var(--green-l);color:#137333;flex-direction:row;align-items:center;gap:5px;overflow:hidden}
+.pfd .dec span{background:#fff;border-radius:8px;padding:4px 8px;font-size:.8rem;box-shadow:0 1px 2px rgba(0,0,0,.08);animation:tokin 6s infinite both}
+@keyframes tokin{0%{opacity:0;transform:translateY(8px)}8%,88%{opacity:1;transform:none}100%{opacity:0}}
+.pfd-ax{position:relative;height:30px;font-size:.8rem;font-weight:600;color:var(--ink2)}
+.pfd-ax span{position:absolute;left:42%;transform:translateX(-50%);white-space:nowrap;padding-top:8px}
+.pfd-ax span::before{content:"";position:absolute;left:50%;top:-6px;width:2px;height:12px;background:var(--ink);transform:translateX(-50%)}
+input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:pointer}
+.kvo{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px}.kvo b{font-size:1.8rem;font-weight:600;color:var(--blue)}
+.formula{background:#1f2430;color:#e8eaed;border-radius:18px;padding:16px 20px;font-family:"Google Sans Code",Consolas,monospace;font-size:.85rem;line-height:1.7;margin:16px 0}
+.formula em{color:#fdd663;font-style:normal}
+.attn svg{width:100%;max-width:190px;display:block;margin:4px auto 16px}
+.attn .yr{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{background:#f1f3f4;border-radius:999px;padding:7px 14px;font-size:.85rem;color:var(--ink2)}
+.chips span b{color:var(--ink)}
+.tl .it p{color:var(--ink2);margin-top:4px;font-size:.98rem}
+.tl .it h4{margin-top:2px}
+.sticky{position:sticky;top:90px}
+.live{background:#16181d;color:#e8eaed;border-radius:36px;padding:48px 52px;position:relative;overflow:hidden}
+.live h3{font-size:2rem;margin:10px 0 14px}.live p{color:#bdc1c6}.live a{color:#8ab4f8}
+.live .rec{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;letter-spacing:.12em;color:#f28b82}
+.live .rec i{width:10px;height:10px;border-radius:50%;background:#EA4335;animation:pulse 1.4s infinite}
+.live .stats .stat{background:#20232a}.live .stat small{color:#9aa0a6}
+.live .stat b{color:#fff}
+@media(max-width:700px){.live{padding:32px 26px}}
+/* ---------- patrones ---------- */
+.warn{background:#16181d;color:#e8eaed;border-radius:36px;padding:52px 56px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+.warn .ms{font-size:56px;color:#fdd663}
+.warn h3{font-size:2rem;margin-bottom:12px}.warn p{color:#bdc1c6;font-size:1.08rem;margin-top:10px}
+@media(max-width:700px){.warn{grid-template-columns:1fr;padding:32px 26px}}
+.opt{border:1px solid var(--line);border-radius:22px;padding:22px 24px;margin-top:16px}
+.opt h4{display:flex;align-items:center;gap:10px}
+.opt p{color:var(--ink2);font-size:.96rem;margin-top:6px}
+.opt pre{margin-top:12px}
+</style>
+</head>
+<body>
+
+<nav id="nav"></nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="wind"></canvas>
+  <div class="wrap hero-in">
+    <div class="dots"><span style="background:var(--blue)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span></div>
+    <h1>La IA, explicada<br><span class="grad">de verdad.</span></h1>
+    <p class="lead">Desde qué es un token hasta cómo orquestar agentes que programan por ti. Una guía visual, clara y práctica que termina explicando exactamente qué hacer para empezar con lo que quieras.</p>
+    <a class="btn" href="#tokens">Empezar el viaje ↓</a><a class="btn ghost" href="#empieza">Ir directo a la práctica</a>
+    <p style="margin-top:34px;font-weight:600;color:var(--ink2)">Hecho por Luis Munuera Martínez</p>
+    <p class="note" style="margin-top:10px">Actualizado a noviembre de 2026 · Las cifras de modelos y benchmarks cambian cada semana: compruébalas siempre en las fuentes enlazadas.</p>
+  </div>
+</section>
+
+<!-- SELECTOR DE TABS -->
+<section id="tabsel">
+  <div class="wrap rv">
+    <div class="gtabs" role="tablist">
+      <i class="gind"></i>
+      <button class="gtab on" role="tab" data-g="g1" style="--c:var(--blue)"><b class="gn">1</b><span><strong>Conceptos básicos</strong><small>Tokens · modelos · pesos · tamaño · contexto · benchmarks · bajo el capó · glosario</small></span></button>
+      <button class="gtab" role="tab" data-g="g2" style="--c:var(--red)"><b class="gn">2</b><span><strong>IDEs, harnesses y agentes</strong><small>Agentes · harnesses · IDEs · skills, plugins, MCP y RAG · memoria</small></span></button>
+      <button class="gtab" role="tab" data-g="g3" style="--c:var(--green)"><b class="gn">3</b><span><strong>Cómo trabajar con ello</strong><small>Automatizar · programar con agentes · patrones · empieza aquí</small></span></button>
+    </div>
+  </div>
+</section>
+
+<div class="gpane on" id="g1" role="tabpanel">
+<!-- 01 TOKENS -->
+<section id="tokens">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--blue)"></i>01 · La unidad mínima</div>
+      <h2>¿Qué es un <span style="color:var(--blue)">token</span>?</h2>
+      <p class="lead">Un modelo no lee letras ni palabras: lee <b>tokens</b>, trozos de texto (a veces una palabra, a veces media, a veces un espacio y una coma). Cada token se convierte en un número, y ese número en un vector. Todo (el precio, la velocidad, la memoria) se mide en tokens.</p>
+    </div>
+    <div class="tokbox rv mt">
+      <h4>Pruébalo: escribe algo y mira cómo se trocea</h4>
+      <p class="note" style="margin:0 0 14px">Simulación didáctica de un tokenizador BPE. Los reales (tiktoken, SentencePiece) dan resultados parecidos.</p>
+      <textarea id="tin">La inteligencia artificial no lee palabras, lee tokens. ¿Cuántos crees que tiene esta frase?</textarea>
+      <div class="toks" id="tout"></div>
+      <div class="stats">
+        <div class="stat cb"><b id="sT">0</b><small>tokens aprox.</small></div>
+        <div class="stat cy"><b id="sC">0</b><small>caracteres</small></div>
+        <div class="stat cg"><b id="sR">0</b><small>caracteres por token</small></div>
+        <div class="stat cr"><b id="sP">0</b><small>costaría enviar esta frase un millón de veces (a 3 € por millón de tokens)</small></div>
+      </div>
+    </div>
+    <div class="card rv mt">
+      <h3>Del texto a la respuesta, en 5 pasos</h3>
+      <p>Esto ocurre <b>una vez por cada token</b> que genera el modelo. Por eso la respuesta va apareciendo palabra a palabra.</p>
+      <div class="flowline mt2">
+        <div class="fstep"><div class="bub cb" style="color:var(--blue)"><span class="num">1</span></div><b>Texto</b><small>"Hola mundo"</small></div>
+        <div class="fstep"><div class="bub cr" style="color:var(--red)"><span class="num">2</span></div><b>Tokens</b><small>"Hola" · " mundo"</small></div>
+        <div class="fstep"><div class="bub cy" style="color:#c58a00"><span class="num">3</span></div><b>IDs</b><small><code>[39577, 78211]</code><br>cada token tiene un número</small></div>
+        <div class="fstep"><div class="bub cg" style="color:var(--green)"><span class="num">4</span></div><b>Vectores</b><small>cada ID se convierte en una lista de miles de números que representan su significado</small></div>
+        <div class="fstep"><div class="bub cb" style="color:var(--blue)"><span class="num">5</span></div><b>Predicción</b><small>el modelo da una probabilidad a cada token posible y elige uno</small></div>
+      </div>
+      <p class="note">La <b>temperatura</b> controla esa elección: con temperatura baja, elige casi siempre el token más probable (más preciso); con temperatura alta, arriesga más (más creativo).</p>
+    </div>
+    <div class="bento mt">
+      <div class="card rv wide"><div class="ph side"><img src="assets/tok_calc.jpg" alt="Fichas de letras" loading="lazy"></div><div><h3>Cómo se calcula</h3><p>Un algoritmo (BPE) aprende los fragmentos más frecuentes de millones de textos. Regla rápida: <b>1 token ≈ 4 caracteres en inglés ≈ 0,75 palabras</b>. En español sale algo más caro: ~1,3 tokens por palabra. El código, los emojis y los idiomas con otros alfabetos gastan todavía más.</p></div></div>
+      <div class="card rv"><div class="ph"><img src="assets/tok_cost.jpg" alt="Taxímetro" loading="lazy"></div><h3 class="mt2">Cómo se cobra</h3><p>Se paga por cada <b>millón de tokens</b>, con tres precios distintos: <span class="pill pb">entrada</span> (lo que envías), <span class="pill pr">salida</span> (lo que genera el modelo, entre 3 y 8 veces más cara) y <span class="pill pg">caché</span> (entrada repetida, hasta 90% más barata).</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/tok_speed.jpg" alt="Velocímetro" loading="lazy"></div><h3 class="mt2">Cómo se mide la velocidad</h3><p><b>Tokens por segundo (tok/s)</b>. Para leer con comodidad bastan unos 10 tok/s; un agente que programa necesita 50–200 tok/s. También importa el <b>TTFT</b>: tiempo hasta el primer token.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 MODELOS -->
+<section id="modelos">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow"><i style="background:var(--red)"></i>02 · El zoo de modelos</div>
+      <h2>Un <span style="color:var(--red)">modelo</span> es una función gigante</h2>
+      <p class="lead" style="margin:0 auto">Recibe números (tokens, píxeles, audio) y devuelve números. Lo que cambia entre tipos es <b>qué entra, qué sale y cómo está construido por dentro</b>. Elige una familia:</p>
+    </div>
+    <div class="tabs rv" id="tabs">
+      <button class="tab on" data-t="dense">Densos</button>
+      <button class="tab" data-t="moe">MoE</button>
+      <button class="tab" data-t="edge">Compactos / Edge</button>
+      <button class="tab" data-t="diff">Difusión</button>
+      <button class="tab" data-t="audio">Audio</button>
+      <button class="tab" data-t="cls">Clasificación / Decisión</button>
+      <button class="tab" data-t="emb">Embeddings</button>
+    </div>
+    <div id="panels"></div>
+    <div class="callout cy rv mt">
+      
+      <div><h4>¿Y con qué los ejecuto? Los <i>engines</i></h4>
+      <p>Un engine (motor de inferencia) carga los pesos y genera los tokens. Los recomendados, todos open source: <b>llama.cpp</b> (GGUF, CPU+GPU, todo terreno), <b>vLLM</b> y <b>SGLang</b> (servidores rápidos en GPU NVIDIA/AMD), <b>MLX</b> (Mac), <b>ExLlamaV3</b> (GPU de consumo), <b>ik_llama.cpp</b> / <b>KTransformers</b> (MoE gigantes con offloading), <b>ComfyUI</b> (imagen/vídeo/audio) y <b>Transformers</b> de Hugging Face (todo, para aprender). Ollama y LM Studio también existen y son cómodos, pero no dejan de ser capas por encima de llama.cpp, cerradas o con muchas decisiones ya tomadas por ti: aquí preferimos ir directamente a la fuente.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PESOS -->
+<section id="pesos">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--yellow)"></i>03 · Lo que el modelo "sabe"</div>
+      <h2>¿Qué son los <span style="color:#d39b00">pesos</span>?</h2>
+      <p class="lead">Los pesos son los <b>miles de millones de números</b> que conectan las neuronas artificiales. Durante el entrenamiento se ajustan poco a poco hasta que el modelo predice bien el siguiente token. Un modelo "de 27B" tiene 27.000 millones de esos números. Descargar un modelo es, literalmente, descargar un archivo enorme con todos esos números.</p>
+    </div>
+    <div class="grid g2 mt" style="align-items:center">
+      <div class="card rv" style="padding:20px">
+        <svg viewBox="0 0 520 380" class="chart-svg" id="nn"></svg>
+      </div>
+      <div class="rv">
+        <h3>Una red, explicada en 3 frases</h3>
+        <p style="color:var(--ink2);margin-top:10px">Cada línea es un <b>peso</b>: cuánto influye una neurona en la siguiente. Cada círculo (una neurona) suma lo que le llega y aplica una función al resultado. Si apilas decenas de capas así y añades <i>atención</i> (el mecanismo que decide en qué tokens fijarse), tienes un Transformer.</p>
+        <div class="grid g2 mt2" style="gap:14px">
+          <div class="callout cb" style="padding:20px"><div><b>Grosor</b><br><small>= magnitud del peso</small></div></div>
+          <div class="callout cr" style="padding:20px"><div><b>Color</b><br><small>= positivo / negativo</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="mt rv" style="margin-top:90px">Abierto vs cerrado: cuanto más abierto, mejor para ti</h3>
+    <div class="spectrum rv">
+      <span style="left:6%">Closed source</span><span style="left:50%">Open weights</span><span style="left:93%">Open source total</span>
+    </div>
+    <div class="grid g3 mt">
+      <div class="card rv" style="border-top:6px solid var(--red)">
+        <div class="ph"><img src="assets/p_closed.jpg" alt="Pasillo de un centro de datos" loading="lazy"></div><h3>Closed source</h3><p>Solo se pueden usar a través de su API o su app; los pesos no los ves ni los tocas. Suelen ser los más potentes, pero dependes de sus precios y términos, y vienen con <b>muchas limitaciones de censura y medidas de seguridad</b>: un "buenismo" de serie que les lleva a negarse a tareas legítimas o a suavizar sus respuestas.</p>
+        <div class="mt2">
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64">Anthropic · Claude</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64">OpenAI · GPT</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64">Google · Gemini</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64">xAI · Grok</span>
+        </div>
+      </div>
+      <div class="card rv" style="border-top:6px solid var(--yellow)">
+        <div class="ph"><img src="assets/p_openw.jpg" alt="Disco duro abierto" loading="lazy"></div><h3>Open weights</h3><p>Te dan los pesos para descargar y ejecutar, pero no los datos ni el código de entrenamiento. <b>Seamos sinceros: la vanguardia aquí es casi toda china.</b></p>
+        <div class="mt2">
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=deepseek.com&sz=64">DeepSeek</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=qwen.ai&sz=64">Alibaba · Qwen</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=moonshot.ai&sz=64">Moonshot · Kimi</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=z.ai&sz=64">Z.ai · GLM</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64">MiniMax</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64">Mistral · UE</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=ai.google.dev&sz=64">Google · Gemma</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64">NVIDIA · Nemotron</span>
+        </div>
+      </div>
+      <div class="card rv" style="border-top:6px solid var(--green)">
+        <div class="ph"><img src="assets/p_opens.jpg" alt="Historial de commits de un repositorio" loading="lazy"></div><h3>Open source total</h3><p>Pesos + datos + código + recetas. Reproducible y auditable. Son menos potentes, pero son la base de la ciencia abierta.</p>
+        <div class="mt2">
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=allenai.org&sz=64">Ai2 · OLMo</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=64">Hugging Face · SmolLM</span>
+          <span class="co"><img class="logo" src="https://www.google.com/s2/favicons?domain=swiss-ai.org&sz=64">Swiss AI · Apertus</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid g4 mt">
+      <div class="card rv"><div class="ph"><img src="assets/p_local.jpg" alt="Tarjeta gráfica NVIDIA RTX" loading="lazy"></div><h4 class="mt2">Ejecutarlo en local</h4><p>Privacidad total, sin cuotas, sin internet.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_unlock.jpg" alt="Candado abierto" loading="lazy"></div><h4 class="mt2">Quitar restricciones</h4><p>Con <b>Heretic</b> puedes quitarle al modelo sus mecanismos de seguridad para que deje de negarse a responder (abliteración automática), sin necesidad de reentrenarlo.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_persona.jpg" alt="Repositorio Unsloth" loading="lazy"></div><h4 class="mt2">Cambiar personalidad</h4><p>Fine-tuning con <b>LoRA</b> (Unsloth, Axolotl): entrenas con tus propios ejemplos solo unas pequeñas capas añadidas, para darle tu tono o especializarlo en una tarea.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_quant.jpg" alt="Tarjeta gráfica" loading="lazy"></div><h4 class="mt2">Cuantizarlo</h4><p>Se reduce la precisión de sus números para que quepa en tu GPU (lo vemos en la siguiente sección).</p></div>
+    </div>
+    <p class="note rv">Quitarle los filtros no te exime de responsabilidad: tú respondes de lo que hagas con el modelo.</p>
+  </div>
+</section>
+
+<!-- 04 TAMAÑO -->
+<section id="tamano">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--green)"></i>04 · Tamaño, memoria y dinero</div>
+      <h2>Del reloj al <span style="color:var(--green)">centro de datos</span></h2>
+      <p class="lead">El tamaño se mide en parámetros (B = miles de millones). Más parámetros suelen significar más conocimiento, pero también más memoria. La gráfica usa escala logarítmica:</p>
+    </div>
+    <div class="card rv mt bars" id="sizeBars"></div>
+
+    <div class="grid g2 mt">
+      <div class="card rv">
+        <h3>Cuantización: menos bits, menos memoria</h3>
+        <p>Cada peso se guarda con cierta precisión. Si bajas de 16 bits a 4, la memoria se reduce unas 4 veces a cambio de perder algo de calidad. Formatos modernos como <b>NVFP4</b> (NVIDIA Blackwell) y <b>MXFP4</b> aplican una escala distinta a cada bloque de pesos y apenas pierden calidad. Memoria para un modelo de <b>27B</b>:</p>
+        <div class="mem" id="memChart"></div>
+      </div>
+      <div class="card rv">
+        <h3>Dónde viven los pesos</h3>
+        <p>Para generar cada token hay que leer los pesos. Cuanto más rápida es la memoria, más tok/s se generan. Por eso las GPUs son caras: su <b>VRAM</b> es rapidísima.</p>
+        <div class="tier mt2">
+          <div style="background:var(--green-l)">VRAM (GPU)<span>~1.000–1.800 GB/s · 50–150 tok/s</span></div>
+          <div style="background:var(--yellow-l)">RAM (CPU) · <i>offloading</i><span>~60–120 GB/s · 5–20 tok/s</span></div>
+          <div style="background:var(--red-l)">Disco NVMe (mmap)<span>~5–14 GB/s · &lt;2 tok/s</span></div>
+        </div>
+        <p class="mt2"><b>Offloading</b>: lo que no cabe en la VRAM se pasa a la RAM o al disco. Funciona, pero va más lento. Herramientas como <b><a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a></b> (GPU + RAM + SSD a la vez), KTransformers o el <code>--n-cpu-moe</code> de llama.cpp colocan de forma inteligente las partes "calientes" en la GPU y los expertos MoE poco usados en RAM. Así puedes ejecutar a una velocidad decente modelos que, en teoría, no te caben.</p>
+      </div>
+    </div>
+    <div class="callout cb rv mt">
+      
+      <div><h4>La alternativa: alquilar la inferencia</h4><p><b>OpenRouter</b> te da una sola API y una sola factura para cientos de modelos de decenas de proveedores. También puedes ir directo a la API de cada empresa (DeepSeek, Moonshot, Anthropic, OpenAI, Google…) o a proveedores de open weights rápidos (Groq, Cerebras, Together, Fireworks). Es la opción ideal para modelos gigantes que nunca cabrían en tu ordenador.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CONTEXTO -->
+<section id="contexto">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--blue)"></i>05 · La memoria de trabajo</div>
+      <h2>La <span style="color:var(--blue)">ventana de contexto</span></h2>
+      <p class="lead">Es todo lo que el modelo "ve" a la vez: instrucciones, conversación, archivos, resultados de herramientas. El modelo <b>no recuerda nada entre mensajes</b>: en cada turno se le reenvía la conversación entera.</p>
+    </div>
+    <div class="grid g2 mt">
+      <div class="card rv">
+        <h3>Coste acumulado de una conversación</h3>
+        <p>Como cada mensaje reenvía todo lo anterior, los tokens que pagas crecen de forma cuadrática. Compactar la conversación frena ese crecimiento.</p>
+        <svg viewBox="0 0 500 300" class="chart-svg mt2" id="ctxChart" role="img" aria-label="Tokens de entrada acumulados en 100 mensajes: 10,1 millones sin compactar frente a 5,15 millones con compactación">
+          <defs><linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34A853" stop-opacity=".22"/><stop offset="1" stop-color="#34A853" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="#eef0f2" stroke-width="1"><line x1="50" y1="199.6" x2="392" y2="199.6"/><line x1="50" y1="147.3" x2="392" y2="147.3"/><line x1="50" y1="94.9" x2="392" y2="94.9"/><line x1="50" y1="42.6" x2="392" y2="42.6"/></g>
+          <line x1="50" y1="252" x2="392" y2="252" stroke="#c4c7c5"/>
+          <g font-size="12.5" text-anchor="end" style="fill:#8a8d90"><text x="40" y="256.5">0</text><text x="40" y="204.1">2,5M</text><text x="40" y="151.8">5M</text><text x="40" y="99.4">7,5M</text><text x="40" y="47.1">10M</text></g>
+          <g font-size="12.5" text-anchor="middle" style="fill:#8a8d90"><text x="53.4" y="274">1</text><text x="135.5" y="274">25</text><text x="221.0" y="274">50</text><text x="306.5" y="274">75</text><text x="392.0" y="274">100</text><text x="221.0" y="296" style="fill:#5f6368" font-size="13">Mensajes en la conversación</text></g>
+          <path class="area" d="M50.0,252.0 C51.1,252.0 54.6,251.9 56.8,251.9 C59.1,251.8 61.4,251.7 63.7,251.6 C66.0,251.5 68.2,251.3 70.5,251.1 C72.8,250.9 75.1,250.7 77.4,250.5 C79.6,250.3 81.9,250.0 84.2,249.7 C86.5,249.4 88.8,249.1 91.0,248.7 C93.3,248.4 95.6,248.0 97.9,247.6 C100.2,247.2 102.4,246.8 104.7,246.3 C107.0,245.8 109.3,245.4 111.6,244.8 C113.8,244.3 116.1,243.8 118.4,243.2 C120.7,242.6 123.0,242.0 125.2,241.4 C127.5,240.8 129.8,240.1 132.1,239.4 C134.4,238.7 136.6,238.0 138.9,237.3 C141.2,236.6 143.5,235.8 145.8,235.0 C148.0,234.2 150.3,233.4 152.6,232.5 C154.9,231.7 157.2,230.8 159.4,229.9 C161.7,229.0 164.0,228.0 166.3,227.1 C168.6,226.1 170.8,225.1 173.1,224.1 C175.4,223.1 177.7,222.0 180.0,221.0 C182.2,219.9 184.5,218.8 186.8,217.7 C189.1,216.5 191.4,215.4 193.6,214.2 C195.9,213.0 198.2,211.8 200.5,210.5 C202.8,209.3 205.0,208.0 207.3,206.7 C209.6,205.4 211.9,204.1 214.2,202.7 C216.4,201.4 218.7,200.0 221.0,198.6 C223.3,197.2 225.6,195.7 227.8,194.3 C230.1,192.8 232.4,191.3 234.7,189.8 C237.0,188.3 239.2,186.7 241.5,185.1 C243.8,183.6 246.1,182.0 248.4,180.3 C250.6,178.7 252.9,177.0 255.2,175.3 C257.5,173.7 259.8,171.9 262.0,170.2 C264.3,168.4 266.6,166.7 268.9,164.9 C271.2,163.1 273.4,161.2 275.7,159.4 C278.0,157.5 280.3,155.6 282.6,153.7 C284.8,151.8 287.1,149.9 289.4,147.9 C291.7,145.9 294.0,143.9 296.2,141.9 C298.5,139.9 300.8,137.8 303.1,135.8 C305.4,133.7 307.6,131.6 309.9,129.4 C312.2,127.3 314.5,125.1 316.8,122.9 C319.0,120.8 321.3,118.5 323.6,116.3 C325.9,114.0 328.2,111.8 330.4,109.5 C332.7,107.2 335.0,104.8 337.3,102.5 C339.6,100.1 341.8,97.7 344.1,95.3 C346.4,92.9 348.7,90.4 351.0,88.0 C353.2,85.5 355.5,83.0 357.8,80.5 C360.1,77.9 362.4,75.4 364.6,72.8 C366.9,70.2 369.2,67.6 371.5,65.0 C373.8,62.3 376.0,59.7 378.3,57.0 C380.6,54.3 382.9,51.6 385.2,48.8 C387.4,46.1 390.9,41.9 392.0,40.5 L392.0,144.1 L388.6,144.6 L385.2,144.9 L381.7,145.3 L378.3,145.6 L374.9,145.8 L371.5,147.9 L368.1,150.0 L364.6,152.0 L361.2,153.9 L357.8,155.9 L354.4,157.8 L351.0,159.6 L347.5,161.4 L344.1,163.2 L340.7,164.9 L337.3,166.6 L333.9,168.2 L330.4,169.8 L327.0,171.3 L323.6,172.8 L320.2,174.3 L316.8,175.7 L313.3,177.1 L309.9,178.4 L306.5,179.7 L303.1,181.0 L299.7,182.2 L296.2,183.4 L292.8,184.5 L289.4,185.6 L286.0,186.7 L282.6,187.7 L279.1,188.6 L275.7,189.5 L272.3,190.4 L268.9,191.3 L265.5,192.1 L262.0,192.8 L258.6,193.5 L255.2,194.2 L251.8,194.8 L248.4,195.4 L244.9,196.0 L241.5,196.5 L238.1,196.9 L234.7,197.3 L231.3,197.7 L227.8,198.0 L224.4,198.3 L221.0,198.6 L217.6,200.7 L214.2,202.7 L210.7,204.8 L207.3,206.7 L203.9,208.6 L200.5,210.5 L197.1,212.4 L193.6,214.2 L190.2,215.9 L186.8,217.7 L183.4,219.3 L180.0,221.0 L176.5,222.6 L173.1,224.1 L169.7,225.6 L166.3,227.1 L162.9,228.5 L159.4,229.9 L156.0,231.2 L152.6,232.5 L149.2,233.8 L145.8,235.0 L142.3,236.2 L138.9,237.3 L135.5,238.4 L132.1,239.4 L128.7,240.4 L125.2,241.4 L121.8,242.3 L118.4,243.2 L115.0,244.0 L111.6,244.8 L108.1,245.6 L104.7,246.3 L101.3,247.0 L97.9,247.6 L94.5,248.2 L91.0,248.7 L87.6,249.2 L84.2,249.7 L80.8,250.1 L77.4,250.5 L73.9,250.8 L70.5,251.1 L67.1,251.4 L63.7,251.6 L60.3,251.7 L56.8,251.9 L53.4,252.0 L50.0,252.0 Z" fill="#EA4335" fill-opacity=".07"/>
+          <path class="area" d="M50.0,252.0 C51.1,252.0 54.6,251.9 56.8,251.9 C59.1,251.8 61.4,251.7 63.7,251.6 C66.0,251.5 68.2,251.3 70.5,251.1 C72.8,250.9 75.1,250.7 77.4,250.5 C79.6,250.3 81.9,250.0 84.2,249.7 C86.5,249.4 88.8,249.1 91.0,248.7 C93.3,248.4 95.6,248.0 97.9,247.6 C100.2,247.2 102.4,246.8 104.7,246.3 C107.0,245.8 109.3,245.4 111.6,244.8 C113.8,244.3 116.1,243.8 118.4,243.2 C120.7,242.6 123.0,242.0 125.2,241.4 C127.5,240.8 129.8,240.1 132.1,239.4 C134.4,238.7 136.6,238.0 138.9,237.3 C141.2,236.6 143.5,235.8 145.8,235.0 C148.0,234.2 150.3,233.4 152.6,232.5 C154.9,231.7 157.2,230.8 159.4,229.9 C161.7,229.0 164.0,228.0 166.3,227.1 C168.6,226.1 170.8,225.1 173.1,224.1 C175.4,223.1 177.7,222.0 180.0,221.0 C182.2,219.9 184.5,218.8 186.8,217.7 C189.1,216.5 191.4,215.4 193.6,214.2 C195.9,213.0 198.2,211.8 200.5,210.5 C202.8,209.3 205.0,208.0 207.3,206.7 C209.6,205.4 211.9,204.1 214.2,202.7 C216.4,201.4 218.7,199.4 221.0,198.6 C223.3,197.8 225.6,198.3 227.8,198.0 C230.1,197.8 232.4,197.6 234.7,197.3 C237.0,197.1 239.2,196.8 241.5,196.5 C243.8,196.1 246.1,195.8 248.4,195.4 C250.6,195.0 252.9,194.6 255.2,194.2 C257.5,193.8 259.8,193.3 262.0,192.8 C264.3,192.3 266.6,191.8 268.9,191.3 C271.2,190.7 273.4,190.1 275.7,189.5 C278.0,188.9 280.3,188.3 282.6,187.7 C284.8,187.0 287.1,186.3 289.4,185.6 C291.7,184.9 294.0,184.2 296.2,183.4 C298.5,182.6 300.8,181.8 303.1,181.0 C305.4,180.2 307.6,179.3 309.9,178.4 C312.2,177.6 314.5,176.7 316.8,175.7 C319.0,174.8 321.3,173.8 323.6,172.8 C325.9,171.8 328.2,170.8 330.4,169.8 C332.7,168.7 335.0,167.7 337.3,166.6 C339.6,165.4 341.8,164.3 344.1,163.2 C346.4,162.0 348.7,160.8 351.0,159.6 C353.2,158.4 355.5,157.1 357.8,155.9 C360.1,154.6 362.4,153.3 364.6,152.0 C366.9,150.6 369.2,149.0 371.5,147.9 C373.8,146.8 376.0,146.1 378.3,145.6 C380.6,145.1 382.9,145.2 385.2,144.9 C387.4,144.7 390.9,144.3 392.0,144.1 L392.0,252 L50,252 Z" fill="url(#gGreen)"/>
+          <path class="draw" d="M50.0,252.0 C51.1,252.0 54.6,251.9 56.8,251.9 C59.1,251.8 61.4,251.7 63.7,251.6 C66.0,251.5 68.2,251.3 70.5,251.1 C72.8,250.9 75.1,250.7 77.4,250.5 C79.6,250.3 81.9,250.0 84.2,249.7 C86.5,249.4 88.8,249.1 91.0,248.7 C93.3,248.4 95.6,248.0 97.9,247.6 C100.2,247.2 102.4,246.8 104.7,246.3 C107.0,245.8 109.3,245.4 111.6,244.8 C113.8,244.3 116.1,243.8 118.4,243.2 C120.7,242.6 123.0,242.0 125.2,241.4 C127.5,240.8 129.8,240.1 132.1,239.4 C134.4,238.7 136.6,238.0 138.9,237.3 C141.2,236.6 143.5,235.8 145.8,235.0 C148.0,234.2 150.3,233.4 152.6,232.5 C154.9,231.7 157.2,230.8 159.4,229.9 C161.7,229.0 164.0,228.0 166.3,227.1 C168.6,226.1 170.8,225.1 173.1,224.1 C175.4,223.1 177.7,222.0 180.0,221.0 C182.2,219.9 184.5,218.8 186.8,217.7 C189.1,216.5 191.4,215.4 193.6,214.2 C195.9,213.0 198.2,211.8 200.5,210.5 C202.8,209.3 205.0,208.0 207.3,206.7 C209.6,205.4 211.9,204.1 214.2,202.7 C216.4,201.4 218.7,200.0 221.0,198.6 C223.3,197.2 225.6,195.7 227.8,194.3 C230.1,192.8 232.4,191.3 234.7,189.8 C237.0,188.3 239.2,186.7 241.5,185.1 C243.8,183.6 246.1,182.0 248.4,180.3 C250.6,178.7 252.9,177.0 255.2,175.3 C257.5,173.7 259.8,171.9 262.0,170.2 C264.3,168.4 266.6,166.7 268.9,164.9 C271.2,163.1 273.4,161.2 275.7,159.4 C278.0,157.5 280.3,155.6 282.6,153.7 C284.8,151.8 287.1,149.9 289.4,147.9 C291.7,145.9 294.0,143.9 296.2,141.9 C298.5,139.9 300.8,137.8 303.1,135.8 C305.4,133.7 307.6,131.6 309.9,129.4 C312.2,127.3 314.5,125.1 316.8,122.9 C319.0,120.8 321.3,118.5 323.6,116.3 C325.9,114.0 328.2,111.8 330.4,109.5 C332.7,107.2 335.0,104.8 337.3,102.5 C339.6,100.1 341.8,97.7 344.1,95.3 C346.4,92.9 348.7,90.4 351.0,88.0 C353.2,85.5 355.5,83.0 357.8,80.5 C360.1,77.9 362.4,75.4 364.6,72.8 C366.9,70.2 369.2,67.6 371.5,65.0 C373.8,62.3 376.0,59.7 378.3,57.0 C380.6,54.3 382.9,51.6 385.2,48.8 C387.4,46.1 390.9,41.9 392.0,40.5" fill="none" stroke="#EA4335" stroke-width="2.5" stroke-linecap="round"/>
+          <path class="draw" d="M50.0,252.0 C51.1,252.0 54.6,251.9 56.8,251.9 C59.1,251.8 61.4,251.7 63.7,251.6 C66.0,251.5 68.2,251.3 70.5,251.1 C72.8,250.9 75.1,250.7 77.4,250.5 C79.6,250.3 81.9,250.0 84.2,249.7 C86.5,249.4 88.8,249.1 91.0,248.7 C93.3,248.4 95.6,248.0 97.9,247.6 C100.2,247.2 102.4,246.8 104.7,246.3 C107.0,245.8 109.3,245.4 111.6,244.8 C113.8,244.3 116.1,243.8 118.4,243.2 C120.7,242.6 123.0,242.0 125.2,241.4 C127.5,240.8 129.8,240.1 132.1,239.4 C134.4,238.7 136.6,238.0 138.9,237.3 C141.2,236.6 143.5,235.8 145.8,235.0 C148.0,234.2 150.3,233.4 152.6,232.5 C154.9,231.7 157.2,230.8 159.4,229.9 C161.7,229.0 164.0,228.0 166.3,227.1 C168.6,226.1 170.8,225.1 173.1,224.1 C175.4,223.1 177.7,222.0 180.0,221.0 C182.2,219.9 184.5,218.8 186.8,217.7 C189.1,216.5 191.4,215.4 193.6,214.2 C195.9,213.0 198.2,211.8 200.5,210.5 C202.8,209.3 205.0,208.0 207.3,206.7 C209.6,205.4 211.9,204.1 214.2,202.7 C216.4,201.4 218.7,199.4 221.0,198.6 C223.3,197.8 225.6,198.3 227.8,198.0 C230.1,197.8 232.4,197.6 234.7,197.3 C237.0,197.1 239.2,196.8 241.5,196.5 C243.8,196.1 246.1,195.8 248.4,195.4 C250.6,195.0 252.9,194.6 255.2,194.2 C257.5,193.8 259.8,193.3 262.0,192.8 C264.3,192.3 266.6,191.8 268.9,191.3 C271.2,190.7 273.4,190.1 275.7,189.5 C278.0,188.9 280.3,188.3 282.6,187.7 C284.8,187.0 287.1,186.3 289.4,185.6 C291.7,184.9 294.0,184.2 296.2,183.4 C298.5,182.6 300.8,181.8 303.1,181.0 C305.4,180.2 307.6,179.3 309.9,178.4 C312.2,177.6 314.5,176.7 316.8,175.7 C319.0,174.8 321.3,173.8 323.6,172.8 C325.9,171.8 328.2,170.8 330.4,169.8 C332.7,168.7 335.0,167.7 337.3,166.6 C339.6,165.4 341.8,164.3 344.1,163.2 C346.4,162.0 348.7,160.8 351.0,159.6 C353.2,158.4 355.5,157.1 357.8,155.9 C360.1,154.6 362.4,153.3 364.6,152.0 C366.9,150.6 369.2,149.0 371.5,147.9 C373.8,146.8 376.0,146.1 378.3,145.6 C380.6,145.1 382.9,145.2 385.2,144.9 C387.4,144.7 390.9,144.3 392.0,144.1" fill="none" stroke="#34A853" stroke-width="2.5" stroke-linecap="round"/>
+          <g class="area"><line x1="224.4" y1="198.3" x2="224.4" y2="252" stroke="#34A853" stroke-opacity=".4" stroke-dasharray="2 4"/><line x1="378.3" y1="145.6" x2="378.3" y2="252" stroke="#34A853" stroke-opacity=".4" stroke-dasharray="2 4"/><circle cx="224.4" cy="198.3" r="4.5" fill="#fff" stroke="#34A853" stroke-width="2.5"/><text x="214.4" y="186.3" text-anchor="end" font-size="13" style="fill:#5f6368">1.ª compactación</text>
+            <circle cx="392.0" cy="40.5" r="5" fill="#EA4335" stroke="#fff" stroke-width="2"/><circle cx="392.0" cy="144.1" r="5" fill="#34A853" stroke="#fff" stroke-width="2"/>
+            <text x="404.0" y="42.5" font-size="19" font-weight="700" style="fill:#202124">10,1M</text><text x="404.0" y="59.5" font-size="12.5" style="fill:#5f6368">sin compactar</text>
+            <text x="404.0" y="146.1" font-size="19" font-weight="700" style="fill:#202124">5,2M</text><text x="404.0" y="163.1" font-size="12.5" style="fill:#5f6368">compactando</text>
+            <text x="344.1" y="134.2" text-anchor="middle" font-size="14" font-weight="700" style="fill:#b3261e">−49 %</text></g>
+          <g id="ctxHover" style="opacity:0;transition:opacity .15s;pointer-events:none"><line y1="24" y2="252" stroke="#9aa0a6" stroke-dasharray="3 3"/><circle r="4.5" fill="#EA4335" stroke="#fff" stroke-width="2"/><circle r="4.5" fill="#34A853" stroke="#fff" stroke-width="2"/>
+            <g><rect x="0" y="0" width="160" height="66" rx="10" fill="#fff" stroke="#e3e5e8"/><text x="12" y="21" font-size="12.5" style="fill:#5f6368"></text><text x="12" y="40" font-size="13.5" style="fill:#202124"></text><text x="12" y="57" font-size="13.5" style="fill:#202124"></text></g></g>
+          <rect x="50" y="24" width="342" height="228" fill="transparent" id="ctxHit"/>
+        </svg>
+        <script>(()=>{const A=[0, 2, 6, 12, 20, 30, 42, 56, 72, 90, 110, 132, 156, 182, 210, 240, 272, 306, 342, 380, 420, 462, 506, 552, 600, 650, 702, 756, 812, 870, 930, 992, 1056, 1122, 1190, 1260, 1332, 1406, 1482, 1560, 1640, 1722, 1806, 1892, 1980, 2070, 2162, 2256, 2352, 2450, 2550, 2652, 2756, 2862, 2970, 3080, 3192, 3306, 3422, 3540, 3660, 3782, 3906, 4032, 4160, 4290, 4422, 4556, 4692, 4830, 4970, 5112, 5256, 5402, 5550, 5700, 5852, 6006, 6162, 6320, 6480, 6642, 6806, 6972, 7140, 7310, 7482, 7656, 7832, 8010, 8190, 8372, 8556, 8742, 8930, 9120, 9312, 9506, 9702, 9900, 10100],B=[0, 2, 6, 12, 20, 30, 42, 56, 72, 90, 110, 132, 156, 182, 210, 240, 272, 306, 342, 380, 420, 462, 506, 552, 600, 650, 702, 756, 812, 870, 930, 992, 1056, 1122, 1190, 1260, 1332, 1406, 1482, 1560, 1640, 1722, 1806, 1892, 1980, 2070, 2162, 2256, 2352, 2450, 2550, 2562, 2576, 2592, 2610, 2630, 2652, 2676, 2702, 2730, 2760, 2792, 2826, 2862, 2900, 2940, 2982, 3026, 3072, 3120, 3170, 3222, 3276, 3332, 3390, 3450, 3512, 3576, 3642, 3710, 3780, 3852, 3926, 4002, 4080, 4160, 4242, 4326, 4412, 4500, 4590, 4682, 4776, 4872, 4970, 5070, 5082, 5096, 5112, 5130, 5150];const s=document.getElementById('ctxChart'),h=document.getElementById('ctxHover'),hit=document.getElementById('ctxHit'),[ln,ca,cb,box]=h.children,[,t1,t2,t3]=box.children;
+const X=n=>50+342*n/100,Y=v=>252-222*v*1e3/10600000,f=v=>v>=1e3?(v/1e3).toFixed(2).replace('.',',')+'M':v+'K';
+hit.addEventListener('mousemove',e=>{const p=s.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(s.getScreenCTM().inverse());const n=Math.max(1,Math.min(100,Math.round((q.x-50)/342*100)));const x=X(n);
+ln.setAttribute('x1',x);ln.setAttribute('x2',x);ca.setAttribute('cx',x);ca.setAttribute('cy',Y(A[n]));cb.setAttribute('cx',x);cb.setAttribute('cy',Y(B[n]));
+t1.textContent='Mensaje '+n;t2.innerHTML='<tspan style="fill:#EA4335">●</tspan> Sin compactar  '+f(A[n]);t3.innerHTML='<tspan style="fill:#34A853">●</tspan> Compactando  '+f(B[n]);
+box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacity=1});hit.addEventListener('mouseleave',()=>h.style.opacity=0)})()</script>
+        <p class="note">Supuestos: cada mensaje añade 2.000 tokens y, al superar los 100K, la conversación se compacta en un resumen de 10K. Pasa el ratón por la gráfica para ver cada mensaje.</p>
+      </div>
+      <div class="card rv bars" id="mrcrBars">
+        <h3>1M de tokens, sobre el papel</h3>
+        <p>Los modelos anuncian 1M de tokens, pero recordar bien algo que quedó tan atrás es otra historia. La prueba MRCR v2 (8 agujas) esconde 8 datos parecidos en un texto enorme y pide uno concreto.</p>
+        <p class="note">Gemini 3.1 Pro, cifras publicadas por Google DeepMind. Ventana anunciada: 1M de tokens.</p>
+      </div>
+    </div>
+    <div class="card rv mt">
+      <h3>¿Qué ocupa tu ventana antes de que escribas nada?</h3>
+      <p>Systima midió con un proxy la primera petición de Claude Code (julio 2026): de una ventana de 200K, <b>32.800 tokens</b> se van solo en instrucciones y herramientas. OpenCode, en la misma prueba, usó 6.900.</p>
+      <div class="ctxbar">
+        <div data-w="3.3%" style="background:#EA4335" title="Prompt de sistema, 6.500"></div>
+        <div data-w="12%" style="background:#FBBC05" title="27 herramientas, 24.000"></div>
+        <div data-w="1.1%" style="background:#4285F4" title="Resto, 2.300"></div>
+        <div data-w="83.6%" style="background:#f1f3f4;color:#747775">Libre para tu tarea: 167.200</div>
+      </div>
+      <div class="legend" style="display:flex;gap:22px;flex-wrap:wrap;margin-top:10px"><div><i style="background:#EA4335"></i>Prompt de sistema 6.500</div><div><i style="background:#FBBC05"></i>27 herramientas 24.000</div><div><i style="background:#4285F4"></i>Resto 2.300</div></div>
+      <p class="note">Después, lo que más llena el contexto son las salidas de herramientas (logs, archivos leídos); por eso los buenos harnesses las recortan. Para no recalcular todo en cada token, el modelo guarda lo ya procesado en la <b>caché KV</b>, que también ocupa VRAM: a más contexto, más memoria.</p>
+    </div>
+    <div class="grid g3 mt">
+      <div class="card rv"><div class="ph"><img src="assets/ctx_compact.jpg" alt="Cajón de archivo con fichas comprimidas" loading="lazy"></div><h3 class="mt2">Autocompactación</h3><p>Cuando la ventana se llena, el harness resume la conversación y empieza de nuevo con ese resumen. Ahorra muchísimo, pero <b>cada resumen pierde matices</b>: tras varias compactaciones el agente "descarrila", olvida decisiones o repite errores.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/ctx_cope.jpg" alt="Lista de tareas en una libreta" loading="lazy"></div><h3 class="mt2">Cómo sobrellevarla</h3><p>Sesiones cortas y con un objetivo. Guarda decisiones en archivos (plan.md, specs). Usa subagentes para tareas que ensucian el contexto. Compacta tú a mano al terminar una tarea, indicando qué debe conservar.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/ctx_rope.jpg" alt="Relojes con las agujas en distintas posiciones" loading="lazy"></div><h3 class="mt2">De RoPE a hoy</h3><p><b>RoPE</b> codificaba la posición rotando vectores; la ventana se ampliaba con trucos (NTK, <b>YaRN</b>). Hoy dominan la <b>atención híbrida</b> (capas locales + globales), atención dispersa (DeepSeek Sparse Attention), capas lineales tipo Mamba/Gated DeltaNet y cachés KV comprimidas (MLA).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 BENCHMARKS -->
+<section id="benchmarks">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--red)"></i>06 · ¿Cuál es mejor?</div>
+      <h2>Cómo <span style="color:var(--red)">comparar</span> modelos</h2>
+      <p class="lead">No te fíes de la nota que publica la propia empresa. Usa evaluadores independientes, y el adecuado para cada tipo de modelo.</p>
+    </div>
+    <div class="grid g2 mt">
+      <div class="card rv bars" id="aaBars">
+        <h3>Artificial Analysis · Intelligence Index</h3>
+        <p>Combina una decena de evaluaciones exigentes (razonamiento, ciencia, código, agentes) y, desde la v5, da más peso a las pruebas privadas. Se muestra la mejor configuración de cada modelo, con datos consultados el 3 de noviembre de 2026. Verde = open weights.</p>
+      </div>
+      <div class="card rv">
+        <h3>¿Dónde miro cada cosa?</h3>
+        <table class="mt2">
+          <tr><th>Tipo</th><th>Referencia</th></tr>
+          <tr><td>LLMs (calidad, precio, velocidad)</td><td><a href="https://artificialanalysis.ai">Artificial Analysis</a></td></tr>
+          <tr><td>Preferencia humana</td><td><a href="https://lmarena.ai">LMArena</a></td></tr>
+          <tr><td>Agentes de código</td><td>SWE-bench, Terminal-Bench</td></tr>
+          <tr><td>Imagen / vídeo / voz</td><td>Arenas de Artificial Analysis</td></tr>
+          <tr><td>Transcripción</td><td>Open ASR Leaderboard (HF)</td></tr>
+          <tr><td>Embeddings</td><td>MTEB</td></tr>
+          <tr><td>Contexto largo</td><td>Fiction.LiveBench, MRCR</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card rv mt">
+      <h3>Inteligencia frente a coste por tarea</h3>
+      <p>Lo que buscas está <b>arriba a la izquierda</b>: modelos listos y baratos. El eje horizontal es lo que cuesta resolver cada tarea del índice (escala logarítmica), no el precio por token: un modelo que piensa mucho sale más caro aunque cada token cueste poco.</p>
+      <svg viewBox="0 0 900 420" class="scatter mt2">
+        <rect x="82" y="22" width="337" height="120" rx="18" fill="#E6F4EA" opacity=".7"/><text x="98" y="48" fill="#137333" font-size="14" font-weight="600">Zona ideal</text>
+        <g stroke="#eceff1"><line x1="80" y1="80" x2="880" y2="80"/><line x1="80" y1="180" x2="880" y2="180"/><line x1="80" y1="280" x2="880" y2="280"/></g>
+        <line x1="80" y1="370" x2="880" y2="370" stroke="#bdc1c6" stroke-width="2"/><line x1="80" y1="20" x2="80" y2="370" stroke="#bdc1c6" stroke-width="2"/>
+        <g fill="#747775" font-size="13" text-anchor="middle"><text x="80" y="395">0,1 $</text><text x="419" y="395">1 $</text><text x="758" y="395">10 $</text><text x="480" y="416">Coste por tarea (USD)</text></g>
+        <g fill="#747775" font-size="12" text-anchor="end"><text x="72" y="61">60</text><text x="72" y="185">40</text><text x="72" y="308">20</text></g>
+        <text x="30" y="200" fill="#747775" font-size="13" text-anchor="middle" transform="rotate(-90 30 200)">Intelligence Index</text>
+        <g font-size="13" font-weight="600"><g class="pt" style="transition-delay:0.0s"><circle cx="721" cy="61" r="13" fill="#FBBC05"/><text x="703" y="66" fill="#8a5a00" text-anchor="end">Gemini 4 Carbon · 60</text></g><g class="pt" style="transition-delay:0.1s"><circle cx="759" cy="67" r="13" fill="#EA4335"/><text x="759" y="47" fill="#b3261e" text-anchor="middle">Claude Opus 5.5 · 59</text></g><g class="pt" style="transition-delay:0.2s"><circle cx="689" cy="79" r="13" fill="#4285F4"/><text x="671" y="97" fill="#1a5fd0" text-anchor="end">GPT-6 Astra · 57</text></g><g class="pt" style="transition-delay:0.3s"><circle cx="454" cy="92" r="13" fill="#4285F4"/><text x="454" y="70" fill="#1a5fd0" text-anchor="middle">GPT-6.1 Sol · 55</text></g><g class="pt" style="transition-delay:0.4s"><circle cx="758" cy="92" r="13" fill="#EA4335"/><text x="758" y="122" fill="#b3261e" text-anchor="middle">Claude Sonnet 5.5 · 55</text></g><g class="pt" style="transition-delay:0.5s"><circle cx="344" cy="228" r="13" fill="#34A853"/><text x="344" y="206" fill="#137333" text-anchor="middle">DeepSeek V4.1 Flash · 33</text></g><g class="pt" style="transition-delay:0.6s"><circle cx="656" cy="234" r="13" fill="#34A853"/><text x="674" y="239" fill="#137333" text-anchor="start">GLM-5.3 · 32</text></g><g class="pt" style="transition-delay:0.7s"><circle cx="221" cy="246" r="13" fill="#34A853"/><text x="221" y="224" fill="#137333" text-anchor="middle">MiMo-V2.6-Pro · 30</text></g><g class="pt" style="transition-delay:0.8s"><circle cx="314" cy="253" r="13" fill="#34A853"/><text x="330" y="279" fill="#137333" text-anchor="start">MiniMax-M3.1-Flash · 29</text></g><g class="pt" style="transition-delay:0.9s"><circle cx="605" cy="308" r="13" fill="#34A853"/><text x="623" y="313" fill="#137333" text-anchor="start">Qwen3.8 27B · 20</text></g></g>
+      </svg>
+      <p class="note">Datos: Artificial Analysis, Intelligence Index v5 y coste por tarea, consultado el 3 de noviembre de 2026. Verde = open weights.</p>
+    </div>
+    <div class="callout cr rv mt"><div><h4>Tres factores</h4><p>Para elegir modelo, fíjate en tres cosas: inteligencia, coste por tarea y velocidad.</p></div></div>
+  </div>
+</section>
+
+<!-- BAJO EL CAPÓ -->
+<section id="capo">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--green)"></i>Extra · Nivel avanzado · opcional</div>
+      <h2>Bajo el <span style="color:var(--green)">capó</span></h2>
+      <p class="lead">Para quien quiera saber qué pasa de verdad cuando el modelo "piensa": cómo se sirve cada respuesta, cómo decide en qué fijarse y cómo se fabrica un LLM desde cero. No hace falta para usar la IA, pero ayuda a entender por qué cuesta lo que cuesta y por qué va como va.</p>
+    </div>
+    <div class="callout cy rv mt"><div><h4>Aviso honesto</h4><p>Esto es de lo más complejo del campo: detrás de cada párrafo hay papers de 50 páginas llenos de matemáticas. Aquí solo va la intuición. Si algo te pica la curiosidad, pásale el paper a tu IA y pídele que te lo explique paso a paso.</p></div></div>
+
+    <!-- inferencia -->
+    <div class="card rv mt">
+      <h3>Prefill y decode: las dos fases de cada respuesta</h3>
+      <p>Cuando pulsas Enter, el modelo primero <b>lee tu prompt entero de golpe</b> (prefill) y después <b>escribe la respuesta token a token</b> (decode). Son dos trabajos muy distintos para el hardware.</p>
+      <div class="pfd">
+        <div class="q">Cola y red<small>esperar turno</small></div>
+        <div class="pre">Prefill<small>todo tu prompt, en paralelo</small></div>
+        <div class="dec"><span style="animation-delay:0s">La</span><span style="animation-delay:.3s">&nbsp;caché</span><span style="animation-delay:.6s">&nbsp;KV</span><span style="animation-delay:.9s">&nbsp;guarda</span><span style="animation-delay:1.2s">&nbsp;lo</span><span style="animation-delay:1.5s">&nbsp;ya</span><span style="animation-delay:1.8s">&nbsp;leído</span><span style="animation-delay:2.1s">…</span></div>
+      </div>
+      <div class="pfd-ax"><span>↑ Primer token: aquí termina el TTFT</span></div>
+      <div class="grid g3 mt2" style="gap:18px">
+        <div class="callout cb" style="padding:22px 24px"><div><h4>TTFT (tiempo hasta el primer token)</h4><p>Cola + prefill. Crece con la longitud del prompt: un agente que envía 100.000 tokens de contexto puede tardar varios segundos en "arrancar". Si esa entrada ya está en la <b>caché de prompt</b>, el prefill casi desaparece (y es hasta un 90% más barato).</p></div></div>
+        <div class="callout cr" style="padding:22px 24px"><div><h4>Prefill: limitado por el cálculo</h4><p>Todos los tokens del prompt se procesan a la vez, como una gran multiplicación de matrices. Aquí manda la potencia bruta de la GPU. Por eso la entrada es más barata que la salida.</p></div></div>
+        <div class="callout cg" style="padding:22px 24px"><div><h4>Decode: limitado por la memoria</h4><p>Para cada token nuevo hay que leer otra vez los pesos activos y toda la caché KV. Manda la velocidad de la memoria, no el cálculo. Por eso importa tanto la VRAM rápida, y por eso los MoE (pocos pesos activos) generan más rápido.</p></div></div>
+      </div>
+    </div>
+
+    <!-- KV cache -->
+    <div class="grid g2 mt">
+      <div class="card rv">
+        <h3>Caché KV: la memoria que crece con cada token</h3>
+        <p>Para no recalcular el pasado, cada capa guarda una <b>clave (K)</b> y un <b>valor (V)</b> por cada token ya leído. Cuanto más largo es el contexto, más ocupa. Arrastra el control:</p>
+        <div class="kvo"><span style="color:var(--ink3);font-size:.9rem">Longitud del contexto</span><b id="kvO">128K tokens</b></div>
+        <input type="range" id="kvR" min="0" max="8" step="1" value="5" aria-label="Longitud del contexto">
+        <div class="bars" id="kvBars"></div>
+        <p class="note">La barra llena son 24 GB, toda la VRAM de una RTX 4090. En rojo: la caché no cabe ni sin contar los pesos. Modelo ilustrativo de 61 capas: atención clásica con 8 cabezas KV de 128 dimensiones en BF16 (~250 KB por token), MLA de DeepSeek V3 (~70 KB) y DeepSeek V4, que usa ~2% de la clásica según su informe técnico. Son órdenes de magnitud, no las cifras exactas de un modelo concreto.</p>
+      </div>
+      <div class="card rv">
+        <h3>Por qué todo el mundo quiere encogerla</h3>
+        <div class="formula">caché KV = 2 <em>(K y V)</em> × capas × cabezas KV × dimensión × bytes × <em>tokens</em></div>
+        <p>Cada factor es un sitio por donde recortar, y casi toda la investigación en atención de 2024–2026 ataca alguno:</p>
+        <ul style="margin:14px 0 0 20px;color:var(--ink2)">
+          <li style="margin:8px 0"><b>Menos cabezas KV</b>: GQA y MQA hacen que varias cabezas compartan la misma K y V.</li>
+          <li style="margin:8px 0"><b>Menos dimensiones</b>: MLA comprime K y V en un vector latente pequeño.</li>
+          <li style="margin:8px 0"><b>Menos bytes</b>: guardar la caché en FP8 en lugar de BF16 la reduce a la mitad.</li>
+          <li style="margin:8px 0"><b>Menos tokens</b>: resumir los tokens antiguos o mirar solo los relevantes (atención dispersa y comprimida).</li>
+        </ul>
+        <p class="mt2">Importa por tres motivos: decide <b>cuánto contexto te cabe</b> en tu GPU, <b>a cuántos usuarios a la vez</b> puede atender un servidor (y por tanto el precio), y <b>lo lento que va el decode</b> cuando la conversación es larga.</p>
+      </div>
+    </div>
+
+    <!-- atención -->
+    <div class="rv" style="margin-top:100px">
+      <div class="eyebrow"><i style="background:var(--blue)"></i>Mecanismos de atención · 2017 → 2026</div>
+      <h3 style="font-size:2.2rem">En qué se fija el modelo, y cuánto le cuesta</h3>
+      <p class="lead">La atención decide, para cada token nuevo, qué tokens anteriores son relevantes. En su versión original cada token mira a <b>todos</b> los anteriores: el coste crece con el cuadrado del contexto. DeepSeek es quien más ha publicado sobre cómo evitarlo. Cada cuadrícula es una matriz de atención: filas = tokens que se generan, columnas = tokens anteriores, color = "se mira".</p>
+    </div>
+    <div class="grid g4 mt">
+      <div class="card rv attn"><span class="yr">2017 · Transformer</span><h4 class="mt2">Atención completa</h4><svg viewBox="0 0 170 170" id="at1"></svg><p>Cada token mira a todos los anteriores. Máxima calidad, pero a 1M tokens la matriz tiene un billón de celdas y la caché KV es enorme.</p></div>
+      <div class="card rv attn"><span class="yr">2024 · DeepSeek-V2</span><h4 class="mt2">MLA: comprimir la caché</h4><svg viewBox="0 0 170 170" id="at2"></svg><p><b>Multi-head Latent Attention</b>: sigue mirándolo todo, pero guarda K y V comprimidos en un vector latente pequeño. La caché se reduce varias veces sin perder calidad apreciable.</p></div>
+      <div class="card rv attn"><span class="yr">2025 · NSA y V3.2</span><h4 class="mt2">Atención dispersa (DSA)</h4><svg viewBox="0 0 170 170" id="at3"></svg><p>Un <b>lightning indexer</b> muy barato puntúa todos los tokens anteriores y cada consulta solo atiende a los más relevantes (2.048 en V3.2) más los más recientes. El coste deja de ser cuadrático.</p></div>
+      <div class="card rv attn"><span class="yr">2026 · DeepSeek-V4</span><h4 class="mt2">Híbrida comprimida</h4><svg viewBox="0 0 170 170" id="at4"></svg><p><b>CSA</b> resume cada pocos tokens en uno y elige los mejores bloques; <b>HCA</b> resume muchísimo más y los mira todos; una <b>ventana deslizante</b> conserva intactos los últimos tokens. A 1M tokens, V4-Pro usa ~27% del cálculo y ~10% de la caché de V3.2.</p></div>
+    </div>
+    <p class="note rv">Otros laboratorios van por caminos parecidos: Qwen y Kimi intercalan capas de atención lineal (Gated DeltaNet, Kimi Delta Attention) con capas de atención completa, y Gemma o gpt-oss alternan capas de ventana deslizante y capas globales. Fuentes: informes técnicos de DeepSeek-V2, NSA, DeepSeek-V3.2 y <a href="https://arxiv.org/abs/2606.19348" target="_blank">DeepSeek-V4</a>.</p>
+
+    <!-- arquitectura -->
+    <div class="grid g2 mt" style="align-items:center;margin-top:100px">
+      <div class="card rv" style="padding:24px">
+        <svg viewBox="0 0 520 440" class="chart-svg" role="img" aria-label="Esquema de la arquitectura de DeepSeek V4">
+          <g stroke="#A142F4" stroke-width="3" opacity=".5" fill="none"><path d="M52,400 V40"/><path d="M68,400 V40"/><path d="M84,400 V40"/><path d="M100,400 V40"/></g>
+          <g stroke="#A142F4" stroke-width="2" opacity=".55" fill="none"><path d="M52,300 L100,276 M100,300 L52,276"/><path d="M68,206 L84,184 M84,206 L68,184"/><path d="M52,140 L84,120"/></g>
+          <g class="flow" stroke="#A142F4" stroke-width="2" fill="none"><path d="M100,290 H150"/><path d="M100,190 H150"/></g>
+          <text x="76" y="428" text-anchor="middle" font-size="12.5" font-weight="600" fill="#7b1fa2">mHC · 4 carriles</text>
+          <rect x="150" y="372" width="340" height="44" rx="14" fill="#f1f3f4"/><text x="320" y="399" text-anchor="middle" font-size="14" font-weight="600" fill="#444746">Tokens → embeddings</text>
+          <rect x="138" y="104" width="364" height="252" rx="24" fill="none" stroke="#c4c7c5" stroke-dasharray="6 6"/>
+          <text x="490" y="124" text-anchor="end" font-size="12.5" fill="#747775">× decenas de bloques</text>
+          <rect x="155" y="252" width="330" height="88" rx="18" fill="#E8F0FE"/><text x="320" y="286" text-anchor="middle" font-size="15" font-weight="700" fill="#1a5fd0">Atención híbrida</text><text x="320" y="310" text-anchor="middle" font-size="12.5" fill="#1a5fd0">CSA + HCA + ventana deslizante</text>
+          <rect x="155" y="134" width="330" height="104" rx="18" fill="#FCE8E6"/><text x="320" y="160" text-anchor="middle" font-size="15" font-weight="700" fill="#b3261e">MoE · router + expertos</text>
+          <g id="v4ex"></g>
+          <rect x="150" y="34" width="340" height="52" rx="14" fill="#E6F4EA"/><text x="320" y="57" text-anchor="middle" font-size="14" font-weight="700" fill="#137333">Cabeza de salida + MTP</text><text x="320" y="76" text-anchor="middle" font-size="12" fill="#137333">siguiente token (y uno más por adelantado)</text>
+          <g stroke="#9aa0a6" stroke-width="2"><path d="M320,372 V340"/><path d="M320,252 V238"/><path d="M320,134 V86"/></g>
+        </svg>
+      </div>
+      <div class="rv">
+        <div class="eyebrow"><i style="background:var(--red)"></i>Anatomía de un modelo puntero</div>
+        <h3 style="font-size:2rem">DeepSeek V4, en cinco piezas</h3>
+        <p style="color:var(--ink2);margin-top:10px">Sigue siendo un Transformer: tokens que entran, decenas de bloques apilados y una predicción que sale. Lo nuevo está en los detalles, publicados en su <a href="https://arxiv.org/abs/2606.19348" target="_blank">informe técnico</a>:</p>
+        <ul style="margin:16px 0 0 20px;color:var(--ink2)">
+          <li style="margin:9px 0"><b>MoE gigante</b>: V4-Pro tiene 1,6 billones de parámetros, pero solo usa 49.000 millones por token; V4-Flash, 284.000 millones con 13.000 millones activos.</li>
+          <li style="margin:9px 0"><b>Atención híbrida</b>: la de la cuadrícula de arriba, para llegar a 1M de tokens de contexto.</li>
+          <li style="margin:9px 0"><b>mHC</b> (Manifold-Constrained Hyper-Connections): ensancha la "autopista" por la que viaja la información entre capas a varios carriles, con mezclas restringidas para que el entrenamiento no se desestabilice.</li>
+          <li style="margin:9px 0"><b>Muon</b>: un optimizador más eficiente que el clásico AdamW para casi todos los pesos.</li>
+          <li style="margin:9px 0"><b>MTP y FP4</b>: predice más de un token a la vez (sirve para entrenar mejor y para acelerar la inferencia) y guarda los expertos en 4 bits.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- entrenamiento -->
+    <div class="rv" style="margin-top:110px">
+      <div class="eyebrow"><i style="background:var(--yellow)"></i>De cero a modelo</div>
+      <h3 style="font-size:2.2rem">Cómo se fabrica un LLM</h3>
+      <p class="lead">Cada laboratorio tiene su receta secreta, pero los pasos son casi siempre estos. Los cuatro primeros dan un modelo que "sabe" cosas; los demás lo convierten en un asistente útil.</p>
+    </div>
+    <div class="grid g2 mt" style="align-items:start">
+      <div class="tl rv">
+        <div class="it" style="--c:#4285F4"><b>Paso 1 · Datos</b><h4>Conseguir texto a lo bestia</h4><p>Decenas de billones de tokens: la web entera (Common Crawl), libros, artículos científicos, Wikipedia, código de GitHub, foros. Buena parte se tomó <b>sin pedir permiso ni pagar a sus autores</b>: OpenAI, Anthropic, Meta y compañía entrenaron con casi todo lo que la humanidad ha publicado, incluidos libros pirateados. Anthropic pagó 1.500 millones de dólares en 2025 para cerrar la demanda colectiva de los autores por esas descargas, y siguen abiertas decenas de demandas contra otras empresas.</p></div>
+        <div class="it" style="--c:#EA4335"><b>Paso 2 · Limpieza</b><h4>Tirar casi todo</h4><p>Quitar duplicados, spam, texto basura y datos personales; filtrar por calidad con clasificadores (otro modelo puntúa si una página "es educativa"); equilibrar idiomas y temas. La mayor parte de la web cruda acaba en la papelera.</p></div>
+        <div class="it" style="--c:#FBBC05"><b>Paso 3 · Datos sintéticos</b><h4>Que los modelos escriban para los modelos</h4><p>Modelos anteriores reescriben textos, inventan problemas de matemáticas y código con solución comprobable y generan trazas de razonamiento y de agentes. Se filtran con verificadores (¿pasa los tests?, ¿el resultado es correcto?). A veces se "destila" de modelos de la competencia, algo que sus términos de uso prohíben.</p></div>
+        <div class="it" style="--c:#34A853"><b>Paso 4 · Preentrenamiento</b><h4>Predecir el siguiente token, billones de veces</h4><p>Semanas o meses en miles de GPUs. Se ajustan los pesos de todas las capas (embeddings, decenas de bloques de atención + MoE y la cabeza de salida) para predecir mejor cada siguiente token. DeepSeek V4 se preentrenó con 32–33 billones de tokens. Al final se alarga el contexto y se añaden los datos de más calidad (<i>mid-training</i>).</p></div>
+        <div class="it" style="--c:#4285F4"><b>Paso 5 · SFT</b><h4>Aprender a ser un asistente</h4><p><i>Supervised fine-tuning</i>: cientos de miles de ejemplos de instrucción → respuesta ideal. Aquí aprende el formato de chat, a usar herramientas y a seguir instrucciones.</p></div>
+        <div class="it" style="--c:#EA4335"><b>Paso 6 · Recompensas y RL</b><h4>Premiar lo que sale bien</h4><p>El modelo genera muchas respuestas y se refuerzan las mejores. La nota la pone un <b>modelo de recompensa</b> entrenado con preferencias humanas (RLHF), una regla verificable (¿pasan los tests?, ¿es correcta la cuenta?: RLVR), una rúbrica o un juez que es otro LLM. <b>GRPO</b>, de DeepSeek, compara un grupo de respuestas al mismo problema entre sí y se ahorra un segundo modelo crítico. Los agentes se entrenan así en entornos reales: terminales, navegadores, repositorios.</p></div>
+        <div class="it" style="--c:#FBBC05"><b>Paso 7 · Especialistas y destilación</b><h4>Juntar a los expertos</h4><p>DeepSeek V4 entrena primero un especialista por área (matemáticas, código, agentes, seguir instrucciones), cada uno con su SFT y su RL, y después los funde en un único modelo que aprende de todos ellos (<i>destilación on-policy</i>).</p></div>
+        <div class="it" style="--c:#34A853"><b>Paso 8 · Evaluar y lanzar</b><h4>Benchmarks, seguridad y cuantización</h4><p>Baterías de evaluaciones, <i>red teaming</i> (intentar romperlo a propósito), filtros de seguridad, versiones cuantizadas y, por fin, la API y los pesos.</p></div>
+      </div>
+      <div class="sticky">
+        <div class="card rv">
+          <h3>Las métricas que vigilan</h3>
+          <p>Durante el preentrenamiento, la curva estrella es la <b>pérdida</b> (loss): cuánto se equivoca prediciendo el siguiente token. Baja rápido al principio y luego muy despacio. Los picos son sustos que pueden echar a perder semanas de cálculo.</p>
+          <svg viewBox="0 0 440 210" class="chart-svg mt2" role="img" aria-label="Curva de pérdida de entrenamiento descendente con un pico">
+            <g stroke="#eef0f2"><line x1="40" y1="50" x2="420" y2="50"/><line x1="40" y1="100" x2="420" y2="100"/><line x1="40" y1="150" x2="420" y2="150"/></g>
+            <line x1="40" y1="180" x2="420" y2="180" stroke="#c4c7c5"/>
+            <path class="draw" d="M40,22 C60,95 85,128 120,140 C160,152 200,156 240,158 L250,158 L256,112 L262,159 C300,163 360,166 420,168" fill="none" stroke="#4285F4" stroke-width="3" stroke-linecap="round"/>
+            <g class="area"><circle cx="256" cy="112" r="5" fill="#EA4335"/><text x="266" y="104" font-size="12.5" font-weight="600" fill="#b3261e">pico de pérdida</text></g>
+            <text x="230" y="202" text-anchor="middle" font-size="12.5" fill="#747775">Tokens vistos →</text><text x="14" y="110" text-anchor="middle" font-size="12.5" fill="#747775" transform="rotate(-90 14 110)">Pérdida</text>
+          </svg>
+          <div class="chips">
+            <span><b>Loss / perplejidad</b> · cuánto se equivoca</span>
+            <span><b>Norma del gradiente</b> · avisa de inestabilidad</span>
+            <span><b>MFU</b> · % del cálculo teórico de las GPUs aprovechado</span>
+            <span><b>Tokens/s</b> · velocidad de entrenamiento</span>
+            <span><b>Evals intermedias</b> · benchmarks cada cierto tiempo</span>
+          </div>
+          <p class="mt2">Y en el RL: <b>recompensa media</b> (¿mejora?), <b>longitud de las respuestas</b> (¿piensa más?), <b>entropía</b> (¿sigue explorando?) y la <b>distancia al modelo de partida</b>. Si la recompensa sube demasiado deprisa, suele ser <i>reward hacking</i>: el modelo ha encontrado una trampa para sacar buena nota sin hacer bien la tarea.</p>
+        </div>
+        <div class="callout cr rv mt2"><div><h4>De aquí viene la "pelotería"</h4><p>A los humanos que puntúan respuestas les gusta que les den la razón, y el RLHF lo premia. Por eso todos los modelos tienden a decirte lo que quieres oír. En "Cómo trabajar" vemos cómo defenderte.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Xiaomi en directo -->
+    <div class="live rv mt" style="margin-top:90px">
+      <span class="rec"><i></i>EN DIRECTO</span>
+      <h3>Entrenar a la vista de todos: Xiaomi MiMo-V2.6</h3>
+      <p>El 15 de septiembre de 2026, Xiaomi arrancó el post-entrenamiento por RL de MiMo-V2.6-Pro y Flash y lo emitió en un panel público (<a href="https://mimo.xiaomi.com/rl/" target="_blank">mimo.xiaomi.com/rl</a>): coste en tiempo real, tokens procesados, tiempo por paso, composición de los datos en 23 categorías y la nota en benchmarks a medida que el modelo mejoraba. Por primera vez se veía desde fuera, paso a paso, cómo el RL convierte un modelo en un agente mucho mejor.</p>
+      <div class="stats">
+        <div class="stat"><b>~2.000 M</b><small>tokens por paso de RL (1.568 prompts, 16 intentos en paralelo)</small></div>
+        <div class="stat"><b>~432.000 $</b><small>al día de cálculo, solo la versión Pro</small></div>
+        <div class="stat"><b>19% → 66%</b><small>en DeepSWE v1.1, de MiMo-V2.5 a MiMo-V2.6-Pro</small></div>
+      </div>
+      <p class="note" style="color:#9aa0a6">Cifras recogidas por <a href="https://forkast.news/xiaomi-mimo-v2-6-breaks-cover-a-1t-class-chinese-lab-trains-in-public/" target="_blank">Forkast</a>. Con matices: en Hacker News señalaron que los datos podrían repetirse al recargar la página, y una línea del panel ("Claude Distill Requests: hidden") hizo sospechar de destilación de modelos cerrados. Xiaomi ha prometido publicar los detalles técnicos poco a poco.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section id="glosario">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow"><i style="background:var(--yellow)"></i>Chuleta</div>
+      <h2>Glosario <span style="color:#d39b00">de bolsillo</span></h2>
+      <p class="lead" style="margin:0 auto">Pasa el ratón (o toca) cada tarjeta para darle la vuelta.</p>
+    </div>
+    <div class="grid g4 mt">
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Inferencia</b><small>Usar el modelo</small></div><div class="fb" style="background:#4285F4">Ejecutar un modelo ya entrenado para obtener respuestas. Es lo que ocurre cada vez que le preguntas algo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Fine-tuning y LoRA</b><small>Especializar un modelo</small></div><div class="fb" style="background:#EA4335">Ajustar los pesos de un modelo ya entrenado con miles de ejemplos tuyos (entrada y respuesta ideal) para cambiar su comportamiento: tono, formato, una tarea concreta. LoRA congela el modelo y entrena solo unas matrices pequeñas añadidas, una fracción mínima de los parámetros, así que cabe en una GPU normal (QLoRA hace lo mismo sobre el modelo cuantizado). Sirve para cambiar su comportamiento, no para enseñarle conocimientos nuevos: para eso está RAG.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Abliteración</b><small>Quitar la censura</small></div><div class="fb" style="background:#FBBC05">Consiste en localizar dentro del modelo la "dirección" responsable de que se niegue a responder y anularla en los pesos. Heretic lo hace de forma automática.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>GGUF y Q4_K_M</b><small>Formato de archivo</small></div><div class="fb" style="background:#34A853">Un único archivo con los pesos ya cuantizados, listo para llama.cpp. Q4_K_M significa 4 bits con calidad media-alta: el equilibrio más habitual.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Router (MoE)</b><small>El repartidor</small></div><div class="fb" style="background:#4285F4">Una pequeña red que, para cada token, decide qué expertos del modelo trabajan. Los demás no se activan.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Caché KV</b><small>La memoria de lectura</small></div><div class="fb" style="background:#EA4335">Resultados intermedios de los tokens ya leídos, guardados para no recalcularlos. Crece con el contexto y ocupa VRAM.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>RAG</b><small>Respuestas con tus documentos</small></div><div class="fb" style="background:#FBBC05">Buscar en tus documentos lo relevante para cada pregunta y dárselo al modelo para que responda citando la fuente. Es lo que hay detrás de casi todos los chatbots de empresa.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Prompt de sistema</b><small>Las reglas ocultas</small></div><div class="fb" style="background:#34A853">Instrucciones que van antes de tu mensaje y definen el rol, el tono y los límites del modelo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Alucinación</b><small>Inventar con aplomo</small></div><div class="fb" style="background:#4285F4">Cuando el modelo afirma algo falso con total seguridad. Se reduce dándole fuentes y herramientas para comprobar lo que dice.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Razonamiento</b><small>Pensar antes de hablar</small></div><div class="fb" style="background:#EA4335">Modelos que generan una cadena de pensamiento interna antes de responder. Más precisos, pero gastan más tokens y tiempo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>MCP</b><small>Conectar herramientas</small></div><div class="fb" style="background:#FBBC05">Protocolo abierto para que un agente use servicios externos (GitHub, navegador, bases de datos) a través de servidores MCP.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>TTFT</b><small>Tiempo de espera</small></div><div class="fb" style="background:#34A853">Time To First Token: lo que tarda en aparecer la primera palabra. Clave en voz y chat en tiempo real.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Prefill y decode</b><small>Leer y escribir</small></div><div class="fb" style="background:#4285F4">Prefill: el modelo lee tu prompt entero de golpe (de ahí sale el TTFT). Decode: genera la respuesta token a token (de ahí salen los tok/s).</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Modelo de recompensa</b><small>El que pone la nota</small></div><div class="fb" style="background:#EA4335">Un modelo que puntúa respuestas, entrenado con preferencias humanas o sustituido por reglas comprobables (tests, cuentas). En el RL, el LLM aprende a sacar mejor nota con él.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Sicofancia</b><small>Darte la razón</small></div><div class="fb" style="background:#FBBC05">La tendencia del modelo a decirte lo que quieres oír y a cambiar de opinión en cuanto le llevas la contraria. Viene del entrenamiento con preferencias humanas.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Grounding</b><small>Aterrizar en datos reales</small></div><div class="fb" style="background:#34A853">Anclar cada respuesta en fuentes reales (documentación, código, la web, tus datos) en lugar de en lo que el modelo "cree recordar".</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" style="text-align:center;color:var(--ink3);font-size:.85rem;margin-top:60px">Hecho por Luis Munuera Martínez</div>
+<div class="wrap gnext"><button data-go="g2"><span><small>Siguiente</small>IDEs, harnesses y agentes</span><span class="ar">→</span></button></div>
+</div>
+
+<div class="gpane" id="g2" role="tabpanel">
+<!-- 08 AGENTES -->
+<section id="agentes" class="dark" style="padding-bottom:140px;margin-top:100px">
+  <div class="wrap">
+    <div class="grid g2" style="align-items:center">
+      <div class="rv">
+        <div class="eyebrow"><i style="background:var(--green)"></i>07 · Sin magia</div>
+        <h2>¿Qué es un <span style="color:var(--green)">agente</span>?</h2>
+        <p class="lead">Suena a magia, pero no tiene ningún misterio: un agente es <b>una sesión del modelo con un contexto concreto y unas herramientas</b>, metida en un bucle. Piensa → usa una herramienta → mira el resultado → repite hasta terminar.</p>
+        <div class="mt2">
+          <span class="pill pb">Contexto: rol + objetivo</span><span class="pill pr">Herramientas: bash, web, archivos</span><span class="pill py">Bucle: hasta cumplir</span><span class="pill pg">Límites: permisos y presupuesto</span>
+        </div>
+        <p style="color:var(--ink2);margin-top:20px">Un <b>subagente</b> es lo mismo, lanzado por otro agente con un contexto limpio para una subtarea. Un <b>sistema multiagente</b> es varios de estos coordinados. Y eso es todo.</p>
+      </div>
+      <div class="loop rv">
+        <svg viewBox="0 0 520 520">
+          <circle cx="260" cy="260" r="180" fill="none" stroke="#e8eaed" stroke-width="3"/>
+          <circle cx="260" cy="260" r="180" fill="none" stroke="#4285F4" stroke-width="3" class="flow"/>
+          <g class="spin"><circle cx="260" cy="80" r="9" fill="#4285F4"/></g>
+          <circle cx="260" cy="260" r="72" fill="#E8F0FE"/><text x="260" y="268" text-anchor="middle" font-size="20" font-weight="600" fill="#8ab4f8">Modelo</text>
+          <g font-size="15" font-weight="600" text-anchor="middle">
+            <circle cx="260" cy="80" r="46" fill="#fff" stroke="#4285F4" stroke-width="3"/><text x="260" y="75" text-anchor="middle" font-size="26" font-weight="600" class="lnum">1</text><text x="260" y="100" fill="#1a5fd0" font-size="13">Pensar</text>
+            <circle cx="440" cy="260" r="46" fill="#fff" stroke="#EA4335" stroke-width="3"/><text x="440" y="255" text-anchor="middle" font-size="26" font-weight="600" class="lnum">2</text><text x="440" y="280" fill="#b3261e" font-size="13">Actuar</text>
+            <circle cx="260" cy="440" r="46" fill="#fff" stroke="#FBBC05" stroke-width="3"/><text x="260" y="435" text-anchor="middle" font-size="26" font-weight="600" class="lnum">3</text><text x="260" y="460" fill="#8a5a00" font-size="13">Observar</text>
+            <circle cx="80" cy="260" r="46" fill="#fff" stroke="#34A853" stroke-width="3"/><text x="80" y="255" text-anchor="middle" font-size="26" font-weight="600" class="lnum">4</text><text x="80" y="280" fill="#137333" font-size="13">¿Listo?</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 HARNESS -->
+<section id="harness">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--yellow)"></i>08 · El cuerpo del agente</div>
+      <h2>¿Qué es un <span style="color:#d39b00">harness</span>?</h2>
+      <p class="lead">El modelo es el cerebro; el <b>harness</b> es el cuerpo: el programa que le da herramientas (leer archivos, ejecutar comandos, buscar en la web) y gestiona el contexto, los permisos y el bucle de trabajo. El mismo modelo rinde de forma muy distinta según el harness.</p>
+    </div>
+    <div class="grid g2 mt">
+      <div class="card rv">
+        <h3>Overhead: el "peaje" invisible</h3>
+        <p>Antes de tu primera palabra, el harness ya ha metido en el contexto su prompt de sistema, la descripción de todas sus herramientas, skills, plugins y memoria. Eso es el <b>overhead</b>: tokens que pagas en <i>cada</i> turno. Así se reparte en la primera petición de Claude Code, según la medición de Systima (julio 2026):</p>
+        <div class="donut mt2">
+          <svg viewBox="0 0 200 200" id="ovDonut"></svg>
+          <div class="legend"><div><i style="background:#FBBC05"></i>27 herramientas: 24.000 tokens</div><div><i style="background:#EA4335"></i>Prompt de sistema: 6.500</div><div><i style="background:#4285F4"></i>Resto: 2.300</div><div style="font-weight:600;color:var(--ink)">Total 32.800. OpenCode: 6.900 (4,7× menos)</div></div>
+        </div>
+      </div>
+      <div class="card rv">
+        <h3>Cache hit rate: el truco del ahorro</h3>
+        <p>Si el principio del contexto es idéntico al del turno anterior, el proveedor ya lo tiene procesado en <b>caché</b> y te cobra hasta un 90% menos. El <b>cache hit rate</b> es el porcentaje de tokens de entrada que se sirven desde la caché. Un harness que nunca reordena ni modifica el principio de su contexto acierta mucho más. Un ejemplo real, Codex en FrontierHarness:</p>
+        <div class="donut mt2">
+          <svg viewBox="0 0 200 200" id="chDonut"></svg>
+          <div class="legend"><div><i style="background:#34A853"></i>88% de tokens en caché</div><div><i style="background:#dadce0"></i>12% nuevos, a precio completo</div><div style="font-weight:600;color:var(--ink)">Si la caché cuesta un 10% del precio normal, la factura de entrada baja un 79%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv mt" style="margin-top:80px">
+      <h3 style="font-size:2rem">Benchmarks de harnesses: mismo modelo, distinto cuerpo</h3>
+      <p class="lead"><a href="https://frontierharness.org/" target="_blank">FrontierHarness</a> ejecuta cada harness con el <b>mismo modelo (Kimi K3)</b> y las mismas tareas, así que las diferencias se deben solo al harness. De DeepSeek Harness se muestra su perfil Standard.</p>
+    </div>
+    <div class="grid g2 mt">
+      <div class="card rv bars" id="costBars"><h3>Coste mediano por tarea</h3><p>Lo que cuesta cada intento, salga bien o mal.</p></div>
+      <div class="card rv bars" id="passBars"><h3>Tareas resueltas</h3><p>Porcentaje de tareas superadas.</p></div>
+      <div class="card rv bars" id="cacheBars"><h3>Cache hit rate</h3><p>Mediana en tareas superadas. Más alto = más barato.</p></div>
+      <div class="card rv bars" id="hbBars"><h3>Harness Bench: puntuación media</h3></div>
+    </div>
+    <div class="callout cy rv mt"><div><h4>Sentido común al leer estos gráficos</h4><p>Con el mismo modelo, la nota apenas cambia entre harnesses (Harness Bench: de 65,3 a 66,3). Lo que cambia mucho es el <b>coste</b>: en FrontierHarness, Claude Code cuesta unas 5 veces más por tarea que el resto. Cada benchmark usa tareas distintas, así que el orden varía entre ellos: elige según el coste, los modelos que puedas usar y cuánto necesites configurarlo.</p></div></div>
+
+    <div class="askrow rv mt">
+      <b>Para elegir harness, pregúntate:</b>
+      <span>¿Qué presupuesto tengo al mes?</span><span>¿Qué modelos quiero usar?</span><span>¿Prefiero algo listo para usar o configurarlo a mi gusto?</span><span>¿Terminal o editor visual?</span><span>¿Necesito plugins, memoria o agentes en paralelo?</span>
+    </div>
+    <div class="carhint rv"><span style="font-size:1.2rem">⟷</span>Desliza para ver los seis harnesses</div>
+    <div class="carousel" id="hcards"></div>
+
+    <div id="ides" class="grid g2 mt" style="align-items:center;margin-top:100px">
+      <div class="rv">
+        <div class="eyebrow"><i style="background:var(--blue)"></i>Terminal o editor</div>
+        <h3 style="font-size:2.2rem">Los IDEs con agentes</h3>
+        <p style="color:var(--ink2);margin-top:12px">Un harness de terminal (Claude Code, Codex, OpenCode…) vive en la consola. Un <b>IDE agéntico</b> es un editor de código completo con el agente integrado: ves los archivos, los cambios propuestos y el chat a la vez. Por debajo hacen lo mismo: modelo + herramientas + bucle.</p>
+        <div class="mt2">
+          <span class="co"><img class="logo" src="assets/logos/antigravity.png">Google Antigravity</span>
+          <span class="co"><img class="logo" src="assets/logos/cursor.svg">Cursor</span>
+          <span class="co"><img class="logo" src="assets/logos/windsurf.svg">Windsurf</span>
+          <span class="co"><img class="logo" src="assets/logos/kiro.svg">Kiro (AWS)</span>
+          <span class="co"><img class="logo" src="assets/logos/vscode.svg">VS Code + Copilot</span>
+          <span class="co"><img class="logo" src="assets/logos/zed.svg">Zed</span>
+        </div>
+        <p style="color:var(--ink2);margin-top:16px"><b>Antigravity</b>, de Google, va un paso más allá: además del editor tiene un gestor de agentes donde lanzas varios en paralelo, cada uno con su tarea, y un navegador que el agente controla para probar lo que construye. <b>Cursor</b> es el más popular; <b>Zed</b>, el más rápido y abierto; <b>Kiro</b>, el de las specs.</p>
+      </div>
+      <div class="ide rv">
+        <div class="bar"><i style="background:#EA4335"></i><i style="background:#FBBC05"></i><i style="background:#34A853"></i><span style="margin-left:12px;font-size:.8rem;color:var(--ink3)">mi-proyecto · IDE agéntico</span></div>
+        <div class="body">
+          <div class="side">src<br>&nbsp;&nbsp;app.ts<br>&nbsp;&nbsp;api.ts<br>&nbsp;&nbsp;<b style="color:var(--blue)">pokedex.ts</b><br>tests<br>spec.md</div>
+          <div class="ed"><span class="k">export async function</span> <span class="f">clasificar</span>(img) {<br>&nbsp;&nbsp;<span class="k">const</span> r = <span class="k">await</span> modelo.<span class="f">run</span>(img)<br>&nbsp;&nbsp;<span class="k">return</span> r.<span class="f">top</span>(<span class="st">3</span>)<br>}<br><br><span style="background:#e6f4ea;display:block;border-left:3px solid #34A853;padding-left:6px">+ <span class="k">test</span>(<span class="st">"detecta Pikachu"</span>, ...)</span></div>
+          <div class="ag"><div class="msg u">Añade tests al clasificador</div><div class="msg">He creado 4 tests. 3 pasan, corrijo el último…</div><div class="msg typing"><span></span><span></span><span></span></div></div>
+        </div>
+      </div>
+    </div>
+    <div id="skills" class="rv" style="margin-top:100px">
+      <div class="eyebrow"><i style="background:var(--blue)"></i>Ampliar tu harness</div>
+      <h3 style="font-size:2.2rem">Skills, plugins, MCP y memoria</h3>
+      <p class="lead">Todo esto se instala <b>dentro del harness</b>: le enseña a hacer cosas nuevas, lo conecta con otros servicios y le da memoria entre sesiones.</p>
+    </div>
+    <div class="grid g2 mt" style="margin-top:40px">
+      <div class="card rv">
+        <div class="ph"><img src="assets/skills.jpg" alt="Repositorio anthropics/skills" loading="lazy"></div><h3 class="mt2">Skills</h3>
+        <p>Una skill es una <b>carpeta con un archivo Markdown</b> (<code>SKILL.md</code>) de instrucciones, y opcionalmente scripts y plantillas. El agente solo ve su nombre y descripción; cuando la tarea encaja, carga el resto. Así sabe qué puede hacer y cómo hacerlo, sin llenar el contexto.</p>
+        <div class="mt2"><span class="pill pb">Skills de Matt Pocock (TS, ingeniería)</span><span class="pill pg">Graphify (grafo de tu código)</span><span class="pill py">Ponytail</span><span class="pill pr">Diseño de interfaces / frontend</span><span class="pill pn">Documentos, PDF, hojas</span><span class="pill pn">Automatización de tareas</span></div>
+        <p class="note">Directorios como skills.sh recopilan miles. Lee siempre una skill antes de instalarla: puede ejecutar scripts.</p>
+      </div>
+      <div class="card rv">
+        <div class="ph"><img src="assets/plugins.jpg" alt="Panel de conexiones con cables de red" loading="lazy"></div><h3 class="mt2">Plugins y MCP</h3>
+        <p>Un <b>plugin</b> empaqueta skills, comandos, subagentes, hooks y servidores <b>MCP</b> en una sola instalación. MCP (Model Context Protocol) es el protocolo con el que el agente usa herramientas externas como GitHub, Notion, un navegador o una base de datos. Lo explicamos a fondo un poco más abajo.</p>
+        <div class="tier mt2">
+          <div style="background:var(--blue-l)">Skill<span>Instrucciones + scripts</span></div>
+          <div style="background:var(--yellow-l)">MCP<span>Conector a servicios externos</span></div>
+          <div style="background:var(--green-l)">Plugin<span>Paquete de todo lo anterior</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:90px">
+      <div class="eyebrow"><i style="background:var(--red)"></i>Lo que piden las empresas</div>
+      <h3 style="font-size:2.2rem">MCP y RAG, a fondo</h3>
+      <p class="lead">Son las dos piezas que más se usan al llevar IA a una empresa: <b>MCP</b> conecta al agente con los sistemas de la empresa, y <b>RAG</b> le da acceso a sus documentos sin reentrenar nada.</p>
+    </div>
+    <div class="grid g2 mt">
+      <div class="card rv" style="border-top:6px solid var(--yellow)">
+        <h3>MCP · Model Context Protocol</h3>
+        <p><b>Qué es:</b> un enchufe estándar. Un <b>servidor MCP</b> es un pequeño programa que le ofrece al agente una lista de acciones ("abrir una web", "crear un issue", "consultar la base de datos"). El agente lee esa lista y decide cuándo usar cada acción. Como el formato es el mismo para todos, un servidor escrito una vez funciona en Claude Code, Codex, OpenCode, Cursor o Antigravity.</p>
+        <h4 class="mt2">Servidores muy usados</h4>
+        <ul class="mt2" style="color:var(--ink2);line-height:1.7;padding-left:20px">
+          <li><b><a href="https://github.com/microsoft/playwright-mcp" target="_blank">Playwright MCP</a></b> (Microsoft): el agente controla un navegador, abre tu web, hace clic y comprueba que funciona.</li>
+          <li><b><a href="https://github.com/github/github-mcp-server" target="_blank">GitHub MCP</a></b>: lee y crea issues y pull requests, y revisa por qué ha fallado el CI.</li>
+          <li><b><a href="https://github.com/upstash/context7" target="_blank">Context7</a></b>: le pasa la documentación actualizada de la librería que uses, para que no invente funciones que ya no existen.</li>
+          <li><b>Bases de datos</b> (Postgres, Supabase): consulta tus tablas en lenguaje natural.</li>
+          <li><b>Notion, Linear, Slack, Google Drive</b>: tienen servidores remotos oficiales a los que te conectas con tu cuenta.</li>
+        </ul>
+        <h4 class="mt2">Cómo se usa</h4>
+        <div class="mt2" style="font-family:ui-monospace,Consolas,monospace;font-size:.9rem;background:#202124;color:#e8eaed;border-radius:14px;padding:14px 18px">claude mcp add playwright npx @playwright/mcp@latest</div>
+        <p class="mt2">Una línea para instalarlo (en OpenCode o Codex se añade igual en su archivo de configuración). Después basta con pedirle: <i>"Abre localhost:3000, rellena el formulario de registro y dime si da error"</i>. El agente llama por su cuenta a <code>browser_navigate</code>, <code>browser_type</code> y <code>browser_click</code>, y te devuelve lo que ha visto.</p>
+        <p class="note">En una empresa, basta con crear una vez un servidor MCP para el CRM o el ERP interno y todos los agentes pueden consultarlo. Ojo: cada acción que ofrece un servidor ocupa contexto en cada turno, y un servidor con demasiados permisos es un riesgo. Conecta solo los que uses.</p>
+      </div>
+      <div class="card rv" style="border-top:6px solid var(--green)">
+        <h3>RAG · Retrieval-Augmented Generation</h3>
+        <p><b>Qué es:</b> buscar en tus documentos lo relevante para cada pregunta y dárselo al modelo junto con la pregunta, para que responda con esa información y cite la fuente. No se reentrena nada: cambias el documento y la respuesta cambia.</p>
+        <h4 class="mt2">Para qué lo usan las empresas</h4>
+        <p class="mt2">Sobre todo para <b>chatbots</b>:</p>
+        <ul class="mt2" style="color:var(--ink2);line-height:1.7;padding-left:20px">
+          <li><b>Atención al cliente:</b> el chat de la web o de WhatsApp responde con los manuales, las condiciones y la política de devoluciones de la empresa, y pasa a un humano lo que no sabe.</li>
+          <li><b>Asistente interno:</b> los empleados preguntan por vacaciones, normativa, procedimientos o documentación técnica y reciben la respuesta con el enlace al documento.</li>
+          <li><b>Búsqueda en el conocimiento interno:</b> en vez de una lista de enlaces, una respuesta con citas sobre wikis, tickets y correos.</li>
+          <li>También <b>legal y cumplimiento</b>: localizar cláusulas y normativa en miles de contratos.</li>
+        </ul>
+        <h4 class="mt2">Antes y ahora</h4>
+        <p class="mt2"><span class="pill pn">Antes</span> Se troceaban los documentos, se convertían en vectores, se buscaban los 5 fragmentos más parecidos y se pegaban en el prompt. Fallaba con nombres propios, códigos de producto o tablas.</p>
+        <p class="mt2"><span class="pill pg">Ahora</span> Un proceso en cuatro pasos:</p>
+        <div class="road mt2" style="grid-template-columns:repeat(4,1fr)">
+          <div class="ms-step" style="--c:#4285F4"><div class="dot">1</div><b>Parsear bien</b><small>PDFs con tablas e imágenes (Docling, MinerU)</small></div>
+          <div class="ms-step" style="--c:#EA4335"><div class="dot">2</div><b>Búsqueda híbrida</b><small>Vectores (significado) + BM25 (palabras exactas)</small></div>
+          <div class="ms-step" style="--c:#FBBC05"><div class="dot">3</div><b>Reranker</b><small>Un modelo reordena los candidatos (bge-reranker, Qwen3-Reranker)</small></div>
+          <div class="ms-step" style="--c:#34A853"><div class="dot">4</div><b>Agéntico</b><small>El agente reformula la búsqueda y la repite hasta dar con la respuesta</small></div>
+        </div>
+        <p class="mt2">Variantes modernas: <b>contextual retrieval</b> (a cada fragmento se le añade un resumen de su documento antes de indexarlo) y <b>GraphRAG</b> (extrae entidades y relaciones en un grafo para preguntas del tipo "¿qué proyectos comparten proveedor?").</p>
+        <h4 class="mt2">Proyectos que puedes usar ya</h4>
+        <div class="mt2">
+          <span class="pill pg"><a href="https://github.com/infiniflow/ragflow" target="_blank">RAGFlow</a>: completo, con interfaz</span>
+          <span class="pill pb"><a href="https://github.com/HKUDS/LightRAG" target="_blank">LightRAG</a>: grafo + vectores, ligero</span>
+          <span class="pill pr"><a href="https://github.com/onyx-dot-app/onyx" target="_blank">Onyx</a>: chat de empresa sobre sus documentos</span>
+          <span class="pill pn"><a href="https://github.com/langgenius/dify" target="_blank">Dify</a>: apps RAG sin código</span>
+        </div>
+        <p class="mt2">Bases de datos con búsqueda híbrida integrada: <b>Qdrant</b>, <b>Weaviate</b>, <b>Milvus</b>, o <b>Postgres</b> con pgvector.</p>
+        <p class="note">Un ejemplo para vosotros: meted todos los apuntes y exámenes de la FP en RAGFlow y preguntad "¿qué entra del tema de redes y en qué página se explica?". La respuesta llega con la cita exacta.</p>
+      </div>
+    </div>
+    <h3 id="memoria" class="mt rv" style="margin-top:90px">De los archivos de instrucciones a la memoria automática</h3>
+    <div class="tl mt2 rv">
+      <div class="it" style="--c:var(--blue)"><b>Los inicios · 2025</b><h4>AGENTS.md / CLAUDE.md a mano</h4><p style="color:var(--ink2)">Un Markdown en la raíz del proyecto con reglas, comandos y estilo. Se cargaba en cada sesión. Tenías que mantenerlo a mano y crecía hasta comerse el contexto.</p></div>
+      <div class="it" style="--c:var(--red)"><b>Después</b><h4>Reglas por carpeta, skills y comandos</h4><p style="color:var(--ink2)">Instrucciones que se cargan solo cuando hacen falta, en lugar de todo siempre.</p></div>
+      <div class="it" style="--c:var(--yellow)"><b>Ahora · 2026</b><h4>Memoria persistente automática</h4><p style="color:var(--ink2)">Los harnesses guardan por sí mismos decisiones, preferencias y correcciones en archivos de memoria indexados, y los recuperan en futuras sesiones. Tú solo corriges cuando se equivocan.</p></div>
+      <div class="it" style="--c:var(--green)"><b>Lo que viene</b><h4>Agentes de larga duración</h4><p style="color:var(--ink2)">Sesiones que duran horas o días con checkpoints, workflows deterministas que coordinan decenas de subagentes y revisión cruzada entre modelos.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" style="text-align:center;color:var(--ink3);font-size:.85rem;margin-top:60px">Hecho por Luis Munuera Martínez</div>
+<div class="wrap gnext"><button data-go="g3"><span><small>Siguiente</small>Cómo trabajar con ello</span><span class="ar">→</span></button></div>
+</div>
+
+<div class="gpane" id="g3" role="tabpanel">
+<!-- 09 AUTOMATIZAR -->
+<section id="automatizar">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--blue)"></i>09 · A cada uno, su objetivo</div>
+      <h2>Orquestar según lo que <span style="color:var(--blue)">tú</span> quieras</h2>
+      <p class="lead">No hay una forma "correcta": depende de lo que busques. Estos son los perfiles más comunes y lo que encaja con cada uno:</p>
+    </div>
+    <div class="grid g4 mt">
+      <div class="card rv" style="border-top:6px solid var(--blue)"><div class="ph"><img src="assets/u_soft.jpg" alt="Oficina de desarrolladores" loading="lazy"></div><h4 class="mt2">Construir y vender software</h4><p>Harness + metodología (SDD/TDD) + subagentes revisores.</p></div>
+      <div class="card rv" style="border-top:6px solid var(--red)"><div class="ph"><img src="assets/u_research.jpg" alt="Sala de lectura de la Biblioteca Pública de Nueva York" loading="lazy"></div><h4 class="mt2">Investigar mejor</h4><p>Agentes de deep research con búsqueda web y citas.</p></div>
+      <div class="card rv" style="border-top:6px solid var(--yellow)"><div class="ph"><img src="assets/u_work.jpg" alt="Edificio de oficinas" loading="lazy"></div><h4 class="mt2">Automatizar el trabajo</h4><p>n8n + agentes: correos, informes, CRMs, hojas de cálculo.</p></div>
+      <div class="card rv" style="border-top:6px solid var(--green)"><div class="ph"><img src="assets/u_class.jpg" alt="Estudiantes con portátiles" loading="lazy"></div><h4 class="mt2">Organizar la clase</h4><p>Un agente que descarga los materiales del campus, los resume y te hace preguntas para repasar.</p></div>
+    </div>
+
+    <div class="grid g2 mt" style="align-items:center;margin-top:90px">
+      <div class="rv">
+        <h3 style="font-size:2rem"><img class="logo" style="width:40px;height:40px" src="assets/logos/n8n.svg"> n8n, la fábrica de automatizaciones</h3>
+        <p style="color:var(--ink2);margin-top:12px"><b>n8n</b> es una plataforma de flujos de trabajo visual, de código fuente disponible y <b>autoalojable</b> (Docker en tu PC o servidor). Funciona uniendo <i>nodos</i>: un disparador (un correo, una hora, un webhook) → acciones (más de 1.000 integraciones) → nodos de IA (agentes con memoria y herramientas, cualquier modelo vía OpenRouter o local).</p>
+        <p style="color:var(--ink2);margin-top:12px">Su novedad estrella: <b>describes en lenguaje natural lo que quieres y un agente construye el flujo (el grafo) por ti</b>, nodo a nodo, y luego tú lo ajustas visualmente.</p>
+      </div>
+      <div class="card rv" style="padding:24px">
+        <svg viewBox="0 0 520 260">
+          <g font-size="13" font-weight="600" text-anchor="middle">
+            <rect x="10" y="100" width="100" height="60" rx="18" fill="#FCE8E6"/><image href="assets/logos/n8n.svg" x="49" y="106" width="22" height="22"/><text x="60" y="146" fill="#b3261e">Cada día 8:00</text>
+            <rect x="150" y="100" width="100" height="60" rx="18" fill="#FEF7E0"/><image href="https://www.google.com/s2/favicons?domain=moodle.org&amp;sz=64" x="189" y="106" width="22" height="22"/><text x="200" y="146" fill="#8a5a00">Leer campus</text>
+            <rect x="290" y="100" width="100" height="60" rx="18" fill="#E8F0FE"/><image href="https://www.google.com/s2/favicons?domain=openrouter.ai&amp;sz=64" x="329" y="106" width="22" height="22"/><text x="340" y="146" fill="#1a5fd0">Agente IA</text>
+            <rect x="420" y="30" width="95" height="60" rx="18" fill="#E6F4EA"/><image href="https://www.google.com/s2/favicons?domain=mail.google.com&amp;sz=64" x="456" y="36" width="22" height="22"/><text x="467" y="76" fill="#137333">Resumen</text>
+            <rect x="420" y="170" width="95" height="60" rx="18" fill="#E6F4EA"/><image href="https://www.google.com/s2/favicons?domain=calendar.google.com&amp;sz=64" x="456" y="176" width="22" height="22"/><text x="467" y="216" fill="#137333">Calendario</text>
+          </g>
+          <g stroke="#4285F4" stroke-width="3" fill="none" class="flow"><path d="M110,130 H150"/><path d="M250,130 H290"/><path d="M390,130 C405,130 405,60 420,60"/><path d="M390,130 C405,130 405,200 420,200"/></g>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 10 CODIGO -->
+<section id="codigo">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--red)"></i>10 · Programar con agentes</div>
+      <h2>Paradigmas para <span style="color:var(--red)">crear código</span></h2>
+      <p class="lead">Un agente sin método produce código que "parece funcionar". Con método, produce proyectos enteros. Del más libre al más riguroso:</p>
+    </div>
+    <div class="grid g3 mt">
+      <div class="card rv"><div class="ph"><img src="assets/vibe.jpg" alt="Dos personas programando relajadas en una terraza" loading="lazy"></div><span class="pill py">Libre</span><h3 class="mt2">Vibe coding</h3><p>Hablas con el agente y sale lo que salga. Perfecto para prototipos y scripts de un día. Se desmorona cuando el proyecto crece.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--yellow)"><i class="f"></i><i></i><i></i><i></i><i></i></div></div></div>
+      <div class="card rv"><div class="ph"><img src="assets/sdd.jpg" alt="Planos de arquitecto" loading="lazy"></div><span class="pill pb">Estructurado</span><h3 class="mt2">Spec-Driven Development</h3><p>Primero una especificación (qué y por qué), luego un plan técnico, luego tareas pequeñas, y solo entonces código. La spec es la fuente de verdad que sobrevive a las compactaciones.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--blue)"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div></div></div>
+      <div class="card rv"><div class="ph"><img src="assets/tdd.jpg" alt="Terminal con los tests de buscarCarta() en verde" loading="lazy"></div><span class="pill pg">Verificable</span><h3 class="mt2">Test-Driven Development</h3><p>El agente escribe primero los tests que fallan, luego el código que los hace pasar. Los tests son un juez objetivo: el agente puede repetir el ciclo por su cuenta hasta que todos pasen.</p><div class="mrow">Rigor<div class="meter" style="--c:var(--green)"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></div></div></div>
+    </div>
+    <div class="grid g3 mt">
+      <div class="ex rv"><span class="pill py">Ejemplo · Vibe coding</span><div class="bubble">Hazme una web para mi colección de cartas Pokémon, con buscador y que se vea bonita.</div><p>Rápido y divertido. El agente decide todo: stack, estructura y estilo. Sirve para probar una idea en una tarde.</p></div>
+      <div class="ex rv"><span class="pill pb">Ejemplo · Spec-Driven</span><div class="bubble">Lee <code>spec.md</code>. Implementa solo la sección 2 (buscador): filtro por nombre y tipo, menos de 100 ms con 5.000 cartas. No toques la sección 3. Al terminar, marca la tarea como hecha en <code>tasks.md</code>.</div><p>Tú decides el qué; el agente, el cómo. La spec sobrevive entre sesiones.</p></div>
+      <div class="ex rv"><span class="pill pg">Ejemplo · Test-Driven</span><div class="bubble">Escribe primero tests para <code>buscarCarta()</code>: nombre exacto, mayúsculas, tildes, búsqueda vacía y 5.000 cartas. Ejecútalos (deben fallar). Luego implementa hasta que todos pasen sin modificar los tests.</div><p>Los tests son el juez: el agente puede iterar solo sin que lo vigiles.</p></div>
+    </div>
+
+    <div class="rv mt" style="margin-top:110px;text-align:center">
+      <div class="eyebrow"><i style="background:var(--blue)"></i>Antes de escribir una línea</div>
+      <h3 style="font-size:2.2rem">Las preguntas que debes hacerte</h3>
+      <p class="lead" style="margin:10px auto 0">Las decisiones son tuyas, pero no tienes que pensarlas solo. Si las contestas antes, cualquier método funciona mejor.</p>
+    </div>
+    <div class="thinker">
+      <img class="man rv" src="assets/mannequin.jpg" alt="Figuras confundidas">
+      <div class="qb rv" style="left:4%;top:8%;transition-delay:0.0s">¿Qué problema concreto resuelve?</div><div class="qb rv" style="left:64%;top:4%;transition-delay:0.1s">¿Quién lo va a usar y cómo cambia eso el diseño?</div><div class="qb rv" style="left:-2%;top:40%;transition-delay:0.2s">¿Qué funciones son imprescindibles y cuáles pueden esperar?</div><div class="qb rv" style="left:70%;top:34%;transition-delay:0.4s">¿Qué arquitectura le encaja: web, app, script, API?</div><div class="qb rv" style="left:2%;top:72%;transition-delay:0.5s">¿Hay algo parecido ya hecho que pueda usar de base?</div><div class="qb rv" style="left:68%;top:64%;transition-delay:0.6s">¿Cómo lo hago más fácil de usar?</div><div class="qb rv" style="left:18%;top:92%;transition-delay:0.7s">¿Y más eficiente o más barato de mantener?</div><div class="qb rv" style="left:56%;top:92%;transition-delay:0.8s">¿Cómo sabré que funciona? ¿Qué lo demuestra?</div>
+    </div>
+    <div class="grid g2 mt" style="align-items:center">
+      <div class="callout cg rv"><div class="ico"><span class="ms">psychology_alt</span></div><div><h4>La propia IA te ayuda a responderlas</h4><p>Un modelo no puede decidir por ti, pero sí hacerte estas preguntas una a una, rebatir las respuestas flojas, buscar proyectos parecidos que ya existan, comparar arquitecturas y proponerte cómo medir si funciona. Úsalo como un socio que te entrevista antes de construir nada.</p></div></div>
+      <div class="ex rv"><span class="pill pg">Prompt de ejemplo</span><div class="bubble">Quiero hacer [tu idea]. Antes de escribir código, entrevístame: hazme estas preguntas de una en una, rebate mis respuestas si son flojas y busca proyectos parecidos que ya existan. Al final, resume las decisiones en un <code>spec.md</code>.</div></div>
+    </div>
+
+    <div class="card rv mt">
+      <h3>El camino orientativo de un proyecto</h3>
+      <p>No es una ley: es un orden lógico. Puedes volver atrás en cualquier momento, y lo harás.</p>
+      <div class="road mt2"><div class="ms-step rv" style="--c:#4285F4;transition-delay:0.0s"><div class="dot">1</div><b>Idea y usuarios</b><small>Problema, para quién, qué es éxito</small></div><div class="ms-step rv" style="--c:#EA4335;transition-delay:0.1s"><div class="dot">2</div><b>Investigar</b><small>¿Existe ya? Librerías, plantillas, competidores</small></div><div class="ms-step rv" style="--c:#FBBC05;transition-delay:0.2s"><div class="dot">3</div><b>Especificar</b><small>spec.md: qué, por qué, criterios de aceptación</small></div><div class="ms-step rv" style="--c:#34A853;transition-delay:0.3s"><div class="dot">4</div><b>Arquitectura</b><small>Stack, datos, módulos, límites</small></div><div class="ms-step rv" style="--c:#4285F4;transition-delay:0.4s"><div class="dot">5</div><b>Plan de tareas</b><small>Pasos pequeños y verificables</small></div><div class="ms-step rv" style="--c:#EA4335;transition-delay:0.5s"><div class="dot">6</div><b>Construir con tests</b><small>Una tarea por sesión · tests primero</small></div><div class="ms-step rv" style="--c:#FBBC05;transition-delay:0.6s"><div class="dot">7</div><b>Revisar</b><small>Otro agente o tú: código, seguridad, UX</small></div><div class="ms-step rv" style="--c:#34A853;transition-delay:0.7s"><div class="dot">8</div><b>Lanzar</b><small>Desplegar, medir, documentar</small></div></div>
+      <div class="loopback"><span>↺</span> El feedback de los usuarios vuelve al paso 1: así crece el proyecto</div>
+    </div>
+
+    <div class="rv" style="margin-top:110px">
+      <div class="eyebrow"><i style="background:var(--green)"></i>Higiene de sesiones</div>
+      <h3 style="font-size:2.2rem">Una sesión, un objetivo. Y handoffs entre ellas.</h3>
+      <p class="lead">El contexto se corrompe: cuanto más mezclas temas en una sesión, más se desvía el agente. La solución es tratar cada sesión como un turno de trabajo con un objetivo claro y pasar el testigo por escrito.</p>
+    </div>
+    <div class="sessions rv mt">
+      <div class="sess"><b>Sesión 1</b><small>Objetivo: buscador por nombre con tests en verde</small></div>
+      <div class="hand"><span>handoff.md</span></div>
+      <div class="sess"><b>Sesión 2</b><small>Objetivo: filtro por tipo, &lt;100 ms</small></div>
+      <div class="hand"><span>handoff.md</span></div>
+      <div class="sess"><b>Sesión 3</b><small>Objetivo: revisión de seguridad</small></div>
+    </div>
+    <div class="grid g3 mt">
+      <div class="card rv"><h3>Qué es un handoff</h3><p>Al cerrar una sesión, el agente escribe un documento corto con <b>qué se hizo, qué se decidió, qué falta y cuál es el siguiente paso</b>. La siguiente sesión empieza leyéndolo, desde cero y sin arrastrar ruido. Es mucho mejor que compactar.</p></div>
+      <div class="card rv"><h3>Objetivos claros, medibles y concisos</h3><p class="bad">✕ "Mejora la app"</p><p class="good">✓ "Haz que la búsqueda tarde menos de 100 ms con 5.000 cartas y añade un test que lo compruebe"</p><p>Si puedes comprobar que se ha cumplido, es un buen objetivo.</p></div>
+      <div class="card rv"><h3>Sesiones cortas y pocos subagentes</h3><p>Cada subagente abre su propio contexto y gasta sus propios tokens. Con una suscripción barata o poco presupuesto, lanzar muchos agota tu cuota en minutos. Mejor <b>sesiones cortas y secuenciales</b>, y subagentes solo cuando de verdad aporten paralelismo.</p></div>
+    </div>
+    <div class="rv" style="margin-top:110px">
+      <div class="eyebrow"><i style="background:var(--red)"></i>Orquestación · 2026</div>
+      <h3 style="font-size:2.2rem">Herramientas para coordinar agentes</h3>
+      <p class="lead">El patrón que se ha impuesto: <b>muchos agentes en paralelo, cada uno en su propia copia del repositorio</b> (<i>git worktree</i>) para que no se pisen, y un panel desde el que planificas, revisas y fusionas lo que hace cada uno.</p>
+    </div>
+    <div class="grid g2 mt">
+      <div class="tool rv" style="--c:var(--blue)"><span class="pill pb">Banco de trabajo · Apache 2.0</span><h4>Helmor</h4><p>Local-first. Orquesta Claude Code, Codex y otros agentes en worktrees separados a lo largo de todo el ciclo: plan, ejecución, revisión, tests, merge y envío.</p></div>
+      <div class="tool rv" style="--c:var(--blue)"><span class="pill pb">Editor + panel de control</span><h4>Superset (ahora Paradev)</h4><p>Editor local pensado como centro de mando para agentes de terminal en paralelo, cada uno en su worktree. Presume de manejar más de 100 agentes a la vez.</p></div>
+      <div class="tool rv" style="--c:var(--red)"><span class="pill pr">Flota · open source</span><h4>Agent Orchestrator (Composio)</h4><p>Lanza agentes en paralelo, uno por worktree, y les reenvía automáticamente los fallos de CI y los comentarios de revisión para que los arreglen sin que tengas que hacer de intermediario.</p></div>
+      <div class="tool rv" style="--c:var(--red)"><span class="pill pr">Jerárquico · AWS</span><h4>CLI Agent Orchestrator (CAO)</h4><p>Un agente supervisor reparte el trabajo entre agentes especialistas, cada uno en su sesión de tmux, y recoge los resultados.</p></div>
+      <div class="tool rv" style="--c:var(--yellow)"><span class="pill py">Ligeros · CLI</span><h4>Parallel Code y SwarmGit</h4><p>Lo mínimo: ejecutan Claude Code, Codex o Gemini CLI a la vez sobre la misma tarea o tareas distintas, en worktrees aislados, y tú eliges con qué rama te quedas.</p></div>
+      <div class="tool rv" style="--c:var(--green)"><span class="pill pg">Integrado</span><h4>Dentro de tu harness o IDE</h4><p>Muchas veces no necesitas nada extra: el gestor de agentes de Antigravity, los subagentes de Claude Code o Hermes y los perfiles de DeepSeek Harness ya orquestan por ti.</p></div>
+    </div>
+    <p class="note rv">Directorios actualizados para seguir el ritmo: <a href="https://github.com/andyrewlee/awesome-agent-orchestrators" target="_blank">awesome-agent-orchestrators</a> y <a href="https://github.com/bradagi/awesome-cli-coding-agents" target="_blank">awesome-cli-coding-agents</a>.</p>
+    <div class="askrow rv mt">
+      <b>Antes de orquestar, pregúntate:</b>
+      <span>¿Mi tarea se puede dividir en partes independientes?</span><span>¿Cuánto me cuesta cada agente extra?</span><span>¿Quién revisa lo que hacen?</span><span>¿Me basta con una sola sesión bien enfocada?</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- 11 PATRONES -->
+<section id="patrones">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><i style="background:var(--yellow)"></i>11 · Lo que se aprende a base de horas</div>
+      <h2>Patrones al trabajar con <span style="color:#d39b00">harnesses</span></h2>
+      <p class="lead">Todo el que trabaja a diario con agentes acaba descubriendo lo mismo. Estos son los patrones más habituales, para que no tengas que aprenderlos a base de sustos.</p>
+    </div>
+
+    <div class="card rv mt">
+      <h3>El auditor adversarial: alguien que no quiera darte la razón</h3>
+      <p>Todos los modelos son <b>sicofánticos</b>: tienden a decirte que tu idea es buena, que el código está perfecto y que tienes toda la razón. Y el agente que ha hecho el trabajo es el peor juez de su propio trabajo. La solución es pedir una segunda opinión a un <b>agente auditor experto, independiente y adversarial</b>: una sesión nueva, sin tu conversación y sin tu hipótesis, cuyo único trabajo es encontrar fallos.</p>
+      <div class="flowline mt2">
+        <div class="fstep"><div class="bub cb" style="color:var(--blue)"><span class="ms" style="font-size:36px">construction</span></div><b>Tu agente crea</b><small>código, texto, un análisis</small></div>
+        <div class="fstep"><div class="bub cr" style="color:var(--red)"><span class="ms" style="font-size:36px">policy</span></div><b>Auditor limpio</b><small>sesión nueva, sin tu contexto ni tu opinión</small></div>
+        <div class="fstep"><div class="bub cy" style="color:#c58a00"><span class="ms" style="font-size:36px">fact_check</span></div><b>Hallazgos con pruebas</b><small>archivo, línea, salida que lo demuestra</small></div>
+        <div class="fstep"><div class="bub cg" style="color:var(--green)"><span class="ms" style="font-size:36px">gavel</span></div><b>Tú decides</b><small>qué se corrige y qué no</small></div>
+      </div>
+      <div class="ex mt2" style="box-shadow:none;padding:0"><span class="pill pr">Prompt de auditor</span><div class="bubble">Eres un auditor experto e independiente. No has escrito este trabajo y no conoces mi opinión sobre él. Busca errores reales, casos no cubiertos, afirmaciones sin comprobar y lo que no cumpla lo que pedí en <code>spec.md</code>. Para cada hallazgo, aporta la prueba. No me digas lo que está bien.</div></div>
+    </div>
+
+    <div class="grid g3 mt">
+      <div class="card rv"><div class="emo"><span class="ms">public</span></div><h3 class="mt2">Grounding: aterriza antes de afirmar</h3><p>Cuando no sabe algo, el modelo rellena el hueco con lo que <i>suena</i> bien: versiones de librerías, funciones que no existen, cifras. Exígele que <b>lo compruebe</b>: que lea la documentación, el código o la web, que cite la fuente y que ejecute en vez de suponer. Si no lo ha comprobado, no es un dato.</p></div>
+      <div class="card rv"><div class="emo"><span class="ms">edit_note</span></div><h3 class="mt2">El sentido común no viene de serie</h3><p>Lo que para ti es obvio ("no borres mis datos", "mantén el estilo", "pruébalo en el navegador antes de decir que funciona") para el agente no lo es. Dale el <b>para qué</b>, el <b>para quién</b> y qué significa <b>terminado</b>, y te ahorrarás caminos raros y tareas a medias. Saber qué hay que decir se aprende con el tiempo.</p></div>
+      <div class="card rv"><div class="emo"><span class="ms">task_alt</span></div><h3 class="mt2">"Hecho" no significa hecho</h3><p>Los agentes declaran victoria pronto: se saltan un paso, desactivan el test que fallaba o dan por bueno algo que nunca ejecutaron. Pide siempre <b>pruebas</b>: la salida de los tests, una captura, una demo. Y revisa el diff, no solo el resumen.</p></div>
+      <div class="card rv"><div class="emo"><span class="ms">map</span></div><h3 class="mt2">Primero el plan, luego el código</h3><p>Pídele un plan antes de tocar nada, léelo y corrígelo. Corregir un plan cuesta un minuto; corregir 2.000 líneas escritas en la dirección equivocada cuesta una tarde y muchos tokens.</p></div>
+      <div class="card rv"><div class="emo"><span class="ms">rule</span></div><h3 class="mt2">Cada corrección, una regla</h3><p>Si le corriges lo mismo dos veces, conviértelo en una regla en tu <code>AGENTS.md</code> / <code>CLAUDE.md</code> o en una skill. Así no dependes de que lo recuerde: lo leerá en cada sesión.</p></div>
+      <div class="card rv"><div class="emo"><span class="ms">balance</span></div><h3 class="mt2">Pregunta en neutro</h3><p>"¿Está bien esto?" invita a decir que sí. Mejor "¿Qué fallos tiene?", "Defiende la opción contraria" o "¿Qué haría un experto escéptico?". Y si cambia de opinión solo porque le has llevado la contraria, desconfía de las dos respuestas.</p></div>
+    </div>
+
+    <div class="warn rv mt" style="margin-top:80px">
+      <span class="ms">construction</span>
+      <div>
+        <h3>Ningún harness lo hace todo por ti. Todavía.</h3>
+        <p>Se está intentando automatizar todo esto, y cada día salen harnesses, plugins y frameworks nuevos que prometen resolverlo. Pero a día de hoy <b>ninguno garantiza que los agentes hagan exactamente lo que tú quieres, y como tú lo quieres</b>.</p>
+        <p>Tus objetivos, tu metodología, qué skills y plugins usas, cómo desarrollas: todo depende de ti y de las herramientas que elijas. La buena noticia es que en cada una de esas decisiones puedes pedirle ayuda a la propia IA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 EMPIEZA -->
+<section id="empieza">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow"><i style="background:var(--green)"></i>12 · Tu siguiente paso</div>
+      <h2>Quiero… <span class="grad">¿y ahora qué hago?</span></h2>
+      <p class="lead" style="margin:0 auto">Elige tu objetivo y sigue los pasos. Casi todo lo de aquí es software libre o gratuito.</p>
+    </div>
+    <div class="grid g2 mt">
+      <div class="path rv" style="--c:var(--green)">
+        <div class="ph"><img src="assets/pa_free.jpg" alt="Cartera vacía" loading="lazy"></div><span class="pill pg">0 € · Para empezar ya</span>
+        <h3 class="mt2">No quiero gastar dinero</h3>
+        <p style="color:var(--ink2)">Usa <b>OpenCode</b> con sus modelos gratuitos (inteligencia limitada, pero suficiente para aprender) o con la <b>API gratuita de NVIDIA</b> (especialmente rápida con los modelos <b>Nemotron</b>). Y lo más importante: <b>empieza a enredar</b>. Habla con el agente, pídele cosas, instala skills y plugins y mira qué pasa. Es la forma más fácil de aprender.</p>
+        <ol>
+          <li>Instala Node.js desde <a href="https://nodejs.org" target="_blank">nodejs.org</a> (versión LTS).</li>
+          <li>Instala OpenCode (web oficial: <a href="https://opencode.ai" target="_blank">opencode.ai</a>, código: <a href="https://github.com/sst/opencode" target="_blank">GitHub</a>).</li>
+          <li>Abre una terminal en una carpeta de prueba y escribe <code>opencode</code>.</li>
+          <li>Escribe <code>/models</code> y elige uno marcado como <i>free</i>.</li>
+          <li>Opcional, más potencia gratis: crea una cuenta en <a href="https://build.nvidia.com" target="_blank">build.nvidia.com</a>, genera una API key (empieza por <code>nvapi-</code>) y añádela como proveedor (abajo).</li>
+          <li>Pídele algo real: <i>"créame una web de mi Pokédex"</i>. Después prueba a instalar una skill y compara.</li>
+        </ol>
+        <pre><span class="c"># Windows (PowerShell), macOS o Linux</span>
+npm i -g opencode-ai
+<span class="c"># macOS / Linux alternativa</span>
+curl -fsSL https://opencode.ai/install | bash</pre>
+        <pre><span class="c">// opencode.json · proveedor NVIDIA gratuito</span>
+{ "$schema": "https://opencode.ai/config.json",
+  "provider": { "nvidia": {
+    "npm": "@ai-sdk/openai-compatible", "name": "NVIDIA",
+    "options": { "baseURL": "https://integrate.api.nvidia.com/v1",
+                 "apiKey": "{env:NVIDIA_API_KEY}" },
+    "models": { "nvidia/nemotron-3-super-120b-a12b": {} } } } }</pre>
+        <p class="note">Los modelos gratis y los límites de NVIDIA cambian a menudo. Mira la lista actual en <code>/models</code> y en build.nvidia.com/models.</p>
+        <div class="opt">
+          <h4><span class="ms" style="color:var(--green)">computer</span>O el modelo en tu propio ordenador</h4>
+          <p>Con <b>llama.cpp</b> ejecutas modelos que te caben en la GPU (lo tienes paso a paso abajo, en "Correr un LLM en mi PC"). Y si quieres uno mucho más grande de lo que te cabe, usa <b><a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a></b> (open source, MIT): un motor nuevo que reparte el modelo entre <b>GPU, RAM y SSD a la vez</b>. Según sus propias pruebas, mueve DeepSeek V4.1 Flash (284B) a 9–11 tok/s en una RTX 3060 de 12 GB con 46 GB de RAM. Ofrece una API compatible con OpenAI y Anthropic en tu propio equipo, así que puedes conectarle OpenCode y tener un agente 100% local y gratis.</p>
+          <p class="note">Necesitas una GPU de 12 GB o más y mucho disco libre (unos 200–280 GB para DeepSeek). Va más lento que en la nube, pero no pagas nada y nada sale de tu equipo.</p>
+        </div>
+      </div>
+      <div class="path rv" style="--c:var(--blue)">
+        <div class="ph"><img src="assets/pa_paid.jpg" alt="Pago de una suscripción con tarjeta" loading="lazy"></div><span class="pill pb">10–20 €/mes · El salto de calidad</span>
+        <h3 class="mt2">Puedo gastar un poco</h3>
+        <p style="color:var(--ink2)"><b>La opción más fácil:</b> una suscripción de <b>~20 €/mes</b> de Anthropic u OpenAI te da acceso a modelos punteros con límites de uso generosos, y sale mucho más barato que pagar por tokens. Úsala con su harness oficial.</p>
+        <p style="color:var(--ink2);margin-top:10px"><b>¿Cuál?</b> ChatGPT Plus incluye <b>generación de imágenes</b> en la propia app; Claude <b>escribe mejor código</b>. Si vas a programar sobre todo, Claude; si quieres un todoterreno con imágenes, ChatGPT.</p>
+        <h4 class="mt2" style="display:flex;align-items:center;gap:10px"><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64">OpenAI · ChatGPT Plus + Codex</h4>
+        <ol>
+          <li>Suscríbete a ChatGPT Plus en <a href="https://chatgpt.com/pricing" target="_blank">chatgpt.com/pricing</a>.</li>
+          <li>Instala Codex (<a href="https://developers.openai.com/codex" target="_blank">web oficial</a> · <a href="https://github.com/openai/codex" target="_blank">GitHub</a>).</li>
+          <li>Ejecuta <code>codex</code>, elige <i>Sign in with ChatGPT</i> y listo.</li>
+        </ol>
+        <pre>npm i -g @openai/codex
+codex</pre>
+        <h4 class="mt2" style="display:flex;align-items:center;gap:10px"><img class="logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64">Anthropic · Claude Pro + Claude Code</h4>
+        <ol>
+          <li>Suscríbete a Claude Pro en <a href="https://claude.com/pricing" target="_blank">claude.com/pricing</a>.</li>
+          <li>Instala Claude Code (<a href="https://claude.com/product/claude-code" target="_blank">web oficial</a> · <a href="https://code.claude.com/docs" target="_blank">documentación</a>).</li>
+          <li>Ejecuta <code>claude</code> en la carpeta de tu proyecto e inicia sesión con tu cuenta.</li>
+        </ol>
+        <pre><span class="c"># Windows (PowerShell)</span>
+irm https://claude.ai/install.ps1 | iex
+<span class="c"># macOS / Linux</span>
+curl -fsSL https://claude.ai/install.sh | bash</pre>
+        <h4 class="mt" style="font-size:1.25rem">¿Quieres aprender cómo funciona todo por dentro?</h4>
+        <p style="color:var(--ink2);margin-top:6px">Si quieres probar modelos y harnesses distintos: la suscripción de <b>ChatGPT</b> se puede usar en otros harnesses (OpenCode, Pi…) iniciando sesión con tu cuenta por OAuth; la de <b>Claude</b>, no, porque sus términos la limitan a Claude Code. Y hay dos caminos más:</p>
+        <div class="opt">
+          <h4><img class="logo" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64">OpenCode Go · 10 $/mes</h4>
+          <p>El primer mes cuesta 5 $. Te da unos 30 modelos, sobre todo abiertos (GLM-5.3, Kimi K3, DeepSeek V4, Qwen3.8, MiniMax, MiMo…), y está pensado para usarse dentro de OpenCode. <b>Ojo: no es ilimitado</b>. Cada modelo tiene un tope mensual de uso en dólares, con límites también cada 5 horas y cada semana. Con los modelos baratos cunde muchísimo; con los caros, poco. <a href="https://opencode.ai/go" target="_blank">opencode.ai/go</a></p>
+        </div>
+        <div class="opt">
+          <h4><img class="logo" src="https://www.google.com/s2/favicons?domain=deepseek.com&sz=64">API de DeepSeek + DeepSeek Harness o Pi</h4>
+          <p>La opción extremadamente barata. Creas una API key en <a href="https://platform.deepseek.com" target="_blank">platform.deepseek.com</a>, cargas unos pocos euros y la metes en <b>DeepSeek Harness</b> (DeepSeek viene en su catálogo de proveedores: solo pegas la key) o en <b>Pi</b> (<code>/login</code> → API key, o la variable de entorno). Pagas por token, pero a una fracción de lo que cuestan los modelos cerrados punteros, y la entrada que ya está en caché sale casi gratis. Así ves lo que cuesta cada tarea y aprendes a optimizar la caché y el contexto. Precios actuales: <a href="https://api-docs.deepseek.com/quick_start/pricing" target="_blank">api-docs.deepseek.com</a>.</p>
+          <pre><span class="c"># Windows (PowerShell)</span>
+$env:DEEPSEEK_API_KEY="sk-..."
+<span class="c"># macOS / Linux</span>
+export DEEPSEEK_API_KEY="sk-..."</pre>
+        </div>
+        <p class="note">Compra siempre en la web oficial. Las cuentas revendidas incumplen los términos de uso: te pueden cerrar la cuenta sin aviso y a menudo proceden de pagos fraudulentos.</p>
+      </div>
+    </div>
+    <div class="hype rv mt">
+      <h3>Esto es el futuro. Y casi nadie lo está usando de verdad.</h3>
+      <p>Aprender Spring Boot de memoria es el pasado. <b>Todo lo digital puede automatizarse o hacerse con ayuda de agentes de IA.</b> Hay gente que automatiza todo lo que tiene alrededor y entrega a empresas, en horas, soluciones que antes llevaban meses. Y hay gente que todavía copia su código en ChatGPT y lo vuelve a pegar en el archivo.</p>
+      <p>En esta revolución, <b>los que vayan antes tienen toda la ventaja y un mundo por comerse.</b> Tenéis en las manos un poder que casi nadie está usando a fondo. Usadlo para destacar: un portfolio de aplicaciones y soluciones únicas vale más que cualquier título.</p>
+    </div>
+    <div class="grid g3 mt">
+      <div class="card rv"><h3>Automatiza lo que te roba tiempo</h3><p>Ejemplo: un agente que cada mañana entra al campus, mira qué tareas y exámenes hay esa semana, te lo manda por Telegram ordenado por fecha y te crea los eventos en Google Calendar. Con n8n o con un script que te escriba tu harness, se monta en una tarde.</p></div>
+      <div class="card rv"><h3>Mete IA en tus juegos</h3><p>Con <a href="https://www.nexusmods.com/skyrimspecialedition/mods/126330" target="_blank">CHIM, de Dwemer Dynamics</a>, los NPCs hablan, recuerdan y reaccionan con un LLM. O crea tu propio mod: pídele al agente que estudie cómo funcionan los mods del juego y construye uno con su ayuda.</p></div>
+      <div class="card rv"><h3>Recrea esa app tan cara</h3><p>¿Usas una app de pago que te encanta? Analiza qué hace, haz ingeniería inversa de su funcionamiento y recréala a tu medida con un agente. Aprendes más que en cualquier curso y te queda en el portfolio.</p></div>
+      <div class="card rv"><h3>Resuelve un problema real tuyo</h3><p>Ejemplo: en tu grupo de clase nadie sabe quién debe qué de la cena o del viaje. Haz una app web que lo calcule y lo reparta, compártela, y si la usan tus amigos, ya tienes tus primeros usuarios reales.</p></div>
+      <div class="card rv"><h3>Acelera cursos y certificaciones</h3><p>Usa agentes para preparar las certificaciones y cursos de tecnologías tradicionales que te piden: resúmenes, preguntas tipo examen, proyectos de práctica. Lo que antes llevaba un trimestre, ahora se hace en semanas.</p></div>
+      <div class="card rv"><h3>Construye un portfolio que nadie más tiene</h3><p>Tres proyectos únicos, publicados y usados por alguien valen más que diez ejercicios de clase. Enséñalos en GitHub y LinkedIn: que se vea que sabes dirigir agentes, no solo escribir código.</p></div>
+      <div class="card rv"><h3>Encuentra trabajo con IA</h3><p>Pídele a un agente con búsqueda web que localice ofertas, empresas que encajen contigo y recruiters a los que escribir, y que te prepare cada mensaje. Hay herramientas open source, como <a href="https://pypi.org/project/applypilot/" target="_blank">ApplyPilot</a> o <a href="https://github.com/feder-cr/Jobs_Applier_AI_Agent_AIHawk" target="_blank">AIHawk</a>, que adaptan tu CV a cada oferta y se presentan solas según tus requisitos. Revisa lo que envían en tu nombre: muchas webs de empleo prohíben la automatización.</p></div>
+      <div class="card rv"><h3>Prepara tu setup</h3><p>Harness, modelos, herramientas, skills, MCP, metodología. No hace falta acertar a la primera: cuéntale a la IA qué haces, con qué ordenador y con qué presupuesto, y pídele que te proponga un setup, que lo instale contigo y que lo vaya ajustando a medida que trabajas.</p></div>
+      <div class="card rv"><h3>Usa la IA como profesor</h3><p>Cualquier tema, a tu ritmo: que te lo explique, te ponga ejercicios, te corrija y te pregunte hasta que lo entiendas de verdad. Pídele siempre fuentes fiables (documentación oficial, papers, libros) y comprueba lo importante, porque también se equivoca con total seguridad.</p></div>
+    </div>
+    <h3 class="mt rv" style="text-align:center;margin-top:90px">Y para cada objetivo concreto</h3>
+    <div class="grid g2 mt">
+      <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_llm.jpg" alt="llama.cpp" loading="lazy"></div><h3>Correr un LLM en mi PC</h3>
+        <ol><li>Mira tu VRAM (<code>nvidia-smi</code>). 8 GB → modelos de 4–9B; 16–24 GB → 14–32B en 4 bits; con mucha RAM, MoE grandes con offloading.</li><li>Descarga <b>llama.cpp</b> (releases de GitHub).</li><li>Baja un GGUF Q4_K_M de Hugging Face (busca el modelo + "GGUF").</li><li>Lanza el servidor y abre <code>localhost:8080</code>.</li><li>¿Quieres un modelo más grande que tu VRAM? Prueba <a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a>: reparte el modelo entre GPU, RAM y SSD y trae instaladores para Windows, Linux y macOS.</li></ol>
+        <pre><span class="c"># servidor con interfaz web y API compatible OpenAI</span>
+llama-server -hf unsloth/Qwen3.8-27B-GGUF:Q4_K_M -c 32768 -ngl 99</pre></div>
+      <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_voice.jpg" alt="Micrófonos de estudio" loading="lazy"></div><h3>Clonar mi voz</h3>
+        <ol><li>Descarga <b>Voicebox</b> desde su GitHub oficial: <a href="https://github.com/jamiepine/voicebox" target="_blank">github.com/jamiepine/voicebox</a> (pestaña <i>Releases</i>, instalador para Windows o macOS). Es gratis, open source y funciona 100% en local, como alternativa a ElevenLabs.</li><li>Ábrelo y crea un perfil de voz nuevo.</li><li>Sube una o varias grabaciones limpias de tu voz (10–30 s cada una, sin música ni ruido). Más muestras = clon más fiel.</li><li>Escribe el texto y genera. Exporta el audio o úsalo desde su API REST.</li></ol>
+        <p class="note">Solo con tu voz o con consentimiento explícito. Clonar voces ajenas puede ser delito.</p></div>
+      <div class="path rv" style="--c:var(--yellow)"><div class="ph"><img src="assets/pa_cls.jpg" alt="Pokémon" loading="lazy"></div><h3>Clasificar un Pokémon con un modelo de decisión</h3>
+        <p style="color:var(--ink2)">Los <b>modelos de decisión</b> como <b>Laya</b> (open weights) o <b>Jev</b> (API cerrada) no escriben texto: les das una entrada y una <b>lista cerrada de opciones</b>, y devuelven la probabilidad de cada una. Laya contesta en unos 33 ms en una GPU modesta.</p>
+        <ol><li>Descarga <b>Laya</b> de Hugging Face: <a href="https://huggingface.co/convaiinnovations/laya" target="_blank">convaiinnovations/laya</a> (~0,4B parámetros, Apache 2.0, cabe en cualquier PC). Hay versiones MLX, ONNX y CoreML para Mac y móvil.</li><li>Define las opciones: <code>["Pikachu", "Charmander", "Bulbasaur", …]</code>.</li><li>Pásale la entrada. Si es texto (una descripción o una entrada de la Pokédex), usa Laya directamente. Si es una foto, usa la variante <b>Laya-Vision</b>, que añade un codificador de imagen SigLIP. Las copias que hay en HF las ha subido la comunidad, así que comprueba cuál es la fiable y qué licencia tiene.</li><li>Lee la probabilidad de cada opción y quédate con la más alta. Si ninguna supera tu umbral (p. ej. 0,7), responde "no lo sé".</li><li>¿Sin GPU? Usa <b>Jev</b> por API: más preciso en los benchmarks publicados, pero de pago y más lento (~250 ms).</li></ol>
+        <pre><span class="c"># pip install -U huggingface_hub</span>
+hf download convaiinnovations/laya --local-dir ./laya
+<span class="c"># instrucciones de uso exactas: en la ficha del modelo</span></pre>
+        <p class="note">Las comparativas publicadas entre Laya y Jev se contradicen. Pruébalos con tus propios ejemplos antes de fiarte.</p></div>
+      <div class="path rv" style="--c:var(--green)"><div class="ph"><img src="assets/pa_video.jpg" alt="ComfyUI" loading="lazy"></div><h3>Generar un vídeo para YouTube</h3>
+        <ol><li>Guion con un LLM → voz con TTS → imágenes clave con un modelo de imagen.</li><li>Instala <b>ComfyUI</b> y carga un workflow de vídeo con un modelo abierto (familia Wan, LTX…), cuantizado si tu GPU es pequeña.</li><li>O usa APIs de vídeo cerradas (Veo, Sora, Kling) si no tienes GPU.</li><li>Edita el vídeo en DaVinci Resolve (gratis) y genera los subtítulos con whisper.cpp.</li></ol>
+        <p class="note">YouTube exige etiquetar el contenido sintético realista.</p></div>
+      <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_code.jpg" alt="Persona programando" loading="lazy"></div><h3>Programar con agentes</h3>
+        <ol><li>Elige harness: Codex u OpenCode para empezar; Pi o Hermes si te gusta configurar.</li><li>Conéctalo a un modelo (suscripción o OpenRouter).</li><li>Empieza por una spec en un <code>spec.md</code>, no por el código, y pide al agente que la siga tarea a tarea.</li><li>Pide primero los tests y deja que itere hasta que pasen todos.</li></ol></div>
+      <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_auto.jpg" alt="n8n" loading="lazy"></div><h3>Automatizar mi trabajo o mis clases</h3>
+        <ol><li>Lanza n8n con Docker.</li><li>Describe el flujo en lenguaje natural y deja que el agente lo construya.</li><li>Conecta tu modelo (local vía llama-server o OpenRouter).</li><li>Prueba con datos reales y activa el disparador.</li></ol>
+        <pre>docker run -it --rm -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n</pre></div>
+    </div>
+    
+  </div>
+</section>
+<div class="wrap" style="text-align:center;color:var(--ink3);font-size:.85rem;margin-top:30px">Hecho por Luis Munuera Martínez</div>
+</div>
+
+<section style="padding:40px 0 0"><div class="wrap credits"><b>Créditos de las fotografías</b> (Wikimedia Commons; las fotos con licencia CC BY-SA mantienen esa licencia): <a href="https://commons.wikimedia.org/wiki/File:2009-04-18-noerdlingen-rr-05.jpg" target="_blank">2009-04-18-noerdlingen-rr-05</a>, Ralf Roletschek (GFDL 1.2) · <a href="https://commons.wikimedia.org/wiki/File:One_stands_out_004_2025_06_08.jpg" target="_blank">One stands out 004 2025 06 08</a>, Friedrich Haag (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_Viktorkirmes_auf_dem_Overbergplatz_--_2014_--_3738.jpg" target="_blank">Dülmen, Viktorkirmes auf dem Overbergplatz -- 20</a>, Dietmar Rabich (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:2023_MSI_GeForce_RTX_2080_Gaming_X_Trio_(3).jpg" target="_blank">2023 MSI GeForce RTX 2080 Gaming X Trio (3)</a>, Jacek Halicki (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Orchestre_symphonique_(dessus).jpg" target="_blank">Orchestre symphonique (dessus)</a>, Antoine Montulé (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Raspberry_Pi_4_Model_B_-_Side.jpg" target="_blank">Raspberry Pi 4 Model B - Side</a>, Laserlicht (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Haltern_am_See,_Lavesum,_K%C3%BCnstlerhof,_Acrylfarbe_--_2021_--_5727.jpg" target="_blank">Haltern am See, Lavesum, Künstlerhof, Acrylfarbe</a>, Dietmar Rabich (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Blue_Snowflake_USB_microphone.jpg" target="_blank">Blue Snowflake USB microphone</a>, Marie-Lan Nguyen (CC BY 2.5) · <a href="https://commons.wikimedia.org/wiki/File:13-02-27-spielbank-wiesbaden-by-RalfR-093.jpg" target="_blank">13-02-27-spielbank-wiesbaden-by-RalfR-093</a>, Ralf Roletschek (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:The_Milky_Way_arch_in_the_steppes_of_Kazakhstan.jpg" target="_blank">The Milky Way arch in the steppes of Kazakhstan</a>, Astrobond (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Love_padlocks_on_the_Butchers%27_Bridge_(Ljubljana).jpg" target="_blank">Love padlocks on the Butchers' Bridge (Ljubljana</a>, Petar Milošević (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Huijeongdang_Hall_interior_through_open_doors_at_Changdeokgung_Palace_in_Seoul.jpg" target="_blank">Huijeongdang Hall interior through open doors at</a>, Basile Morin (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Tropaeolum_majus-seedling-bud-flower20180(517_12723,_720_14161,_721_14182,_823_14320).jpg" target="_blank">Tropaeolum majus-seedling-bud-flower20180(517 12</a>, Bff (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Dllu_small_form_factor_pc_2024_left_side_closed.jpg" target="_blank">Dllu small form factor pc 2024 left side closed</a>, Dllu (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Cape_Town_(ZA),_Waterfront,_Kran_--_2024_--_2907.jpg" target="_blank">Cape Town (ZA), Waterfront, Kran -- 2024 -- 2907</a>, Dietmar Rabich (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Myra_Medusa.jpg" target="_blank">Myra Medusa</a>, Ingo Mehling (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Arley_railway_station_MMB_01.jpg" target="_blank">Arley railway station MMB 01</a>, mattbuck (category) (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:An_engineer%27s_vise.jpg" target="_blank">An engineer's vise</a>, Dmitry Makeev (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Spiralbinder%C3%BCcken_--_2022_--_9722.jpg" target="_blank">Spiralbinderücken -- 2022 -- 9722</a>, Dietmar Rabich (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Greven,_Fuestrup,_Dortmund-Ems-Kanal,_Alte_Fahrt,_Sicherheitssperrtor_--_2021_--_3918.jpg" target="_blank">Greven, Fuestrup, Dortmund-Ems-Kanal, Alte Fahrt</a>, Dietmar Rabich (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Backlit_keyboard.jpg" target="_blank">Backlit keyboard</a>, Colin (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:NYC_Public_Library_Research_Room_Jan_2006-1-_3.jpg" target="_blank">NYC Public Library Research Room Jan 2006-1- 3</a>, Diliff (CC BY 2.5) · <a href="https://commons.wikimedia.org/wiki/File:ADAC-Zentrale,_Munich,_March_2017-05.jpg" target="_blank">ADAC-Zentrale, Munich, March 2017-05</a>, Martin Falbisoner (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Jubilee_Campus_MMB_L5_The_Exchange.jpg" target="_blank">Jubilee Campus MMB L5 The Exchange</a>, mattbuck (category) (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Hellingen_Museum_Rezeptbuch-20250914-RM-160526.jpg" target="_blank">Hellingen Museum Rezeptbuch-20250914-RM-160526</a>, Reinhold Möller Ermell (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:ATX_computer_case_-_left_-_2018-05-18.jpg" target="_blank">ATX computer case - left - 2018-05-18</a>, Bretwa (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Colored_pencils_(1),_USSR_1979.jpg" target="_blank">Colored pencils (1), USSR 1979</a>, Till Niermann (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Blueprint,_Villa_of_M._Hemsy,_St._Cloud,_Plan_du_Premier_Etage,_1913_(CH_18384911).jpg" target="_blank">Blueprint, Villa of M. Hemsy, St. Cloud, Plan du</a> (ver página) · <a href="https://commons.wikimedia.org/wiki/File:50ml_Falcon_tubes-02.jpg" target="_blank">50ml Falcon tubes-02</a>, Lilly_M (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:M%C3%BCnster,_Domplatz,_Sparschwein_--_2022_--_0863.jpg" target="_blank">Münster, Domplatz, Sparschwein -- 2022 -- 0863</a>, Dietmar Rabich (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:20230815_Gablitzer_Altblech_Matra_(D)Jet_Engine_Bay_D5C_5903.jpg" target="_blank">20230815 Gablitzer Altblech Matra (D)Jet Engine </a>, Granada (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:A790GXH-128M-Motherboard.jpg" target="_blank">A790GXH-128M-Motherboard</a>, Evan-Amos (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Bardentreffen_2014_So_1867.JPG" target="_blank">Bardentreffen 2014 So 1867</a>, Rs-foto (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Industar_I_96_U._USSR_lens._img_01.jpg" target="_blank">Industar I 96 U. USSR lens. img 01</a>, Dmitry Makeev (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Kymograph_Camera_used_by_Doc._Francisco_Risquez.jpg" target="_blank">Kymograph Camera used by Doc. Francisco Risquez</a>, Wilfredor (CC0) · <a href="https://commons.wikimedia.org/wiki/File:QWERTY_keyboard.jpg" target="_blank">QWERTY keyboard</a>, MichaelMaggs (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Paris_Motor_Show_2018,_Paris_(1Y7A1752).jpg" target="_blank">Paris Motor Show 2018, Paris (1Y7A1752)</a>, Matti Blume (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Wooden_Mannequin.jpg" target="_blank">Wooden Mannequin</a> (ver página)</div></section>
+<footer>
+  <div class="dots"><span style="background:var(--blue)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span></div>
+  <p style="font-weight:600;color:var(--ink2);font-size:1rem;margin-bottom:8px">Hecho por Luis Munuera Martínez</p>
+  <p style="margin-bottom:8px">© 2026 Luis Munuera Martínez. Todos los derechos reservados. Uso permitido solo con fines docentes en centros educativos públicos.</p>
+  Guía visual de IA · noviembre 2026 · Datos de las fuentes citadas en cada gráfico, consultados en noviembre de 2026; cambian rápido.
+</footer>
+
+<script>
+/* © 2026 Luis Munuera Martínez — autor de esta guía. Todos los derechos reservados. */
+console.log("%cLa IA, explicada de verdad · Hecho por Luis Munuera Martínez · © 2026","font-weight:bold;color:#4285F4");
+document.documentElement.dataset.author="Luis Munuera Martínez";
+/* ---------- WIND ---------- */
+(()=>{const c=document.getElementById('wind'),x=c.getContext('2d');let W,H,P=[];const cols=['#4285F4','#EA4335','#FBBC05','#34A853'];
+function rs(){W=c.width=innerWidth*devicePixelRatio;H=c.height=c.parentElement.offsetHeight*devicePixelRatio;c.style.height=c.parentElement.offsetHeight+'px'}
+rs();addEventListener('resize',rs);
+for(let i=0;i<110;i++)P.push({x:Math.random()*W,y:Math.random()*H,s:.6+Math.random()*1.6,c:cols[i%4],l:40+Math.random()*120,o:Math.random()*6.28,h:[]});
+let t=0;(function f(){t+=.004;x.fillStyle='rgba(251,252,254,.18)';x.fillRect(0,0,W,H);
+for(const p of P){const a=Math.sin(p.y*.0016+t*2+p.o)*.6+Math.cos(p.x*.0011-t)*.35;p.x+=Math.cos(a)*p.s*2.2;p.y+=Math.sin(a)*p.s*1.1;
+p.h.push([p.x,p.y]);if(p.h.length>26)p.h.shift();
+if(p.x>W+50){p.x=-50;p.h=[]}if(p.y<-50){p.y=H+50;p.h=[]}if(p.y>H+50){p.y=-50;p.h=[]}
+x.beginPath();p.h.forEach((q,i)=>i?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]));x.strokeStyle=p.c;x.globalAlpha=.32;x.lineWidth=p.s*2*devicePixelRatio;x.lineCap='round';x.stroke();x.globalAlpha=1}
+requestAnimationFrame(f)})()})();
+
+/* ---------- REVEAL ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('[data-w]').forEach(b=>b.style.width=b.dataset.w);e.target.querySelectorAll('[data-h]').forEach(b=>b.style.height=b.dataset.h);e.target.querySelectorAll('[data-d]').forEach(b=>b.setAttribute('stroke-dasharray',b.dataset.d));}}),{threshold:.15});
+function obs(){document.querySelectorAll('.rv').forEach(el=>io.observe(el))}
+
+/* ---------- TOKENS ---------- */
+const tc=['#E8F0FE','#FCE8E6','#FEF7E0','#E6F4EA','#F3E8FD'];
+function tok(s){const out=[];(s.match(/\s?[\p{L}]+|\s?\d{1,3}|\s?[^\s\p{L}\d]|\s+/gu)||[]).forEach(w=>{let core=w;while(core.length>6){const k=core.startsWith(' ')?5:4;out.push(core.slice(0,k));core=core.slice(k)}out.push(core)});return out}
+function rt(){const v=document.getElementById('tin').value,t=tok(v);document.getElementById('tout').innerHTML=t.map((s,i)=>`<span style="background:${tc[i%5]};animation-delay:${Math.min(i*15,600)}ms">${s.replace(/</g,'&lt;')}</span>`).join('');
+sT.textContent=t.length;sC.textContent=v.length;sR.textContent=t.length?(v.length/t.length).toFixed(1):0;sP.textContent=(t.length*3).toFixed(0)+' €'}
+tin.addEventListener('input',rt);rt();
+
+/* ---------- MODEL PANELS ---------- */
+const M={
+dense:{t:'Modelos densos',c:'#4285F4',d:'Todos los parámetros trabajan para cada token. Simples, predecibles y fáciles de cuantizar y afinar. Hasta unos 30B, funcionan muy bien en una sola GPU.',ex:'Qwen3.8 27B, Gemma (Google), Mistral Small',use:'Chat local, asistentes, fine-tuning propio',eng:'llama.cpp, vLLM, ExLlamaV3, MLX',
+svg:`<g>${[...Array(5)].map((_,i)=>[...Array(5)].map((_,j)=>`<rect x="${110+i*62}" y="${80+j*62}" width="50" height="50" rx="14" fill="#4285F4" opacity="${.25+((i+j)%3)*.25}" class="neuron" style="animation-delay:${(i+j)*.15}s"/>`).join('')).join('')}</g><text x="265" y="430" text-anchor="middle" font-size="18" font-weight="600" fill="#1a5fd0">100% de neuronas activas</text>`},
+moe:{t:'Mixture of Experts (MoE)',c:'#EA4335',d:'El modelo tiene cientos de "expertos" y un router elige solo unos pocos por token. Resultado: el conocimiento de un modelo gigante con la velocidad de uno pequeño. Casi toda la vanguardia abierta es MoE.',ex:'DeepSeek V4.1 Flash, Kimi K3, MiniMax M3.1, GLM, Qwen3.8-Max',use:'Agentes, código, razonamiento a gran escala',eng:'vLLM, SGLang, llama.cpp (--n-cpu-moe), KTransformers',
+svg:`<circle cx="265" cy="90" r="34" fill="#FCE8E6"/><text x="265" y="97" text-anchor="middle" font-size="16" font-weight="700" fill="#b3261e">Router</text>${[...Array(8)].map((_,i)=>{const on=i==1||i==5;return `<rect x="${60+i*52}" y="250" width="40" height="90" rx="12" fill="${on?'#EA4335':'#f1f3f4'}"/><path d="M265,124 C265,190 ${80+i*52},190 ${80+i*52},250" stroke="${on?'#EA4335':'#e3e3e3'}" stroke-width="${on?4:2}" fill="none" ${on?'class="flow"':''}/>`}).join('')}<text x="265" y="400" text-anchor="middle" font-size="18" font-weight="600" fill="#b3261e">Solo 2 de 8 expertos trabajan</text>`},
+edge:{t:'Compactos / Edge',c:'#34A853',d:'De 0,1B a ~4B parámetros. Funcionan en el móvil, en una Raspberry Pi o en el navegador, sin internet. Menos conocimiento, pero perfectos para tareas concretas y privadas.',ex:'Gemma 3n/270M, Qwen3.8 0.6B–4B, SmolLM, Tiny Aya (Cohere)',use:'Autocompletado, domótica, apps offline, clasificación rápida',eng:'llama.cpp, MLX, ONNX Runtime, LiteRT, WebGPU (transformers.js)',
+svg:`<rect x="185" y="60" width="160" height="300" rx="34" fill="#fff" stroke="#34A853" stroke-width="6" class="floaty"/><rect x="235" y="75" width="60" height="8" rx="4" fill="#34A853"/><circle cx="265" cy="210" r="46" fill="#E6F4EA"/><text x="265" y="420" text-anchor="middle" font-size="18" font-weight="600" fill="#137333">Un cerebro en tu bolsillo</text>`},
+diff:{t:'Modelos de difusión',c:'#FBBC05',d:'Empiezan con ruido puro y lo van "limpiando" paso a paso hasta formar una imagen, vídeo o incluso texto. Se guían por tu descripción (prompt).',ex:'MiniMax H3 y Krea, los más usados ahora para imagen y vídeo',use:'Imágenes, vídeo, edición, texturas, miniaturas de YouTube',eng:'ComfyUI, diffusers, stable-diffusion.cpp',
+svg:`${[0,1,2,3].map(i=>`<g transform="translate(${50+i*112},150)"><rect width="96" height="96" rx="20" fill="#FEF7E0"/>${[...Array(36)].map((_,k)=>`<rect x="${8+(k%6)*14}" y="${8+Math.floor(k/6)*14}" width="12" height="12" rx="3" fill="${['#4285F4','#EA4335','#FBBC05','#34A853'][(k*7+i*3)%4]}" opacity="${i==3?(Math.hypot(k%6-2.5,Math.floor(k/6)-2.5)<2.4?.95:.1):Math.random()*(1-i*.25)+.1}"/>`).join('')}</g>`).join('')}<text x="265" y="320" text-anchor="middle" font-size="18" font-weight="600" fill="#8a5a00">Ruido → … → Imagen</text>`},
+audio:{t:'Modelos de audio',c:'#A142F4',d:'Tres grandes familias: ASR (voz → texto), TTS (texto → voz, con clonación a partir de segundos de audio) y modelos "omni" que conversan por voz en tiempo real. También música.',ex:'Qwen3-TTS (base de Voicebox), IndexTTS-2 y Chatterbox para voz con clonación',use:'Subtítulos, doblaje, asistentes de voz, podcasts',eng:'whisper.cpp, faster-whisper, ComfyUI, NeMo',
+svg:`<g>${[...Array(30)].map((_,i)=>{const h=30+Math.abs(Math.sin(i*.6))*130+Math.abs(Math.cos(i*1.7))*40;return `<rect x="${55+i*14.5}" y="${210-h/2}" width="9" height="${h}" rx="4.5" fill="#A142F4" opacity=".75" class="neuron" style="animation-delay:${i*.08}s"/>`}).join('')}</g><text x="265" y="400" text-anchor="middle" font-size="18" font-weight="600" fill="#7b1fa2">Ondas → tokens de audio → voz</text>`},
+cls:{t:'Clasificación y decisión',c:'#4285F4',d:'No generan texto: deciden. Les das una entrada y una lista de opciones y devuelven la probabilidad de cada una: "¿Es spam?", "¿A qué departamento va este correo?", "¿Qué Pokémon es?". Los nuevos modelos de decisión, como Laya, responden en ~33 ms. También sirven para enrutar peticiones de agentes, moderar contenido o hacer de guardarraíl.',ex:'Laya (Convai Innovations, open weights, Apache 2.0) y Jev (TypeSafe AI, API cerrada)',use:'Enrutar peticiones, moderar, clasificar, hacer de guardarraíl en agentes',eng:'Laya: Transformers (PyTorch) y las conversiones ONNX, MLX y CoreML publicadas en Hugging Face. Jev: solo su API',
+svg:`<rect x="90" y="80" width="200" height="200" rx="28" fill="#E8F0FE"/><rect x="110" y="100" width="160" height="160" rx="10" fill="none" stroke="#EA4335" stroke-width="4" stroke-dasharray="10 6" class="flow"/>${[['Pikachu',.94,'#34A853'],['Raichu',.04,'#FBBC05'],['Pichu',.02,'#EA4335']].map((r,i)=>`<text x="320" y="${130+i*60}" font-size="16" font-weight="600" fill="#444">${r[0]}</text><rect x="320" y="${140+i*60}" width="150" height="12" rx="6" fill="#f1f3f4"/><rect x="320" y="${140+i*60}" width="${150*r[1]}" height="12" rx="6" fill="${r[2]}"/>`).join('')}<text x="265" y="380" text-anchor="middle" font-size="18" font-weight="600" fill="#1a5fd0">94% Pikachu</text>`},
+emb:{t:'Embeddings',c:'#34A853',d:'Convierten un texto o imagen en un vector: una coordenada en un "mapa de significados". Los conceptos parecidos quedan cerca unos de otros. Son la base del buscador semántico y una de las piezas del RAG.',ex:'Qwen3-Embedding, EmbeddingGemma, BGE-M3, Jina',use:'Búsqueda, RAG, recomendaciones, agrupar',eng:'Transformers, sentence-transformers, llama.cpp, TEI',
+svg:`${[[150,140,'pets','#4285F4'],[190,110,'pets','#4285F4'],[175,180,'cruelty_free','#4285F4'],[360,280,'directions_car','#EA4335'],[400,250,'directions_bus','#EA4335'],[340,320,'pedal_bike','#EA4335'],[380,110,'nutrition','#34A853'],[420,150,'eco','#34A853']].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="28" fill="${p[3]}" opacity=".15"/><text x="${p[0]}" y="${p[1]+11}" text-anchor="middle" font-size="30" class="msv" fill="${p[3]}">${p[2]}</text>`).join('')}<path d="M80,370 H470 M80,370 V60" stroke="#bdc1c6" stroke-width="2"/><text x="265" y="420" text-anchor="middle" font-size="18" font-weight="600" fill="#137333">Significado = distancia</text>`}
+};
+const ART={dense:['m_dense','27B','todas las neuronas trabajan en cada token'],moe:['m_moe','Pocos expertos','de los parámetros se activan por token, como una orquesta que solo toca la sección necesaria'],edge:['m_edge','0,1–4B','parámetros · funciona sin internet en una Raspberry Pi o un móvil'],diff:['m_diff','Ruido → imagen','en 20–50 pasos de limpieza'],audio:['m_audio','Unos segundos','de audio de referencia bastan para clonar una voz'],cls:['m_cls','33 ms','por decisión: probabilidad para cada opción'],emb:['m_emb','1.024','dimensiones por vector: un mapa de significados']};
+function art(k){const a=ART[k];return `<div class="art"><img src="assets/${a[0]}.jpg" alt=""><div class="shade"></div><div class="chip"><b>${a[1]}</b><small>${a[2]}</small></div></div>`}
+const pw=document.getElementById('panels');
+pw.innerHTML=Object.entries(M).map(([k,m],i)=>`<div class="panel ${i?'':'on'}" id="p-${k}"><div class="viz">${art(k)}</div><div><span class="pill" style="background:${m.c}22;color:${m.c}">Familia de modelos</span><h3 style="font-size:2.2rem;margin-top:10px">${m.t}</h3><p style="color:var(--ink2);font-size:1.08rem">${m.d}</p><dl class="kv"><dt>Ejemplos</dt><dd>${m.ex}</dd><dt>Para qué</dt><dd>${m.use}</dd><dt>Engines</dt><dd><b>${m.eng}</b></dd></dl></div></div>`).join('');
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.panel').forEach(e=>e.classList.remove('on'));b.classList.add('on');document.getElementById('p-'+b.dataset.t).classList.add('on')});
+
+/* ---------- NN ---------- */
+(()=>{const L=[4,6,6,3],s=document.getElementById('nn');let h='';const pos=L.map((n,i)=>[...Array(n)].map((_,j)=>[70+i*127,190+(j-(n-1)/2)*55]));
+for(let i=0;i<L.length-1;i++)pos[i].forEach(a=>pos[i+1].forEach(b=>{const w=Math.random()*2-1;h+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${w>0?'#4285F4':'#EA4335'}" stroke-width="${Math.abs(w)*3.2+.3}" opacity=".45"/>`}));
+const cs=['#4285F4','#FBBC05','#FBBC05','#34A853'];pos.forEach((l,i)=>l.forEach((p,j)=>h+=`<circle cx="${p[0]}" cy="${p[1]}" r="16" fill="#fff" stroke="${cs[i]}" stroke-width="5"/><circle cx="${p[0]}" cy="${p[1]}" r="7" fill="${cs[i]}" class="neuron" style="animation-delay:${(i*.4+j*.15)}s"/>`));
+h+=`<g font-size="13" font-weight="600" fill="#747775" text-anchor="middle"><text x="70" y="370">Entrada</text><text x="260" y="370">Capas ocultas</text><text x="451" y="370">Salida</text></g>`;s.innerHTML=h})();
+
+/* ---------- BARS ---------- */
+function bars(id,rows,max,fmt,log){const el=document.getElementById(id);el.insertAdjacentHTML('beforeend',rows.map(r=>{const w=log?(Math.log10(r[1])+1.2)/(Math.log10(max)+1.2)*100:r[1]/max*100;return `<div class="row"><div class="lab">${r[3]?`<img class="logo" src="https://www.google.com/s2/favicons?domain=${r[3]}&sz=64">`:''}${r[0]}</div><div class="track"><div class="fill" data-w="${w}%" style="background:${r[2]}"></div></div><div class="val">${fmt(r[1])}</div></div>`}).join(''))}
+document.getElementById('sizeBars').innerHTML='<h3>Parámetros por modelo (escala logarítmica)</h3><p>Desde un microcontrolador hasta un clúster.</p>';
+bars('sizeBars',[['Gemma 270M · edge',.27,'#34A853','ai.google.dev'],['Qwen3.8 4B · móvil',4,'#34A853','qwen.ai'],['Qwen3.8 27B · PC potente',27,'#4285F4','qwen.ai'],['gpt-oss-120b · workstation',117,'#FBBC05','openai.com'],['DeepSeek V4 Pro · centro de datos',1600,'#EA4335','deepseek.com']],1600,v=>v<1?v*1000+'M':v+'B',true);
+bars('aaBars',[['Gemini 4 Carbon',60,'#FBBC05','gemini.google.com'],['Claude Opus 5.5',59,'#EA4335','anthropic.com'],['GPT-6 Astra',57,'#4285F4','openai.com'],['GPT-6.1 Sol',55,'#4285F4','openai.com'],['DeepSeek V4.1 Flash',33,'#34A853','deepseek.com'],['GLM-5.3',32,'#34A853','z.ai'],['MiMo-V2.6-Pro',30,'#34A853','mi.com']],65,v=>v);
+bars('mrcrBars',[['A 128K tokens',84.9,'#34A853','gemini.google.com'],['A 1M tokens',26.3,'#EA4335','gemini.google.com']],100,v=>(''+v).replace('.',',')+'%');
+const eur=v=>v.toFixed(2).replace('.',',')+' $',pc=v=>(''+v).replace('.',',')+'%';
+bars('costBars',[['Pi',2.43,'#A142F4','pi.dev'],['Hermes',2.90,'#4285F4','nousresearch.com'],['OpenCode',3.24,'#FBBC05','opencode.ai'],['DeepSeek Harness',3.46,'#4285F4','deepseek.com'],['Codex',3.47,'#34A853','openai.com'],['Claude Code',18.34,'#EA4335','anthropic.com']],18.34,eur);
+bars('passBars',[['Codex',66.7,'#34A853','openai.com'],['Claude Code',63.3,'#EA4335','anthropic.com'],['DeepSeek Harness',60,'#4285F4','deepseek.com'],['Pi',60,'#A142F4','pi.dev'],['OpenCode',50,'#FBBC05','opencode.ai'],['Hermes',50,'#4285F4','nousresearch.com']],100,pc);
+bars('cacheBars',[['Codex',88,'#34A853','openai.com'],['DeepSeek Harness',86.5,'#4285F4','deepseek.com'],['Hermes',85.9,'#4285F4','nousresearch.com'],['Pi',79.4,'#A142F4','pi.dev'],['OpenCode',78.4,'#FBBC05','opencode.ai'],['Claude Code',67.8,'#EA4335','anthropic.com']],100,pc);
+bars('hbBars',[['OpenCode',66.3,'#FBBC05','opencode.ai'],['Hermes',65.8,'#4285F4','nousresearch.com'],['Claude Code',65.5,'#EA4335','anthropic.com'],['Codex',65.3,'#34A853','openai.com']],100,v=>(''+v).replace('.',','));
+
+/* ---------- MEM ---------- */
+(()=>{const d=[['FP16',54,'#EA4335'],['FP8',27,'#FBBC05'],['Q4_K_M',16.5,'#4285F4'],['NVFP4',15,'#34A853'],['Q2',9,'#A142F4']];
+document.getElementById('memChart').innerHTML=d.map(r=>`<div class="c"><div class="b" data-h="${r[1]/54*85}%" style="background:${r[2]}"><em>${r[1]} GB</em></div><small>${r[0]}</small></div>`).join('')})();
+
+/* ---------- DONUTS ---------- */
+function donut(id,parts){const C=2*Math.PI*80;let off=0;document.getElementById(id).innerHTML=`<circle cx="100" cy="100" r="80" stroke="#f1f3f4"/>`+parts.map(p=>{const s=`<circle cx="100" cy="100" r="80" stroke="${p[1]}" stroke-dasharray="0 ${C}" data-d="${p[0]*C} ${C}" stroke-dashoffset="${-off*C}" stroke-linecap="butt"/>`;off+=p[0];return s}).join('')}
+donut('ovDonut',[[24/32.8,'#FBBC05'],[6.5/32.8,'#EA4335'],[2.3/32.8,'#4285F4']]);donut('chDonut',[[.88,'#34A853'],[.12,'#dadce0']]);
+
+/* ---------- HARNESS CARDS ---------- */
+const H=[
+['Claude Code','anthropic.com','#EA4335','Cerrado',['La única closed source del grupo y la <b>menos configurable</b>: no puedes cambiar su núcleo, solo añadir plugins, skills y hooks.','Pensada para modelos de Anthropic; según sus términos, las suscripciones de Claude no pueden usarse en otros harnesses.','Planes Pro, Max 5× y Max 20× (además de pago por API).','El más caro por tarea en FrontierHarness: 32.800 tokens de overhead antes de empezar.'],[63.3,18.34,67.8,1]],
+['Codex','openai.com','#34A853','Open source',['Open source (Rust), pero por defecto conectada a los modelos de OpenAI.','Madura, con sandbox, revisión de código y muchas herramientas.','La mejor tasa de éxito y de caché en FrontierHarness.'],[66.7,3.47,88,3]],
+['DeepSeek Harness','deepseek.com','#4285F4','Open source · MIT',['Lanzada en agosto de 2026, con un ritmo de desarrollo enorme.','Arquitectura de plugins (Cordis): todo es reemplazable. Sus perfiles rinden de forma distinta: Creator resuelve el 63,3% de las tareas y Minimal el 56,7%.','Diseñada para maximizar el cache hit rate (86,5% en su perfil Standard).'],[60,3.46,86.5,5]],
+['Pi','pi.dev','#A142F4','Open source',['Minimalista por diseño: trae lo esencial y nada más.','Completamente configurable y extensible: tú construyes tu harness. Su variante Oh My Pi viene más equipada.','El más barato por tarea en FrontierHarness.'],[60,2.43,79.4,5]],
+['OpenCode','opencode.ai','#FBBC05','Open source',['La open source más popular, con una interfaz de terminal preciosa.','Funciona con cualquier proveedor y modelo. Muy fácil de usar.','Overhead fijo bajo (6.900 tokens), aunque hace más llamadas a herramientas. Primera en Harness Bench.'],[50,3.24,78.4,4]],
+['Hermes','nousresearch.com','#4285F4','Open source',['De Nous Research. Muy configurable y con muchas funciones de serie.','Su punto fuerte: crear y usar agentes y subagentes de forma muy sencilla.','Memoria, skills y conexión a mensajería integradas.'],[50,2.90,85.9,4]]];
+document.getElementById('hcards').innerHTML=H.map(h=>`<div class="card h-card" style="--c:${h[2]}"><div class="top">${h[1]?`<img src="https://www.google.com/s2/favicons?domain=${h[1]}&sz=64">`:`<div class="emo" style="width:42px;height:42px;font-size:1.3rem">π</div>`}<div><h3 style="margin:0">${h[0]}</h3><span class="pill pn" style="margin:0">${h[3]}</span></div></div><ul>${h[4].map(l=>`<li>${l}</li>`).join('')}</ul><div class="hm"><small>Datos FrontierHarness · Kimi K3</small><div class="hr"><span>Éxito</span><div class="tk"><i style="width:${h[5][0]}%"></i></div><b>${(''+h[5][0]).replace('.',',')}%</b></div><div class="hr"><span>Coste/tarea</span><div class="tk"><i style="width:${h[5][1]/18.34*100}%"></i></div><b>${h[5][1].toFixed(2).replace('.',',')} $</b></div><div class="hr"><span>Caché</span><div class="tk"><i style="width:${h[5][2]}%"></i></div><b>${(''+h[5][2]).replace('.',',')}%</b></div></div><div class="mrow">Configurable<div class="meter">${[...Array(5)].map((_,k)=>`<i class="${k<h[5][3]?'f':''}"></i>`).join('')}</div></div></div>`).join('');
+
+/* ---------- KV CACHE ---------- */
+(()=>{const L=[4096,8192,16384,32768,65536,131072,262144,524288,1048576],lab=['4K','8K','16K','32K','64K','128K','256K','512K','1M'];
+const K=[['Atención clásica (GQA)',249856,'#4285F4'],['MLA · DeepSeek V3',70272,'#FBBC05'],['DeepSeek V4 (CSA + HCA)',4997,'#34A853']];
+const el=document.getElementById('kvBars'),r=document.getElementById('kvR'),o=document.getElementById('kvO');
+const f=()=>{const n=L[r.value];o.textContent=lab[r.value]+' tokens';el.innerHTML=K.map(m=>{const gb=m[1]*n/1e9,w=Math.max(.6,Math.min(100,gb/24*100));const v=(gb<1?gb.toFixed(2):gb<10?gb.toFixed(1):Math.round(gb)+'').replace('.',',');return `<div class="row"><div class="lab">${m[0]}</div><div class="track"><div class="fill" style="width:${w}%;background:${gb>24?'#EA4335':m[2]};transition:width .5s"></div></div><div class="val" style="color:${gb>24?'#b3261e':'inherit'}">${v} GB</div></div>`}).join('')};
+r.addEventListener('input',f);f()})();
+
+/* ---------- ATENCIÓN ---------- */
+(()=>{const N=16,S=10,P=5;
+const draw=(id,fn,col)=>{let h=`<rect x="0" y="0" width="170" height="170" rx="14" fill="#f8f9fa"/>`;for(let i=0;i<N;i++)for(let j=0;j<=i;j++){const v=fn(i,j);h+=`<rect x="${P+j*S}" y="${P+i*S}" width="${S-1.2}" height="${S-1.2}" rx="2" fill="${col}" opacity="${v}"/>`}document.getElementById(id).innerHTML=h};
+const rnd=(i,j)=>((i*37+j*91)%17)/17;
+draw('at1',()=>.85,'#4285F4');
+draw('at2',(i,j)=>.35+.5*((i+j)%2),'#FBBC05');
+draw('at3',(i,j)=>i-j<3?.9:(rnd(i,j)>.78?.75:.07),'#EA4335');
+draw('at4',(i,j)=>{if(i-j<3)return .95;const b=Math.floor(j/4),bi=Math.floor(i/4);if(b>=bi)return .07;return ((b*5+i)%3==0)?.8:.3},'#34A853')})();
+
+/* ---------- V4 EXPERTOS ---------- */
+(()=>{let h='';for(let i=0;i<12;i++){const sh=i==0,on=i==4||i==9;h+=`<rect x="${178+i*24.5}" y="180" width="18" height="40" rx="6" fill="${sh?'#FBBC05':on?'#EA4335':'#fff'}" stroke="${sh?'#FBBC05':on?'#EA4335':'#f2c4bf'}" stroke-width="1.5"/>`}
+h+=`<text x="320" y="234" text-anchor="middle" font-size="11.5" fill="#b3261e">amarillo: experto compartido · rojo: elegidos para este token</text>`;document.getElementById('v4ex').innerHTML=h})();
+
+obs();
+/* ---------- TABS DE LA GUÍA ---------- */
+const G={g1:{n:'Conceptos',s:[['tokens','Tokens'],['modelos','Modelos'],['pesos','Pesos'],['tamano','Tamaño'],['contexto','Contexto'],['benchmarks','Benchmarks'],['capo','Bajo el capó'],['glosario','Glosario']]},
+g2:{n:'IDEs y agentes',s:[['agentes','Agentes'],['harness','Harnesses'],['ides','IDEs'],['skills','Skills y MCP'],['memoria','Memoria']]},
+g3:{n:'Cómo trabajar',s:[['automatizar','Automatizar'],['codigo','Código'],['patrones','Patrones'],['empieza','Empieza aquí']]}};
+const navEl=document.getElementById('nav'),gind=document.querySelector('.gind');let curG='g1';
+function placeInd(){const b=document.querySelector('.gtab.on');if(!b)return;gind.style.left=b.offsetLeft+'px';gind.style.top=b.offsetTop+'px';gind.style.width=b.offsetWidth+'px';gind.style.height=b.offsetHeight+'px'}
+function drawNav(){navEl.innerHTML=`<span class="gsw">${Object.entries(G).map(([k,v])=>`<a href="#${k}" data-g="${k}" class="${k==curG?'cur':''}">${v.n}</a>`).join('')}</span>`+G[curG].s.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('');navActive()}
+function setG(g,scroll){if(!G[g])return;const ch=g!=curG;curG=g;document.querySelectorAll('.gtab').forEach(b=>{b.classList.toggle('on',b.dataset.g==g);b.setAttribute('aria-selected',b.dataset.g==g)});document.querySelectorAll('.gpane').forEach(p=>p.classList.toggle('on',p.id==g));placeInd();drawNav();if(ch)history.replaceState(null,'','#'+g);
+if(scroll){const t=document.getElementById('tabsel').getBoundingClientRect().top+scrollY-70;if(scrollY>t)scrollTo({top:t,behavior:'smooth'})}}
+function paneOf(el){const p=el&&el.closest('.gpane');return p?p.id:null}
+function goTo(id){if(G[id]){setG(id,true);return true}const el=document.getElementById(id);if(!el)return false;const p=paneOf(el);if(p&&p!=curG)setG(p,false);requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));history.replaceState(null,'','#'+id);return true}
+document.querySelectorAll('.gtab').forEach(b=>b.addEventListener('click',()=>setG(b.dataset.g,true)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>setG(b.dataset.go,true)));
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);if(id&&goTo(id))e.preventDefault()});
+addEventListener('resize',placeInd);document.fonts&&document.fonts.ready.then(placeInd);
+/* nav active */
+function navActive(){let cur='';G[curG].s.forEach(([id])=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<200)cur=id});navEl.querySelectorAll('nav>a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+cur))}
+addEventListener('scroll',navActive,{passive:true});
+(()=>{const h=location.hash.slice(1);const el=h&&document.getElementById(h);const p=G[h]?h:paneOf(el);setG(p||'g1',false);if(el&&!G[h])setTimeout(()=>el.scrollIntoView({block:'start'}),50)})();
+</script>
+</body>
+</html>
