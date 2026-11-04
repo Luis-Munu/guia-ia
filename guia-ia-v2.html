@@ -409,9 +409,9 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
   <div class="wrap rv">
     <div class="gtabs" role="tablist">
       <i class="gind"></i>
-      <button class="gtab on" role="tab" data-g="g1" style="--c:var(--blue)"><b class="gn">1</b><span><strong>Conceptos básicos</strong><small>Tokens · modelos · pesos · tamaño · contexto · benchmarks · glosario · (extra) bajo el capó</small></span></button>
+      <button class="gtab on" role="tab" data-g="g1" style="--c:var(--blue)"><b class="gn">1</b><span><strong>Conceptos básicos</strong><small>Tokens · pesos · modelos · tamaño · contexto · benchmarks · (extra) bajo el capó</small></span></button>
       <button class="gtab" role="tab" data-g="g2" style="--c:var(--red)"><b class="gn">2</b><span><strong>IDEs, harnesses y agentes</strong><small>Agentes · harnesses · IDEs · skills, plugins, MCP y RAG · memoria</small></span></button>
-      <button class="gtab" role="tab" data-g="g3" style="--c:var(--green)"><b class="gn">3</b><span><strong>Cómo trabajar con ello</strong><small>Automatizar · programar con agentes · patrones · empieza aquí</small></span></button>
+      <button class="gtab" role="tab" data-g="g3" style="--c:var(--green)"><b class="gn">3</b><span><strong>Cómo trabajar con ello</strong><small>Automatizar · programar con agentes · patrones · empieza aquí · glosario</small></span></button>
     </div>
   </div>
 </section>
@@ -451,38 +451,17 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
     </div>
     <div class="bento mt">
       <div class="card rv wide"><div class="ph side"><img src="assets/tok_calc.jpg" alt="Fichas de letras" loading="lazy"></div><div><h3>Cómo se calcula</h3><p>Un algoritmo (BPE) aprende los fragmentos más frecuentes de millones de textos. Regla rápida: <b>1 token ≈ 4 caracteres en inglés ≈ 0,75 palabras</b>. En español sale algo más caro: ~1,3 tokens por palabra. El código, los emojis y los idiomas con otros alfabetos gastan todavía más.</p></div></div>
-      <div class="card rv"><div class="ph"><img src="assets/tok_cost.jpg" alt="Taxímetro" loading="lazy"></div><h3 class="mt2">Cómo se cobra</h3><p>Se paga por cada <b>millón de tokens</b>, con tres precios distintos: <span class="pill pb">entrada</span> (lo que envías), <span class="pill pr">salida</span> (lo que genera el modelo, entre 3 y 8 veces más cara) y <span class="pill pg">caché</span> (entrada repetida, hasta 90% más barata).</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/tok_cost.jpg" alt="Taxímetro" loading="lazy"></div><h3 class="mt2">Cómo se cobra</h3><p>Se paga por cada <b>millón de tokens</b>, con tres precios distintos: <span class="pill pb">entrada</span> (lo que envías), <span class="pill pr">salida</span> (lo que genera el modelo, entre 3 y 8 veces más cara) y <span class="pill pg">caché</span> (entrada repetida, hasta 90% más barata; cómo aprovecharla, en la <a href="#harness">sección 08</a>).</p></div>
       <div class="card rv"><div class="ph"><img src="assets/tok_speed.jpg" alt="Velocímetro" loading="lazy"></div><h3 class="mt2">Cómo se mide la velocidad</h3><p><b>Tokens por segundo (tok/s)</b>. Para leer con comodidad bastan unos 10 tok/s; un agente que programa necesita 50–200 tok/s. También importa el <b>TTFT</b>: tiempo hasta el primer token.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 02 MODELOS -->
-<section id="modelos">
-  <div class="wrap">
-    <div class="rv" style="text-align:center">
-      <div class="eyebrow"><i style="background:var(--red)"></i>02 · El zoo de modelos</div>
-      <h2>Un <span style="color:var(--red)">modelo</span> es una función gigante</h2>
-      <p class="lead" style="margin:0 auto">Recibe números (tokens, píxeles, audio) y devuelve números. Lo que cambia entre tipos es <b>qué entra, qué sale y cómo está construido por dentro</b>. Elige una familia:</p>
-    </div>
-    <div class="tabs rv" id="tabs">
-      <button class="tab on" data-t="dense">Densos</button>
-      <button class="tab" data-t="moe">MoE</button>
-      <button class="tab" data-t="edge">Compactos / Edge</button>
-      <button class="tab" data-t="diff">Difusión</button>
-      <button class="tab" data-t="audio">Audio</button>
-      <button class="tab" data-t="cls">Clasificación / Decisión</button>
-      <button class="tab" data-t="emb">Embeddings</button>
-    </div>
-    <div id="panels"></div>
-  </div>
-</section>
-
-<!-- 03 PESOS -->
+<!-- 02 PESOS -->
 <section id="pesos">
   <div class="wrap">
     <div class="rv">
-      <div class="eyebrow"><i style="background:var(--yellow)"></i>03 · Lo que el modelo "sabe"</div>
+      <div class="eyebrow"><i style="background:var(--yellow)"></i>02 · Lo que el modelo "sabe"</div>
       <h2>¿Qué son los <span style="color:#d39b00">pesos</span>?</h2>
       <p class="lead">Los pesos son los <b>miles de millones de números</b> que conectan las neuronas artificiales. Durante el entrenamiento se ajustan poco a poco hasta que el modelo predice bien el siguiente token. Un modelo "de 27B" tiene 27.000 millones de esos números. Descargar un modelo es, literalmente, descargar un archivo enorme con todos esos números.</p>
     </div>
@@ -536,13 +515,27 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
         </div>
       </div>
     </div>
-    <div class="grid g4 mt">
-      <div class="card rv"><div class="ph"><img src="assets/p_local.jpg" alt="Tarjeta gráfica NVIDIA RTX" loading="lazy"></div><h4 class="mt2">Ejecutarlo en local</h4><p>Privacidad total, sin cuotas, sin internet.</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/p_unlock.jpg" alt="Candado abierto" loading="lazy"></div><h4 class="mt2">Quitar restricciones</h4><p>Con <b>Heretic</b> puedes quitarle al modelo sus mecanismos de seguridad para que deje de negarse a responder (abliteración automática), sin necesidad de reentrenarlo. <b>Solo para uso personal y legítimo; no en equipos del centro.</b></p></div>
-      <div class="card rv"><div class="ph"><img src="assets/p_persona.jpg" alt="Repositorio Unsloth" loading="lazy"></div><h4 class="mt2">Cambiar personalidad</h4><p>Fine-tuning con <b>LoRA</b> (Unsloth, Axolotl): entrenas con tus propios ejemplos solo unas pequeñas capas añadidas, para darle tu tono o especializarlo en una tarea.</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/p_quant.jpg" alt="Tarjeta gráfica" loading="lazy"></div><h4 class="mt2">Cuantizarlo</h4><p>Se reduce la precisión de sus números para que quepa en tu GPU (lo vemos en la siguiente sección).</p></div>
+  </div>
+</section>
+
+<!-- 03 MODELOS -->
+<section id="modelos">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow"><i style="background:var(--red)"></i>03 · El zoo de modelos</div>
+      <h2>Un <span style="color:var(--red)">modelo</span> es una función gigante</h2>
+      <p class="lead" style="margin:0 auto">Recibe números (tokens, píxeles, audio) y devuelve números. Lo que cambia entre tipos es <b>qué entra, qué sale y cómo está construido por dentro</b>. Elige una familia:</p>
     </div>
-    <p class="note rv">Quitarle los filtros no te exime de responsabilidad: tú respondes de lo que hagas con el modelo.</p>
+    <div class="tabs rv" id="tabs">
+      <button class="tab on" data-t="dense">Densos</button>
+      <button class="tab" data-t="moe">MoE</button>
+      <button class="tab" data-t="edge">Compactos / Edge</button>
+      <button class="tab" data-t="diff">Difusión</button>
+      <button class="tab" data-t="audio">Audio</button>
+      <button class="tab" data-t="cls">Clasificación / Decisión</button>
+      <button class="tab" data-t="emb">Embeddings</button>
+    </div>
+    <div id="panels"></div>
   </div>
 </section>
 
@@ -582,6 +575,14 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:18px 0 6px;cursor:p
       <p>Un engine (motor de inferencia) carga los pesos y genera los tokens. Los recomendados, todos open source: <b>llama.cpp</b> (GGUF, CPU+GPU, todo terreno), <b>vLLM</b> y <b>SGLang</b> (servidores rápidos en GPU NVIDIA/AMD), <b>MLX</b> (Mac), <b>ExLlamaV3</b> (GPU de consumo), <b>ik_llama.cpp</b> / <b>KTransformers</b> (MoE gigantes con offloading), <b>ComfyUI</b> (imagen/vídeo/audio) y <b>Transformers</b> de Hugging Face (todo, para aprender). Ollama y LM Studio también existen y son cómodos, pero no dejan de ser capas por encima de llama.cpp, cerradas o con muchas decisiones ya tomadas por ti: aquí preferimos ir directamente a la fuente.</p></div>
     </div>
     </div>
+    <h3 class="mt rv" style="margin-top:80px">¿Qué puedes hacer con unos pesos abiertos?</h3>
+    <div class="grid g4 mt">
+      <div class="card rv"><div class="ph"><img src="assets/p_local.jpg" alt="Tarjeta gráfica NVIDIA RTX" loading="lazy"></div><h4 class="mt2">Ejecutarlo en local</h4><p>Privacidad total, sin cuotas, sin internet.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_unlock.jpg" alt="Candado abierto" loading="lazy"></div><h4 class="mt2">Quitar restricciones</h4><p>Con <b>Heretic</b> puedes quitarle al modelo sus mecanismos de seguridad para que deje de negarse a responder (abliteración automática), sin necesidad de reentrenarlo. <b>Solo para uso personal y legítimo; no en equipos del centro.</b></p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_persona.jpg" alt="Repositorio Unsloth" loading="lazy"></div><h4 class="mt2">Cambiar personalidad</h4><p>Fine-tuning con <b>LoRA</b> (Unsloth, Axolotl): entrenas con tus propios ejemplos solo unas pequeñas capas añadidas, para darle tu tono o especializarlo en una tarea.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/p_quant.jpg" alt="Tarjeta gráfica" loading="lazy"></div><h4 class="mt2">Cuantizarlo</h4><p>Se reduce la precisión de sus números para que quepa en tu GPU (lo has visto arriba).</p></div>
+    </div>
+    <p class="note rv">Quitarle los filtros no te exime de responsabilidad: tú respondes de lo que hagas con el modelo.</p>
   </div>
 </section>
 
@@ -633,11 +634,11 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
     <div class="card rv mt">
       <h3>¿Qué ocupa tu ventana antes de que escribas nada?</h3>
       <p>Antes de que escribas nada, el harness ya ocupa parte de la ventana con sus instrucciones y herramientas (lo vemos con cifras en la sección 08).</p>
-      <p class="note">Después, lo que más llena el contexto son las salidas de herramientas (logs, archivos leídos); por eso los buenos harnesses las recortan. Para no recalcular todo en cada token, el modelo guarda lo ya procesado en la <b>caché KV</b>, que también ocupa VRAM: a más contexto, más memoria.</p>
+      <p class="note">Después, lo que más llena el contexto son las salidas de herramientas (logs, archivos leídos); por eso los buenos harnesses las recortan.</p>
     </div>
     <div class="grid g3 mt">
       <div class="card rv"><div class="ph"><img src="assets/ctx_compact.jpg" alt="Cajón de archivo con fichas comprimidas" loading="lazy"></div><h3 class="mt2">Autocompactación</h3><p>Cuando la ventana se llena, el harness resume la conversación y empieza de nuevo con ese resumen. Ahorra muchísimo, pero <b>cada resumen pierde matices</b>: tras varias compactaciones el agente "descarrila", olvida decisiones o repite errores.</p></div>
-      <div class="card rv"><div class="ph"><img src="assets/ctx_cope.jpg" alt="Lista de tareas en una libreta" loading="lazy"></div><h3 class="mt2">Cómo sobrellevarla</h3><p>Sesiones cortas y con un objetivo. Guarda decisiones en archivos (plan.md, specs). Usa subagentes para tareas que ensucian el contexto. Compacta tú a mano al terminar una tarea, indicando qué debe conservar.</p></div>
+      <div class="card rv"><div class="ph"><img src="assets/ctx_cope.jpg" alt="Lista de tareas en una libreta" loading="lazy"></div><h3 class="mt2">Cómo sobrellevarla</h3><p>Sesiones cortas con un objetivo y las decisiones guardadas en archivos. Lo tienes paso a paso en <a href="#codigo">la sección 10 · Higiene de sesiones</a>.</p></div>
       <div class="card rv"><div class="ph"><img src="assets/ctx_rope.jpg" alt="Relojes con las agujas en distintas posiciones" loading="lazy"></div><h3 class="mt2">De RoPE a hoy</h3><p><b>RoPE</b> codificaba la posición rotando vectores; la ventana se ampliaba con trucos (NTK, <b>YaRN</b>). Hoy dominan la <b>atención híbrida</b> (capas locales + globales), atención dispersa (DeepSeek Sparse Attention), capas lineales tipo Mamba/Gated DeltaNet y cachés KV comprimidas (MLA).</p></div>
     </div>
   </div>
@@ -688,34 +689,6 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
   </div>
 </section>
 
-<!-- GLOSARIO -->
-<section id="glosario">
-  <div class="wrap">
-    <div class="rv" style="text-align:center">
-      <div class="eyebrow"><i style="background:var(--yellow)"></i>Chuleta</div>
-      <h2>Glosario <span style="color:#d39b00">de bolsillo</span></h2>
-      <p class="lead" style="margin:0 auto">Pasa el ratón (o toca) cada tarjeta para darle la vuelta.</p>
-    </div>
-    <div class="grid g4 mt">
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Inferencia</b><small>Usar el modelo</small></div><div class="fb" style="background:#4285F4">Ejecutar un modelo ya entrenado para obtener respuestas. Es lo que ocurre cada vez que le preguntas algo.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Fine-tuning y LoRA</b><small>Especializar un modelo</small></div><div class="fb" style="background:#EA4335">Ajustar los pesos de un modelo ya entrenado con miles de ejemplos tuyos (entrada y respuesta ideal) para cambiar su comportamiento: tono, formato, una tarea concreta. LoRA congela el modelo y entrena solo unas matrices pequeñas añadidas, una fracción mínima de los parámetros, así que cabe en una GPU normal (QLoRA hace lo mismo sobre el modelo cuantizado). Sirve para cambiar su comportamiento, no para enseñarle conocimientos nuevos: para eso está RAG.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Abliteración</b><small>Quitar la censura</small></div><div class="fb" style="background:#FBBC05">Consiste en localizar dentro del modelo la "dirección" responsable de que se niegue a responder y anularla en los pesos. Heretic lo hace de forma automática.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>GGUF y Q4_K_M</b><small>Formato de archivo</small></div><div class="fb" style="background:#34A853">Un único archivo con los pesos ya cuantizados, listo para llama.cpp. Q4_K_M significa 4 bits con calidad media-alta: el equilibrio más habitual.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Router (MoE)</b><small>El repartidor</small></div><div class="fb" style="background:#4285F4">Una pequeña red que, para cada token, decide qué expertos del modelo trabajan. Los demás no se activan.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Caché KV</b><small>La memoria de lectura</small></div><div class="fb" style="background:#EA4335">Resultados intermedios de los tokens ya leídos, guardados para no recalcularlos. Crece con el contexto y ocupa VRAM.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>RAG</b><small>Respuestas con tus documentos</small></div><div class="fb" style="background:#FBBC05">Buscar en tus documentos lo relevante para cada pregunta y dárselo al modelo para que responda citando la fuente. Es lo que hay detrás de casi todos los chatbots de empresa.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Prompt de sistema</b><small>Las reglas ocultas</small></div><div class="fb" style="background:#34A853">Instrucciones que van antes de tu mensaje y definen el rol, el tono y los límites del modelo.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Alucinación</b><small>Inventar con aplomo</small></div><div class="fb" style="background:#4285F4">Cuando el modelo afirma algo falso con total seguridad. Se reduce dándole fuentes y herramientas para comprobar lo que dice.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Razonamiento</b><small>Pensar antes de hablar</small></div><div class="fb" style="background:#EA4335">Modelos que generan una cadena de pensamiento interna antes de responder. Más precisos, pero gastan más tokens y tiempo.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>MCP</b><small>Conectar herramientas</small></div><div class="fb" style="background:#FBBC05">Protocolo abierto para que un agente use servicios externos (GitHub, navegador, bases de datos) a través de servidores MCP.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>TTFT</b><small>Tiempo de espera</small></div><div class="fb" style="background:#34A853">Time To First Token: lo que tarda en aparecer la primera palabra. Clave en voz y chat en tiempo real.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Prefill y decode</b><small>Leer y escribir</small></div><div class="fb" style="background:#4285F4">Prefill: el modelo lee tu prompt entero de golpe (de ahí sale el TTFT). Decode: genera la respuesta token a token (de ahí salen los tok/s).</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Modelo de recompensa</b><small>El que pone la nota</small></div><div class="fb" style="background:#EA4335">Un modelo que puntúa respuestas, entrenado con preferencias humanas o sustituido por reglas comprobables (tests, cuentas). En el RL, el LLM aprende a sacar mejor nota con él.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Sicofancia</b><small>Darte la razón</small></div><div class="fb" style="background:#FBBC05">La tendencia del modelo a decirte lo que quieres oír y a cambiar de opinión en cuanto le llevas la contraria. Viene del entrenamiento con preferencias humanas.</div></div></div>
-      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Grounding</b><small>Aterrizar en datos reales</small></div><div class="fb" style="background:#34A853">Anclar cada respuesta en fuentes reales (documentación, código, la web, tus datos) en lugar de en lo que el modelo "cree recordar".</div></div></div>
-    </div>
-  </div>
-</section>
 
 <!-- BAJO EL CAPÓ -->
 <section id="capo">
@@ -995,13 +968,20 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       </div>
       <div class="card rv">
         <div class="ph"><img src="assets/plugins.jpg" alt="Panel de conexiones con cables de red" loading="lazy"></div><h3 class="mt2">Plugins y MCP</h3>
-        <p>Un <b>plugin</b> empaqueta skills, comandos, subagentes, hooks y servidores <b>MCP</b> en una sola instalación. MCP (Model Context Protocol) es el protocolo con el que el agente usa herramientas externas como GitHub, Notion, un navegador o una base de datos. Lo explicamos a fondo un poco más abajo.</p>
+        <p>Un <b>plugin</b> empaqueta skills, comandos, subagentes, hooks y servidores <b>MCP</b> en una sola instalación. Los servidores MCP conectan el agente con servicios externos; los vemos a fondo justo debajo, en el bloque 08d.</p>
         <div class="tier mt2">
           <div style="background:var(--blue-l)">Skill<span>Instrucciones + scripts</span></div>
           <div style="background:var(--yellow-l)">MCP<span>Conector a servicios externos</span></div>
           <div style="background:var(--green-l)">Plugin<span>Paquete de todo lo anterior</span></div>
         </div>
       </div>
+    </div>
+    <h3 id="memoria" class="mt rv" style="margin-top:90px">De los archivos de instrucciones a la memoria automática</h3>
+    <div class="tl mt2 rv">
+      <div class="it" style="--c:var(--blue)"><b>Los inicios · 2025</b><h4>AGENTS.md / CLAUDE.md a mano</h4><p style="color:var(--ink2)">Un Markdown en la raíz del proyecto con reglas, comandos y estilo. Se cargaba en cada sesión. Tenías que mantenerlo a mano y crecía hasta comerse el contexto.</p></div>
+      <div class="it" style="--c:var(--red)"><b>Después</b><h4>Reglas por carpeta, skills y comandos</h4><p style="color:var(--ink2)">Instrucciones que se cargan solo cuando hacen falta, en lugar de todo siempre.</p></div>
+      <div class="it" style="--c:var(--yellow)"><b>Ahora · 2026</b><h4>Memoria persistente automática</h4><p style="color:var(--ink2)">Los harnesses guardan por sí mismos decisiones, preferencias y correcciones en archivos de memoria indexados, y los recuperan en futuras sesiones. Tú solo corriges cuando se equivocan.</p></div>
+      <div class="it" style="--c:var(--green)"><b>Lo que viene</b><h4>Agentes de larga duración</h4><p style="color:var(--ink2)">Sesiones que duran horas o días con checkpoints, workflows deterministas que coordinan decenas de subagentes y revisión cruzada entre modelos.</p></div>
     </div>
     <div class="rv" style="margin-top:90px">
       <div class="eyebrow"><i style="background:var(--red)"></i>08d · Lo que piden las empresas</div>
@@ -1057,13 +1037,6 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
         <p class="note">Un ejemplo: mete todos los apuntes y exámenes de la FP en RAGFlow y pregunta "¿qué entra del tema de redes y en qué página se explica?". La respuesta llega con la cita exacta.</p>
       </div>
     </div>
-    <h3 id="memoria" class="mt rv" style="margin-top:90px">De los archivos de instrucciones a la memoria automática</h3>
-    <div class="tl mt2 rv">
-      <div class="it" style="--c:var(--blue)"><b>Los inicios · 2025</b><h4>AGENTS.md / CLAUDE.md a mano</h4><p style="color:var(--ink2)">Un Markdown en la raíz del proyecto con reglas, comandos y estilo. Se cargaba en cada sesión. Tenías que mantenerlo a mano y crecía hasta comerse el contexto.</p></div>
-      <div class="it" style="--c:var(--red)"><b>Después</b><h4>Reglas por carpeta, skills y comandos</h4><p style="color:var(--ink2)">Instrucciones que se cargan solo cuando hacen falta, en lugar de todo siempre.</p></div>
-      <div class="it" style="--c:var(--yellow)"><b>Ahora · 2026</b><h4>Memoria persistente automática</h4><p style="color:var(--ink2)">Los harnesses guardan por sí mismos decisiones, preferencias y correcciones en archivos de memoria indexados, y los recuperan en futuras sesiones. Tú solo corriges cuando se equivocan.</p></div>
-      <div class="it" style="--c:var(--green)"><b>Lo que viene</b><h4>Agentes de larga duración</h4><p style="color:var(--ink2)">Sesiones que duran horas o días con checkpoints, workflows deterministas que coordinan decenas de subagentes y revisión cruzada entre modelos.</p></div>
-    </div>
   </div>
 </section>
 
@@ -1092,7 +1065,7 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       <div class="rv">
         <h3 style="font-size:2rem"><img class="logo" style="width:40px;height:40px" src="assets/logos/n8n.svg"> n8n, la fábrica de automatizaciones</h3>
         <p style="color:var(--ink2);margin-top:12px"><b>n8n</b> es una plataforma de flujos de trabajo visual, de código fuente disponible y <b>autoalojable</b> (Docker en tu PC o servidor). Funciona uniendo <i>nodos</i>: un disparador (un correo, una hora, un webhook) → acciones (más de 1.000 integraciones) → nodos de IA (agentes con memoria y herramientas, cualquier modelo vía OpenRouter o local).</p>
-        <p style="color:var(--ink2);margin-top:12px">Su novedad estrella: <b>describes en lenguaje natural lo que quieres y un agente construye el flujo (el grafo) por ti</b>, nodo a nodo, y luego tú lo ajustas visualmente.</p>
+        <p style="color:var(--ink2);margin-top:12px">Su novedad estrella: <b>describes en lenguaje natural lo que quieres y un agente construye el flujo (el grafo) por ti</b>, nodo a nodo, y luego tú lo ajustas visualmente. Los pasos para montarlo, en la <a href="#empieza">sección 12</a>.</p>
       </div>
       <div class="card rv" style="padding:24px">
         <svg viewBox="0 0 520 260">
@@ -1164,27 +1137,9 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
       <div class="sess"><b>Sesión 3</b><small>Objetivo: revisión de seguridad</small></div>
     </div>
     <div class="grid g3 mt">
-      <div class="card rv"><h3>Qué es un handoff</h3><p>Al cerrar una sesión, el agente escribe un documento corto con <b>qué se hizo, qué se decidió, qué falta y cuál es el siguiente paso</b>. La siguiente sesión empieza leyéndolo, desde cero y sin arrastrar ruido. Es mucho mejor que compactar.</p></div>
+      <div class="card rv"><h3>Qué es un handoff</h3><p>Al cerrar una sesión, el agente escribe un documento corto con <b>qué se hizo, qué se decidió, qué falta y cuál es el siguiente paso</b>. La siguiente sesión empieza leyéndolo, desde cero y sin arrastrar ruido. Es mucho mejor que compactar; si aun así compactas, hazlo tú al terminar una tarea e indica qué debe conservar.</p></div>
       <div class="card rv"><h3>Objetivos claros, medibles y concisos</h3><p class="bad">✕ "Mejora la app"</p><p class="good">✓ "Haz que la búsqueda tarde menos de 100 ms con 5.000 cartas y añade un test que lo compruebe"</p><p>Si puedes comprobar que se ha cumplido, es un buen objetivo.</p></div>
       <div class="card rv"><h3>Sesiones cortas y pocos subagentes</h3><p>Cada subagente abre su propio contexto y gasta sus propios tokens. Con una suscripción barata o poco presupuesto, lanzar muchos agota tu cuota en minutos. Mejor <b>sesiones cortas y secuenciales</b>, y subagentes solo cuando de verdad aporten paralelismo.</p></div>
-    </div>
-    <div class="rv" style="margin-top:110px">
-      <div class="eyebrow"><i style="background:var(--red)"></i>Orquestación · 2026</div>
-      <h3 style="font-size:2.2rem">Herramientas para coordinar agentes</h3>
-      <p class="lead">El patrón que se ha impuesto: <b>muchos agentes en paralelo, cada uno en su propia copia del repositorio</b> (<i>git worktree</i>) para que no se pisen, y un panel desde el que planificas, revisas y fusionas lo que hace cada uno.</p>
-    </div>
-    <div class="grid g2 mt">
-      <div class="tool rv" style="--c:var(--blue)"><span class="pill pb">Banco de trabajo · Apache 2.0</span><h4>Helmor</h4><p>Local-first. Orquesta Claude Code, Codex y otros agentes en worktrees separados a lo largo de todo el ciclo: plan, ejecución, revisión, tests, merge y envío.</p></div>
-      <div class="tool rv" style="--c:var(--blue)"><span class="pill pb">Editor + panel de control</span><h4>Superset (ahora Paradev)</h4><p>Editor local pensado como centro de mando para agentes de terminal en paralelo, cada uno en su worktree. Presume de manejar más de 100 agentes a la vez.</p></div>
-      <div class="tool rv" style="--c:var(--red)"><span class="pill pr">Flota · open source</span><h4>Agent Orchestrator (Composio)</h4><p>Lanza agentes en paralelo, uno por worktree, y les reenvía automáticamente los fallos de CI y los comentarios de revisión para que los arreglen sin que tengas que hacer de intermediario.</p></div>
-      <div class="tool rv" style="--c:var(--red)"><span class="pill pr">Jerárquico · AWS</span><h4>CLI Agent Orchestrator (CAO)</h4><p>Un agente supervisor reparte el trabajo entre agentes especialistas, cada uno en su sesión de tmux, y recoge los resultados.</p></div>
-      <div class="tool rv" style="--c:var(--yellow)"><span class="pill py">Ligeros · CLI</span><h4>Parallel Code y SwarmGit</h4><p>Lo mínimo: ejecutan Claude Code, Codex o Gemini CLI a la vez sobre la misma tarea o tareas distintas, en worktrees aislados, y tú eliges con qué rama te quedas.</p></div>
-      <div class="tool rv" style="--c:var(--green)"><span class="pill pg">Integrado</span><h4>Dentro de tu harness o IDE</h4><p>Muchas veces no necesitas nada extra: el gestor de agentes de Antigravity, los subagentes de Claude Code o Hermes y los perfiles de DeepSeek Harness ya orquestan por ti.</p></div>
-    </div>
-    <p class="note rv">Directorios actualizados para seguir el ritmo: <a href="https://github.com/andyrewlee/awesome-agent-orchestrators" target="_blank">awesome-agent-orchestrators</a> y <a href="https://github.com/bradagi/awesome-cli-coding-agents" target="_blank">awesome-cli-coding-agents</a>.</p>
-    <div class="askrow rv mt">
-      <b>Antes de orquestar, pregúntate:</b>
-      <span>¿Mi tarea se puede dividir en partes independientes?</span><span>¿Cuánto me cuesta cada agente extra?</span><span>¿Quién revisa lo que hacen?</span><span>¿Me basta con una sola sesión bien enfocada?</span>
     </div>
 
   </div>
@@ -1228,6 +1183,24 @@ box.setAttribute('transform',`translate(${x>230?x-170:x+10},30)`);h.style.opacit
         <p>Tus objetivos, tu metodología, qué skills y plugins usas, cómo desarrollas: todo depende de ti y de las herramientas que elijas. La buena noticia es que en cada una de esas decisiones puedes pedirle ayuda a la propia IA.</p>
       </div>
     </div>
+    <div class="rv" style="margin-top:110px">
+      <div class="eyebrow"><i style="background:var(--red)"></i>Extra · avanzado · Orquestación</div>
+      <h3 style="font-size:2.2rem">Herramientas para coordinar agentes</h3>
+      <p class="lead">Solo cuando ya domines una sesión bien enfocada. El patrón que se ha impuesto: <b>muchos agentes en paralelo, cada uno en su propia copia del repositorio</b> (<i>git worktree</i>) para que no se pisen, y un panel desde el que planificas, revisas y fusionas lo que hace cada uno.</p>
+    </div>
+    <div class="grid g2 mt">
+      <div class="tool rv" style="--c:var(--blue)"><span class="pill pb">Banco de trabajo · Apache 2.0</span><h4>Helmor</h4><p>Local-first. Orquesta Claude Code, Codex y otros agentes en worktrees separados a lo largo de todo el ciclo: plan, ejecución, revisión, tests, merge y envío.</p></div>
+      <div class="tool rv" style="--c:var(--blue)"><span class="pill pb">Editor + panel de control</span><h4>Superset (ahora Paradev)</h4><p>Editor local pensado como centro de mando para agentes de terminal en paralelo, cada uno en su worktree. Presume de manejar más de 100 agentes a la vez.</p></div>
+      <div class="tool rv" style="--c:var(--red)"><span class="pill pr">Flota · open source</span><h4>Agent Orchestrator (Composio)</h4><p>Lanza agentes en paralelo, uno por worktree, y les reenvía automáticamente los fallos de CI y los comentarios de revisión para que los arreglen sin que tengas que hacer de intermediario.</p></div>
+      <div class="tool rv" style="--c:var(--red)"><span class="pill pr">Jerárquico · AWS</span><h4>CLI Agent Orchestrator (CAO)</h4><p>Un agente supervisor reparte el trabajo entre agentes especialistas, cada uno en su sesión de tmux, y recoge los resultados.</p></div>
+      <div class="tool rv" style="--c:var(--yellow)"><span class="pill py">Ligeros · CLI</span><h4>Parallel Code y SwarmGit</h4><p>Lo mínimo: ejecutan Claude Code, Codex o Gemini CLI a la vez sobre la misma tarea o tareas distintas, en worktrees aislados, y tú eliges con qué rama te quedas.</p></div>
+      <div class="tool rv" style="--c:var(--green)"><span class="pill pg">Integrado</span><h4>Dentro de tu harness o IDE</h4><p>Muchas veces no necesitas nada extra: el gestor de agentes de Antigravity, los subagentes de Claude Code o Hermes y los perfiles de DeepSeek Harness ya orquestan por ti.</p></div>
+    </div>
+    <p class="note rv">Directorios actualizados para seguir el ritmo: <a href="https://github.com/andyrewlee/awesome-agent-orchestrators" target="_blank">awesome-agent-orchestrators</a> y <a href="https://github.com/bradagi/awesome-cli-coding-agents" target="_blank">awesome-cli-coding-agents</a>.</p>
+    <div class="askrow rv mt">
+      <b>Antes de orquestar, pregúntate:</b>
+      <span>¿Mi tarea se puede dividir en partes independientes?</span><span>¿Cuánto me cuesta cada agente extra?</span><span>¿Quién revisa lo que hacen?</span><span>¿Me basta con una sola sesión bien enfocada?</span>
+    </div>
   </div>
 </section>
 
@@ -1267,8 +1240,7 @@ curl -fsSL https://opencode.ai/install | bash</pre>
         <p class="note">Los modelos gratis y los límites de NVIDIA cambian a menudo. Mira la lista actual en <code>/models</code> y en build.nvidia.com/models.</p>
         <div class="opt">
           <h4><span class="ms" style="color:var(--green)">computer</span>O el modelo en tu propio ordenador</h4>
-          <p>Con <b>llama.cpp</b> ejecutas modelos que te caben en la GPU (lo tienes paso a paso abajo, en "Correr un LLM en mi PC"). Y si quieres uno mucho más grande de lo que te cabe, usa <b><a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a></b> (open source, MIT): un motor nuevo que reparte el modelo entre <b>GPU, RAM y SSD a la vez</b>. Según sus propias pruebas, mueve DeepSeek V4.1 Flash (284B) a 9–11 tok/s en una RTX 3060 de 12 GB con 46 GB de RAM. Ofrece una API compatible con OpenAI y Anthropic en tu propio equipo, así que puedes conectarle OpenCode y tener un agente 100% local y gratis.</p>
-          <p class="note">Necesitas una GPU de 12 GB o más y mucho disco libre (unos 200–280 GB para DeepSeek). Va más lento que en la nube, pero no pagas nada y nada sale de tu equipo.</p>
+          <p>Con <b>llama.cpp</b> ejecutas modelos que te caben en la GPU (lo tienes paso a paso abajo, en "Correr un LLM en mi PC"). Y si quieres uno mucho más grande de lo que te cabe, mira <b>Strata</b> en esa misma receta.</p>
         </div>
       </div>
       <div class="path rv" style="--c:var(--blue)">
@@ -1311,26 +1283,20 @@ export DEEPSEEK_API_KEY="sk-..."</pre>
         <p class="note">Compra siempre en la web oficial. Las cuentas revendidas incumplen los términos de uso: te pueden cerrar la cuenta sin aviso y a menudo proceden de pagos fraudulentos.</p>
       </div>
     </div>
-    <div class="hype rv mt">
-      <h3>Esto es el futuro. Y casi nadie lo está usando de verdad.</h3>
-      <p>Memorizar frameworks importa cada vez menos; saber dirigir agentes, cada vez más. <b>Todo lo digital puede automatizarse o hacerse con ayuda de agentes de IA.</b> Hay gente que automatiza todo lo que tiene alrededor y entrega a empresas, en horas, soluciones que antes llevaban meses. Y hay gente que todavía copia su código en ChatGPT y lo vuelve a pegar en el archivo.</p>
-      <p>En esta revolución, <b>los que vayan antes tienen toda la ventaja y un mundo por comerse.</b> Tienes en las manos un poder que casi nadie está usando a fondo. Úsalo para destacar: un portfolio de aplicaciones y soluciones únicas vale más que cualquier título.</p>
-    </div>
     <div class="grid g3 mt">
-      <div class="card rv"><h3>Automatiza lo que te roba tiempo</h3><p>Ejemplo: un agente que cada mañana entra al campus, mira qué tareas y exámenes hay esa semana, te lo manda por Telegram ordenado por fecha y te crea los eventos en Google Calendar. Con n8n o con un script que te escriba tu harness, se monta en una tarde.</p></div>
+      <div class="card rv"><h3>Prepara tu setup</h3><p>Harness, modelos, herramientas, skills, MCP, metodología. No hace falta acertar a la primera: cuéntale a la IA qué haces, con qué ordenador y con qué presupuesto, y pídele que te proponga un setup, que lo instale contigo y que lo vaya ajustando a medida que trabajas.</p></div>
       <div class="card rv"><h3>Mete IA en tus juegos</h3><p>Con <a href="https://www.nexusmods.com/skyrimspecialedition/mods/126330" target="_blank">CHIM, de Dwemer Dynamics</a>, los NPCs hablan, recuerdan y reaccionan con un LLM. O crea tu propio mod: pídele al agente que estudie cómo funcionan los mods del juego y construye uno con su ayuda.</p></div>
       <div class="card rv"><h3>Recrea esa app tan cara</h3><p>¿Usas una app de pago que te encanta? Analiza qué hace, haz ingeniería inversa de su funcionamiento y recréala a tu medida con un agente. Aprendes más que en cualquier curso y te queda en el portfolio. <b>Recrea las funciones, no copies su código, marca ni contenido protegido.</b></p></div>
       <div class="card rv"><h3>Resuelve un problema real tuyo</h3><p>Ejemplo: en tu grupo de clase nadie sabe quién debe qué de la cena o del viaje. Haz una app web que lo calcule y lo reparta, compártela, y si la usan tus amigos, ya tienes tus primeros usuarios reales.</p></div>
       <div class="card rv"><h3>Acelera cursos y certificaciones</h3><p>Usa agentes para preparar las certificaciones y cursos de tecnologías tradicionales que te piden: resúmenes, preguntas tipo examen, proyectos de práctica. Lo que antes llevaba un trimestre, ahora se hace en semanas.</p></div>
       <div class="card rv"><h3>Construye un portfolio que nadie más tiene</h3><p>Tres proyectos únicos, publicados y usados por alguien valen más que diez ejercicios de clase. Enséñalos en GitHub y LinkedIn: que se vea que sabes dirigir agentes, no solo escribir código.</p></div>
       <div class="card rv"><h3>Encuentra trabajo con IA</h3><p>Pídele a un agente con búsqueda web que localice ofertas, empresas que encajen contigo y recruiters a los que escribir, y que te prepare cada mensaje. Hay herramientas open source, como <a href="https://pypi.org/project/applypilot/" target="_blank">ApplyPilot</a> o <a href="https://github.com/feder-cr/Jobs_Applier_AI_Agent_AIHawk" target="_blank">AIHawk</a>, que adaptan tu CV a cada oferta y se presentan solas según tus requisitos. Revisa lo que envían en tu nombre: muchas webs de empleo prohíben la automatización.</p></div>
-      <div class="card rv"><h3>Prepara tu setup</h3><p>Harness, modelos, herramientas, skills, MCP, metodología. No hace falta acertar a la primera: cuéntale a la IA qué haces, con qué ordenador y con qué presupuesto, y pídele que te proponga un setup, que lo instale contigo y que lo vaya ajustando a medida que trabajas.</p></div>
       <div class="card rv"><h3>Usa la IA como profesor</h3><p>Cualquier tema, a tu ritmo: que te lo explique, te ponga ejercicios, te corrija y te pregunte hasta que lo entiendas de verdad. Pídele siempre fuentes fiables (documentación oficial, papers, libros) y comprueba lo importante, porque también se equivoca con total seguridad.</p></div>
     </div>
     <h3 class="mt rv" style="text-align:center;margin-top:90px">Y para cada objetivo concreto</h3>
     <div class="grid g2 mt">
       <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_llm.jpg" alt="llama.cpp" loading="lazy"></div><h3>Correr un LLM en mi PC</h3>
-        <ol><li>Mira tu VRAM (<code>nvidia-smi</code>). 8 GB → modelos de 4–9B; 16–24 GB → 14–32B en 4 bits; con mucha RAM, MoE grandes con offloading.</li><li>Descarga <b>llama.cpp</b> (releases de GitHub). En Windows con NVIDIA, baja el zip <code>win-cuda</code>; sin NVIDIA, el <code>win-vulkan</code>; sin GPU, el <code>win-cpu</code>.</li><li>Baja un GGUF Q4_K_M de Hugging Face (busca el modelo + "GGUF").</li><li>Lanza el servidor y abre <code>localhost:8080</code>.</li><li>¿Quieres un modelo más grande que tu VRAM? Prueba <a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a>: reparte el modelo entre GPU, RAM y SSD y trae instaladores para Windows, Linux y macOS.</li></ol>
+        <ol><li>Mira tu VRAM (<code>nvidia-smi</code>). 8 GB → modelos de 4–9B; 16–24 GB → 14–32B en 4 bits; con mucha RAM, MoE grandes con offloading.</li><li>Descarga <b>llama.cpp</b> (releases de GitHub). En Windows con NVIDIA, baja el zip <code>win-cuda</code>; sin NVIDIA, el <code>win-vulkan</code>; sin GPU, el <code>win-cpu</code>.</li><li>Baja un GGUF Q4_K_M de Hugging Face (busca el modelo + "GGUF").</li><li>Lanza el servidor y abre <code>localhost:8080</code>.</li><li>¿Quieres un modelo más grande que tu VRAM? Prueba <a href="https://github.com/Niko1221/Strata" target="_blank">Strata</a> (open source, MIT): reparte el modelo entre GPU, RAM y SSD y trae instaladores para Windows, Linux y macOS. Según sus pruebas, mueve DeepSeek V4.1 Flash (284B) a 9–11 tok/s en una RTX 3060 de 12 GB con 46 GB de RAM (necesitas unos 200–280 GB de disco). Ofrece una API compatible con OpenAI y Anthropic, así que puedes conectarle OpenCode y tener un agente 100% local y gratis.</li></ol>
         <pre><span class="c"># servidor con interfaz web y API compatible OpenAI</span>
 llama-server -hf unsloth/Qwen3.8-27B-GGUF:Q4_K_M -c 32768 -ngl 99</pre></div>
       <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_voice.jpg" alt="Micrófonos de estudio" loading="lazy"></div><h3>Clonar mi voz</h3>
@@ -1347,12 +1313,45 @@ hf download convaiinnovations/laya --local-dir ./laya
         <ol><li>Guion con un LLM → voz con TTS → imágenes clave con un modelo de imagen.</li><li>Instala <b>ComfyUI</b> y carga un workflow de vídeo con un modelo abierto (familia Wan, LTX…), cuantizado si tu GPU es pequeña.</li><li>O usa APIs de vídeo cerradas (Veo, Sora, Kling) si no tienes GPU.</li><li>Edita el vídeo en DaVinci Resolve (gratis) y genera los subtítulos con whisper.cpp.</li></ol>
         <p class="note">YouTube exige etiquetar el contenido sintético realista.</p></div>
       <div class="path rv" style="--c:var(--blue)"><div class="ph"><img src="assets/pa_code.jpg" alt="Persona programando" loading="lazy"></div><h3>Programar con agentes</h3>
-        <ol><li>Elige harness: Codex u OpenCode para empezar; Pi o Hermes si te gusta configurar.</li><li>Conéctalo a un modelo (suscripción o OpenRouter).</li><li>Empieza por una spec en un <code>spec.md</code>, no por el código, y pide al agente que la siga tarea a tarea.</li><li>Pide primero los tests y deja que itere hasta que pasen todos.</li></ol></div>
+        <ol><li>Elige harness (<a href="#harness">sección 08</a>): Codex u OpenCode para empezar; Pi o Hermes si te gusta configurar.</li><li>Conéctalo a un modelo (suscripción o OpenRouter).</li><li>Empieza (<a href="#codigo">sección 10</a>) por una spec en un <code>spec.md</code>, no por el código, y pide al agente que la siga tarea a tarea.</li><li>Pide primero los tests y deja que itere hasta que pasen todos.</li></ol></div>
       <div class="path rv" style="--c:var(--red)"><div class="ph"><img src="assets/pa_auto.jpg" alt="n8n" loading="lazy"></div><h3>Automatizar mi trabajo o mis clases</h3>
         <ol><li>Lanza n8n con Docker.</li><li>Describe el flujo en lenguaje natural y deja que el agente lo construya.</li><li>Conecta tu modelo (local vía llama-server o OpenRouter).</li><li>Prueba con datos reales y activa el disparador.</li></ol>
         <pre>docker run -it --rm -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n</pre></div>
     </div>
     
+    <div class="hype rv mt">
+      <h3>Esto es el futuro. Y casi nadie lo está usando de verdad.</h3>
+      <p>Memorizar frameworks importa cada vez menos; saber dirigir agentes, cada vez más. <b>Todo lo digital puede automatizarse o hacerse con ayuda de agentes de IA.</b> Hay gente que automatiza todo lo que tiene alrededor y entrega a empresas, en horas, soluciones que antes llevaban meses. Y hay gente que todavía copia su código en ChatGPT y lo vuelve a pegar en el archivo.</p>
+      <p>En esta revolución, <b>los que vayan antes tienen toda la ventaja y un mundo por comerse.</b> Tienes en las manos un poder que casi nadie está usando a fondo. Úsalo para destacar: un portfolio de aplicaciones y soluciones únicas vale más que cualquier título.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSARIO -->
+<section id="glosario">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow"><i style="background:var(--yellow)"></i>Apéndice · Chuleta</div>
+      <h2>Glosario <span style="color:#d39b00">de bolsillo</span></h2>
+      <p class="lead" style="margin:0 auto">Pasa el ratón (o toca) cada tarjeta para darle la vuelta.</p>
+    </div>
+    <div class="grid g4 mt">
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Inferencia</b><small>Usar el modelo</small></div><div class="fb" style="background:#4285F4">Ejecutar un modelo ya entrenado para obtener respuestas. Es lo que ocurre cada vez que le preguntas algo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Fine-tuning y LoRA</b><small>Especializar un modelo</small></div><div class="fb" style="background:#EA4335">Ajustar los pesos de un modelo ya entrenado con miles de ejemplos tuyos (entrada y respuesta ideal) para cambiar su comportamiento: tono, formato, una tarea concreta. LoRA congela el modelo y entrena solo unas matrices pequeñas añadidas, una fracción mínima de los parámetros, así que cabe en una GPU normal (QLoRA hace lo mismo sobre el modelo cuantizado). Sirve para cambiar su comportamiento, no para enseñarle conocimientos nuevos: para eso está RAG.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Abliteración</b><small>Quitar la censura</small></div><div class="fb" style="background:#FBBC05">Consiste en localizar dentro del modelo la "dirección" responsable de que se niegue a responder y anularla en los pesos. Heretic lo hace de forma automática.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>GGUF y Q4_K_M</b><small>Formato de archivo</small></div><div class="fb" style="background:#34A853">Un único archivo con los pesos ya cuantizados, listo para llama.cpp. Q4_K_M significa 4 bits con calidad media-alta: el equilibrio más habitual.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Router (MoE)</b><small>El repartidor</small></div><div class="fb" style="background:#4285F4">Una pequeña red que, para cada token, decide qué expertos del modelo trabajan. Los demás no se activan.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Caché KV</b><small>La memoria de lectura</small></div><div class="fb" style="background:#EA4335">Resultados intermedios de los tokens ya leídos, guardados para no recalcularlos. Crece con el contexto y ocupa VRAM.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>RAG</b><small>Respuestas con tus documentos</small></div><div class="fb" style="background:#FBBC05">Buscar en tus documentos lo relevante para cada pregunta y dárselo al modelo para que responda citando la fuente. Es lo que hay detrás de casi todos los chatbots de empresa.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Prompt de sistema</b><small>Las reglas ocultas</small></div><div class="fb" style="background:#34A853">Instrucciones que van antes de tu mensaje y definen el rol, el tono y los límites del modelo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #4285F4"><b>Alucinación</b><small>Inventar con aplomo</small></div><div class="fb" style="background:#4285F4">Cuando el modelo afirma algo falso con total seguridad. Se reduce dándole fuentes y herramientas para comprobar lo que dice.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Razonamiento</b><small>Pensar antes de hablar</small></div><div class="fb" style="background:#EA4335">Modelos que generan una cadena de pensamiento interna antes de responder. Más precisos, pero gastan más tokens y tiempo.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>MCP</b><small>Conectar herramientas</small></div><div class="fb" style="background:#FBBC05">Protocolo abierto para que un agente use servicios externos (GitHub, navegador, bases de datos) a través de servidores MCP.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>TTFT</b><small>Tiempo de espera</small></div><div class="fb" style="background:#34A853">Time To First Token: lo que tarda en aparecer la primera palabra. Clave en voz y chat en tiempo real.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #EA4335"><b>Modelo de recompensa</b><small>El que pone la nota</small></div><div class="fb" style="background:#EA4335">Un modelo que puntúa respuestas, entrenado con preferencias humanas o sustituido por reglas comprobables (tests, cuentas). En el RL, el LLM aprende a sacar mejor nota con él.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #FBBC05"><b>Sicofancia</b><small>Darte la razón</small></div><div class="fb" style="background:#FBBC05">La tendencia del modelo a decirte lo que quieres oír y a cambiar de opinión en cuanto le llevas la contraria. Viene del entrenamiento con preferencias humanas.</div></div></div>
+      <div class="flip rv" onclick="this.classList.toggle('on')"><div class="in2"><div class="fa" style="border-top:6px solid #34A853"><b>Grounding</b><small>Aterrizar en datos reales</small></div><div class="fb" style="background:#34A853">Anclar cada respuesta en fuentes reales (documentación, código, la web, tus datos) en lugar de en lo que el modelo "cree recordar".</div></div></div>
+    </div>
   </div>
 </section>
 <div class="wrap" style="text-align:center;color:var(--ink3);font-size:.85rem;margin-top:30px">Hecho por Luis Munuera Martínez</div>
@@ -1474,9 +1473,9 @@ h+=`<text x="320" y="234" text-anchor="middle" font-size="11.5" fill="#b3261e">a
 
 obs();
 /* ---------- TABS DE LA GUÍA ---------- */
-const G={g1:{n:'Conceptos',s:[['tokens','Tokens'],['modelos','Modelos'],['pesos','Pesos'],['tamano','Tamaño'],['contexto','Contexto'],['benchmarks','Benchmarks'],['glosario','Glosario'],['capo','Bajo el capó (extra)']]},
-g2:{n:'IDEs y agentes',s:[['agentes','Agentes'],['harness','Harnesses'],['ides','IDEs'],['skills','Skills y MCP'],['memoria','Memoria']]},
-g3:{n:'Cómo trabajar',s:[['automatizar','Automatizar'],['codigo','Código'],['patrones','Patrones'],['empieza','Empieza aquí']]}};
+const G={g1:{n:'Conceptos',s:[['tokens','Tokens'],['pesos','Pesos'],['modelos','Modelos'],['tamano','Tamaño'],['contexto','Contexto'],['benchmarks','Benchmarks'],['capo','Bajo el capó (extra)']]},
+g2:{n:'IDEs y agentes',s:[['agentes','Agentes'],['harness','Harnesses'],['ides','IDEs'],['skills','Skills'],['memoria','Memoria']]},
+g3:{n:'Cómo trabajar',s:[['automatizar','Automatizar'],['codigo','Código'],['patrones','Patrones'],['empieza','Empieza aquí'],['glosario','Glosario']]}};
 const navEl=document.getElementById('nav'),gind=document.querySelector('.gind');let curG='g1';
 function placeInd(){const b=document.querySelector('.gtab.on');if(!b)return;gind.style.left=b.offsetLeft+'px';gind.style.top=b.offsetTop+'px';gind.style.width=b.offsetWidth+'px';gind.style.height=b.offsetHeight+'px'}
 function drawNav(){navEl.innerHTML=`<span class="gsw">${Object.entries(G).map(([k,v])=>`<a href="#${k}" data-g="${k}" class="${k==curG?'cur':''}">${v.n}</a>`).join('')}</span>`+G[curG].s.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('');navActive()}
